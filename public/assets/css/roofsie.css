@@ -1512,6 +1512,7 @@ ul {
   transition: all 500ms ease;
   z-index: 99;
   position: relative;
+  background-color: #fff;
 }
 
 .main-header-two__top {
@@ -1667,10 +1668,11 @@ ul {
   width: 100%;
   margin: 38px 0px 0px -30px;
 }
-.mainlogoheader
-{
+
+.mainlogoheader {
   width: 90%;
 }
+
 .main-header-two__address {
   position: relative;
   display: block;
@@ -3037,6 +3039,7 @@ ul {
   padding: 0 0 27px;
   margin-top: -3px;
   z-index: 92;
+  background-color: #fff;
 }
 
 .feature-one__inner {
@@ -4414,8 +4417,7 @@ ul {
   display: block;
 }
 
-.testimonial-one__single 
-{
+.testimonial-one__single {
   position: relative;
   display: block;
   border: 1px solid #28272c;
@@ -7993,7 +7995,7 @@ ul {
   line-height: 40px;
   font-weight: 700;
   counter-increment: count;
-  content: "0"counter(count);
+  content: "0" counter(count);
   transition: all 200ms linear;
   transition-delay: 0.1s;
   color: var(--roofsie-white);
@@ -11072,55 +11074,54 @@ body.boxed-wrapper {
     left: -140px;
   }
 }
-::-webkit-scrollbar 
-{
-    width: 8px;
-} 
-::-webkit-scrollbar-track 
-{
-    background: #FFF;
+
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-::-webkit-scrollbar-thumb 
-{
-    background: #2b64b1; 
+::-webkit-scrollbar-track {
+  background: #FFF;
 }
-.uicondesign
-{
+
+::-webkit-scrollbar-thumb {
+  background: #2b64b1;
+}
+
+.uicondesign {
   position: absolute;
   left: -16px;
 }
-.uicondesign1
-{
+
+.uicondesign1 {
   position: absolute;
   right: -23px;
 }
-.uicondesign2
-{
+
+.uicondesign2 {
   position: absolute;
   right: -31px;
 }
-.yl-about-qoute 
-{
+
+.yl-about-qoute {
   width: 100%;
   margin: 30px 0px 0px 0px;
   display: inline-block;
   padding: 12px 0px 12px 25px;
   border-left: 4px solid #2b64b1;
 }
-.yl-about-qoute span 
-{
+
+.yl-about-qoute span {
   color: #000;
   font-size: 24px;
   font-weight: 700;
   line-height: 1.25;
 }
-.yl-about-qoute .yl-quote-author 
-{
+
+.yl-about-qoute .yl-quote-author {
   margin-top: 10px;
 }
-.yl-about-qoute .yl-quote-author h4 
-{
+
+.yl-about-qoute .yl-quote-author h4 {
   color: #000;
   font-size: 18px;
   font-weight: 700;
@@ -11129,8 +11130,8 @@ body.boxed-wrapper {
   margin-right: 10px;
   display: inline-block;
 }
-.yl-about-qoute .yl-quote-author h4:before 
-{
+
+.yl-about-qoute .yl-quote-author h4:before {
   left: 0;
   width: 6px;
   top: 10px;
@@ -11139,98 +11140,98 @@ body.boxed-wrapper {
   position: absolute;
   background-color: #000;
 }
-.yl-about-qoute .yl-quote-author span 
-{
+
+.yl-about-qoute .yl-quote-author span {
   color: #747474;
   font-size: 16px;
   font-weight: normal;
 }
-.chseicndesign
-{
+
+.chseicndesign {
   position: absolute;
   right: 0px;
 }
-.chseicndesign1
-{
+
+.chseicndesign1 {
   position: absolute;
   right: 0px;
 }
-.chseicndesign2
-{
+
+.chseicndesign2 {
   position: absolute;
   right: 0px;
 }
-.chseicndesign3
-{
+
+.chseicndesign3 {
   position: absolute;
   right: 0px;
 }
-.newdesignwcu
-{
+
+.newdesignwcu {
   font-size: 50px;
 }
-.qedusection
-{
+
+.qedusection {
   margin: 170px 0px 0px 0px !important;
 }
-.newovrviewdesign
-{
+
+.newovrviewdesign {
   margin: 38px 0px 0px 60px !important;
 }
-.obrviewlnk
-{
+
+.obrviewlnk {
   color: #FFF !important;
 }
-.obrviewlnk:hover
-{
+
+.obrviewlnk:hover {
   color: #FFF !important;
 }
-.clgdescription
-{
+
+.clgdescription {
   font-size: 14px;
   line-height: 23px;
 }
-.fedbacknamedesign
-{
+
+.fedbacknamedesign {
   color: #FFF;
 }
-.fedbackdescritiontext
-{
+
+.fedbackdescritiontext {
   color: #FFF;
   font-size: 13px;
   line-height: 25px;
   text-align: justify;
 }
-.hiawardarea
-{
+
+.hiawardarea {
   margin: 70px 0px 0px 0px;
 }
-.inneraboutarea
-{
+
+.inneraboutarea {
   margin: 100px 0px 0px 0px;
 }
-.icareinner_abouttext b
-{
+
+.icareinner_abouttext b {
   font-weight: 700;
   color: #000;
 }
-.icareinner_abouttext
-{
+
+.icareinner_abouttext {
   font-size: 13px;
   text-align: justify;
   line-height: 22px;
   padding: 0px 0px 15px 0px;
 }
-.vismison_outsection
-{
+
+.vismison_outsection {
   margin: 0px 0px 50px 0px;
 }
-.mvlstarea
-{
+
+.mvlstarea {
   padding: 0px;
 }
-.mvlstarea li
-{
+
+.mvlstarea li {
   font-size: 13px;
   padding: 0px 20px 20px 0px;
   text-align: justify;
@@ -11241,34 +11242,34 @@ body.boxed-wrapper {
   color: #444;
   font-weight: 700;
 }
-.mvlstarea li span
-{
+
+.mvlstarea li span {
   color: #2b64b1;
   font-size: 20px;
   padding: 0px 7px 0px 0px;
 }
-.cntcttextcolor
-{
+
+.cntcttextcolor {
   color: #2b64b1;
 }
-.cntcttextcolor:hover
-{
+
+.cntcttextcolor:hover {
   color: #2b64b1 !important;
 }
-.admision_outsectionarea
-{
+
+.admision_outsectionarea {
   margin: 50px 0px 50px 0px;
 }
-.iacdemics_outsection
-{
+
+.iacdemics_outsection {
   margin: 70px 0px 100px 0px;
 }
-.mvlstarea1
-{
+
+.mvlstarea1 {
   padding: 0px;
 }
-.mvlstarea1 li
-{
+
+.mvlstarea1 li {
   font-size: 13px;
   padding: 0px 20px 25px 0px;
   text-align: justify;
@@ -11279,61 +11280,61 @@ body.boxed-wrapper {
   color: #444;
   font-weight: 700;
 }
-.icvnxc
-{
+
+.icvnxc {
   padding: 0px 10px 0px 0px;
 }
-.bsdiconx
-{
+
+.bsdiconx {
   color: #2b64b1;
   font-size: 13px;
   padding: 0px 0px 0px 15px;
   font-weight: 800;
 }
-.urighticn
-{
+
+.urighticn {
   color: #e3002a;
   font-size: 15px;
   padding: 0px 5px 0px 0px;
 }
-.academicsiolist_outsection
-{
+
+.academicsiolist_outsection {
   margin: 0px 0px 20px 0px;
 }
-.clgfuldetails
-{
+
+.clgfuldetails {
   margin: 30px 0px 30px 0px;
 }
-.clgcourse_detailsarea
-{
+
+.clgcourse_detailsarea {
   margin: 0px 0px 0px 0px;
 }
-.dcousehdng
-{
+
+.dcousehdng {
   font-size: 30px;
   font-weight: 700;
   margin: 0px;
   color: #2b64b1;
   padding: 0px 0px 15px 0px;
 }
-.clgdtsoutsection
-{
+
+.clgdtsoutsection {
   padding: 30px 0 50px !important;
 }
-.clgdtsoutsection1
-{
+
+.clgdtsoutsection1 {
   padding: 150px 0px 0px 0px;
 }
-.clgaddress_outsection
-{
+
+.clgaddress_outsection {
   margin: 130px 0px 30px 0px;
 }
-.clgdadres_dtoutsection
-{
+
+.clgdadres_dtoutsection {
   position: relative;
 }
-.hex i
-{
+
+.hex i {
   color: #FFF;
   font-size: 20px;
   margin-left: auto;
@@ -11342,8 +11343,8 @@ body.boxed-wrapper {
   text-align: center;
   padding: 2px 0px 0px 0px;
 }
-.hex 
-{
+
+.hex {
   margin-top: 30px;
   width: 45px;
   height: 25px;
@@ -11352,8 +11353,8 @@ body.boxed-wrapper {
   position: relative;
   display: inline-block;
 }
-.hex:before 
-{
+
+.hex:before {
   content: " ";
   width: 0;
   height: 0;
@@ -11364,8 +11365,8 @@ body.boxed-wrapper {
   position: absolute;
   top: -18px;
 }
-.hex:after 
-{
+
+.hex:after {
   content: "";
   width: 0;
   position: absolute;
@@ -11376,8 +11377,8 @@ body.boxed-wrapper {
   border-left: 23px solid transparent;
   border-right: 22px solid transparent;
 }
-.allclgdadress
-{
+
+.allclgdadress {
   font-size: 13px;
   text-align: left;
   line-height: 17px;
@@ -11388,8 +11389,8 @@ body.boxed-wrapper {
   color: #1c1b1f;
   font-weight: 700;
 }
-.allclgdadress1
-{
+
+.allclgdadress1 {
   font-size: 13px;
   text-align: left;
   line-height: 17px;
@@ -11400,8 +11401,8 @@ body.boxed-wrapper {
   color: #1c1b1f;
   font-weight: 700;
 }
-.allclgdadress2
-{
+
+.allclgdadress2 {
   font-size: 13px;
   text-align: left;
   line-height: 17px;

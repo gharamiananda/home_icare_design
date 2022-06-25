@@ -219,7 +219,15 @@
 
 
 
-
+    .main-header-two__shape-7 {
+        position: absolute;
+        top: 86px;
+        left: 105px;
+        border-left: 0px solid #fff;
+        border-right: 86px solid transparent;
+        border-top: 90px solid #fff;
+        z-index: 1;
+    }
 
 
 
@@ -256,6 +264,18 @@
 
 /* Tablet Layout: 768px. */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
+
+    .main-header-two__shape-7 {
+        position: absolute;
+        top: 86px;
+        left: 105px;
+        border-left: 0px solid #fff;
+        border-right: 86px solid transparent;
+        border-top: 90px solid #fff;
+        z-index: 1;
+    }
+
+
     .about-one__left {
         max-width: 600px;
         margin: 0 auto 50px;
@@ -1677,60 +1697,72 @@
 
 }
 
-@media(max-width: 767px)
-{
-    .trust-compay__points li
-    {
-       width: 100%;
+@media(max-width: 767px) {
+    .trust-compay__points li {
+        width: 100%;
     }
-    .qedusection
-    {
+
+    .qedusection {
         margin: 125px 0px 40px 0px !important;
     }
-    .reshead
-    {
+
+    .reshead {
         padding: 0px 0px 30px 0px;
     }
-    .why-choose-two__list-one li .content h4
-    {
+
+    .why-choose-two__list-one li .content h4 {
         font-size: 20px;
     }
-    .mvlstarea li
-    {
+
+    .mvlstarea li {
         width: 100%;
         font-size: 12px;
     }
-    .icareinner_abouttext
-    {
+
+    .icareinner_abouttext {
         font-size: 12px;
     }
-    .yl-about-qoute span
-    {
+
+    .yl-about-qoute span {
         font-size: 21px;
     }
-    .mvlstarea1 li
-    {
+
+    .mvlstarea1 li {
         width: 100%;
         font-size: 11px;
     }
-    .clginnerdetailstext
-    {
+
+    .clginnerdetailstext {
         font-size: 12px;
     }
-    .elsubtitlex
-    {
+
+    .elsubtitlex {
         padding: 30px 0px 0px 0px;
     }
-    .elsubtitlex1
-    {
+
+    .elsubtitlex1 {
         padding: 10px 0px 0px 0px;
     }
-    .about-one__satisfied
-    {
+
+    .about-one__satisfied {
         left: 0px;
     }
-    .site-footer__bottom-text
-    {
+
+    .site-footer__bottom-text {
         font-size: 11px;
     }
+}
+
+
+
+
+.swiper {
+    overflow: unset !important;
+}
+
+.swiper-horizontal>.swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
+    bottom: -50px !important;
 }
