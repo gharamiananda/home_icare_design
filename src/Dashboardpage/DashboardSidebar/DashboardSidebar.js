@@ -1,8 +1,15 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import './DashboardSidebar.css'
+import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import auth from '../../firebase/firebase.config';
 
 
 const DashboardSidebar = ({ children }) => {
+
+    const logout = () => {
+        signOut(auth);
+    };
     return (
         <div>
             {/*wrapper*/}
@@ -33,19 +40,23 @@ const DashboardSidebar = ({ children }) => {
                             <ul>
                                 <li> <Link to="/dashboard/add-banner"><i className="bx bx-right-arrow-alt" />Add Banner</Link>
                                 </li>
-                                <li> <a href="ecommerce-products-details.html"><i className="bx bx-right-arrow-alt" />Add Top Feature</a>
+                                <li> <Link to="/dashboard/add-feature"><i className="bx bx-right-arrow-alt" />Add Top Feature</Link>
                                 </li>
-                                <li> <a href="ecommerce-add-new-products.html"><i className="bx bx-right-arrow-alt" />Add Testimonial</a>
+                                <li> <Link to="/dashboard/add-testimonial"><i className="bx bx-right-arrow-alt" />Add Testimonial</Link>
                                 </li>
-                                <li> <a href="ecommerce-orders.html"><i className="bx bx-right-arrow-alt" />Add Certificate</a>
+                                <li> <Link to="/dashboard/add-certificate"><i className="bx bx-right-arrow-alt" />Add Certificate</Link>
                                 </li>
-                                <li> <a href="ecommerce-orders.html"><i className="bx bx-right-arrow-alt" />Add About</a>
+
+
+                                <li> <Link to="/dashboard/add-about"><i className="bx bx-right-arrow-alt" />Add About</Link>
                                 </li>
-                                <li> <a href="ecommerce-orders.html"><i className="bx bx-right-arrow-alt" />Add Overview</a>
+                                <li> <Link to="/dashboard/add-overview"><i className="bx bx-right-arrow-alt" />Add Overview</Link>
                                 </li>
-                                <li> <a href="ecommerce-orders.html"><i className="bx bx-right-arrow-alt" />Add Why choose Us</a>
+                                <li> <Link to="/dashboard/add-chooseus "><i className="bx bx-right-arrow-alt" />Add Why choose Us</Link>
                                 </li>
                                 <li> <Link to="/dashboard/add-collage"><i className="bx bx-right-arrow-alt" />Add Collage</Link>
+                                </li>
+                                <li> <Link to="/dashboard/add-course"><i className="bx bx-right-arrow-alt" />Add Courses</Link>
                                 </li>
                             </ul>
                         </li>
@@ -56,7 +67,7 @@ const DashboardSidebar = ({ children }) => {
                                 <div className="menu-title">About Icare</div>
                             </a>
                             <ul>
-                                <li> <a href="component-alerts.html"><i className="bx bx-right-arrow-alt" />Alerts</a>
+                                <li> <Link to="/dashboard/add-vision-mision"><i className="bx bx-right-arrow-alt" />Add Mission & Vision</Link>
                                 </li>
                                 <li> <a href="component-accordions.html"><i className="bx bx-right-arrow-alt" />Accordions</a>
                                 </li>
@@ -530,6 +541,8 @@ const DashboardSidebar = ({ children }) => {
                                         <p className="designattion mb-0">Web Designer</p>
                                     </div>
                                 </a>
+
+
                                 <ul className="dropdown-menu dropdown-menu-end">
                                     <li><a className="dropdown-item" href="javascript:;"><i className="bx bx-user" /><span>Profile</span></a>
                                     </li>
@@ -544,16 +557,30 @@ const DashboardSidebar = ({ children }) => {
                                     <li>
                                         <div className="dropdown-divider mb-0" />
                                     </li>
-                                    <li><a className="dropdown-item" href="javascript:;"><i className="bx bx-log-out-circle" /><span>Logout</span></a>
+                                    <li><button onClick={logout} className="dropdown-item" ><i className="bx bx-log-out-circle" /><span>Logout</span></button>
                                     </li>
                                 </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             </div>
                         </nav>
                     </div>
                 </header>
                 {/*end header */}
                 {/*start page wrapper */}
-                <div className="page-wrapper">
+                <div className="page__wrapper__dashboard">
                     {children}
                 </div>
                 {/*end page wrapper */}

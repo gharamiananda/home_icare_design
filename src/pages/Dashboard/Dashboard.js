@@ -1,6 +1,8 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import DashboardSidebar from '../DashboardSidebar/DashboardSidebar';
+import DashboardSidebar from '../../Dashboardpage/DashboardSidebar/DashboardSidebar';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Dashboard = () => {
     return (
@@ -9,6 +11,8 @@ const Dashboard = () => {
             <DashboardSidebar>
                 <Outlet />
             </DashboardSidebar>
+            <ToastContainer />
+
         </div>
     );
 };

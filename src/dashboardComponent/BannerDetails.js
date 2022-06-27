@@ -3,91 +3,69 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import fetcher from "../api";
 import { ToastContainer, toast } from 'react-toastify';
-import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { useNavigate, useLocation, Link, useParams } from 'react-router-dom';
+
+const BannerDetails = () => {
 
 
-import './AddBanner'
+    const { banner } = useParams();
 
-const AddBanner = () => {
-
-
-    const [imageURL, setImageURL] = useState("");
     const [loading, setLoading] = useState(false);
 
 
 
-    const [banners, setbanners] = useState([]);
-    const [toggle, setToggle] = useState(false);
+    const [banners, setbanners] = useState({});
+    const [imageURL, setImageURL] = useState(' ');
 
     useEffect(() => {
-        fetch('http://localhost:5000/banner')
+        fetch(`http://localhost:5000/banner/${banner}`)
             .then(res => res.json())
             .then(data => setbanners(data));
-    }, [toggle])
+
+        // setValue('title', `${banners.title}`)
+        // setValue('subtitle', `${banners.subtitle}`)
+        // setValue('link', `${banners.link}`)
+        // setValue('desc', `${banners.desc}`)
+        // setValue('picture', `${banners.picture}`)
+    }, [banner])
+
+
+    
+
+
+    console.log(banners.picture)
 
 
 
 
-    const deleteBanner = (id) => {
-        const proced = window.confirm('Are You Sure??');
-        if (proced) {
-
-            const url = `http://localhost:5000/add-banner/${id}`;
-            fetch(url, {
-                method: 'DELETE'
-
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-
-
-                    // const remaining = items.filter(item => item._id !== id);
-                    // setItems(remaining);
-                })
-
-            toast("Wow so easy!");
-        }
-
-    }
-
-
-
-    const statusChange = async (id, stat) => {
-        setToggle(!toggle)
-        let statusData;
-
-        if (stat == '1') {
-            statusData = { status: "0" }
-        }
-
-        if (stat == '0') {
-            statusData = { status: "1" }
-        }
-
-
-        console.log(statusData)
-
-        const res = await fetcher.put(`update-status/${id}`, statusData);
-        console.log(res)
-        // toast('Data Successfully uploaded')
-    }
 
     const { register, handleSubmit, reset, setValue } = useForm();
 
+
+
+
+
+
+
+
     const onSubmit = async (data) => {
+
+       
+
+        console.log(data)
+
+
+
         const serviceData = {
             ...data,
-            status: '1',
             picture: imageURL,
         };
-
-        const res = await fetcher.post("home_banner", serviceData);
-        console.log(res);
+        console.log(serviceData)
+        const res = await fetcher.put(`update-banner/${banner}`, serviceData);
+        console.log(serviceData, res);
         reset();
         setImageURL("");
         toast('Data Successfully uploaded')
-        setToggle(!toggle)
     };
 
     const handleUploadImage = (event) => {
@@ -112,6 +90,7 @@ const AddBanner = () => {
                 console.log(error);
             });
     };
+
     return (
         <div className='addbanner'>
 
@@ -126,7 +105,7 @@ const AddBanner = () => {
                                 <div className="card-title d-flex align-items-center">
                                     <div><i className="bx bxs-user me-1 font-22 text-info" />
                                     </div>
-                                    <h5 className="mb-0 text-info">Add Banner</h5>
+                                    <h5 className="mb-0 text-info">Update Banner {banner}</h5>
                                 </div>
                                 <hr />
 
@@ -136,7 +115,7 @@ const AddBanner = () => {
                                         <label htmlFor="inputEnterYourName" className="col-sm-3 col-form-label">Banner Title </label>
                                         <div className="col-sm-9">
                                             <input type="text" className="form-control" name='title' id="inputEnterYourName" placeholder="Enter Your Name"
-                                                {...register("title")}
+                                                setValue={banners?.title} defaultValue={banners?.title}   {...register("title")}
 
                                             />
                                         </div>
@@ -146,7 +125,7 @@ const AddBanner = () => {
                                         <div className="col-sm-9">
                                             <input type="text" className="form-control" name='subtitle' id="inputEnterYourName" placeholder="Enter Your Name"
                                                 {...register("subtitle")}
-
+                                                defaultValue={banners?.subtitle}
                                             />
                                         </div>
                                     </div>
@@ -156,7 +135,7 @@ const AddBanner = () => {
                                         <div className="col-sm-9">
                                             <input type="text" className="form-control" name='link' id="inputEnterYourName" placeholder="Enter Your Name"
                                                 {...register("link")}
-
+                                                defaultValue={banners?.link}
                                             />
                                         </div>
                                     </div>
@@ -169,6 +148,7 @@ const AddBanner = () => {
                                         <div className="col-sm-9">
                                             <textarea className="form-control" id="inputAddress4" rows={3} placeholder="Address" name='desc'
                                                 {...register("desc")}
+                                                defaultValue={banners?.desc}
                                             />
                                         </div>
                                     </div>
@@ -187,6 +167,7 @@ const AddBanner = () => {
                                     <div className="row">
                                         <label className="col-sm-3 col-form-label" />
                                         <div className="col-sm-9">
+                                            <img src={`http://localhost:5000/${banners.picture}`} id='singleImage' />
 
                                             <button type="submit" className="btn btn-info px-5">Submit</button>
                                         </div>
@@ -204,66 +185,9 @@ const AddBanner = () => {
 
 
 
-            <div className="row" >
-                <div className="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <table class="table table-bordered mb-0">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Title</th>
-                                        <th scope="col">Subtitle</th>
 
-                                        <th scope="col">Image</th>
-
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {
-                                        banners.map((b, index) =>
-                                            <tr>
-                                                <th scope="row">{index + 1}</th>
-                                                <td>{b.title}</td>
-                                                <td>{b.subtitle}</td>
-                                                <td>
-                                                    <img id='singleImage' src={`http://localhost:5000/${b.picture}`} className='img-fluid' />
-
-                                                </td>
-                                                <td><button onClick={() => statusChange(b._id, b.status)}>{b.status == '1' ? "Active" : "Inactive"}</button></td>
-                                                <td>
-                                                    <button onClick={() => deleteBanner(b._id)} > <i class="fa-solid fa-trash-can"></i></button>
-                                                    <Link
-                                                        to={`${b._id}`}
-                                                    > <i class="fa-solid fa-pen-to-square"></i></Link>
-
-                                                </td>
-                                            </tr>
-                                        )
-                                    }
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     );
 };
 
-export default AddBanner;
-
-
-
-
-
-
-
-
-
-
-
-
+export default BannerDetails;

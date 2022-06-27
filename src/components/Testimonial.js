@@ -13,7 +13,7 @@ const Testimonial = () => {
             .then(data => setTestimonial(data))
     }, [])
 
-    console.log(testimonial)
+    // console.log(testimonial)
     return (
         <section className="testimonial-one">
             <div className="testimonial-one-shape" style={{ backgroundImage: 'url(assets/images/shapes/testimonial-one-shape-dark.png)' }} />
@@ -57,137 +57,38 @@ const Testimonial = () => {
                         }}
 
                     >
-
-                        <SwiperSlide className="item">
-                            <div className="testimonial-one__single">
-                                <div className="testimonial-one__client-info">
-                                    <div className="testimonial-one__client-img-box">
-                                        <div className="testimonial-one__client-img">
-                                            <img src="assets/images/testimonial/student.png" alt />
+                        {
+                            testimonial.map(t =>
+                                <SwiperSlide className="item">
+                                    <div className="testimonial-one__single">
+                                        <div className="testimonial-one__client-info">
+                                            <div className="testimonial-one__client-img-box">
+                                                <div className="testimonial-one__client-img">
+                                                    <img src="assets/images/testimonial/student.png" alt />
+                                                </div>
+                                            </div>
+                                            <div className="testimonial-one__client-details">
+                                                <h4 className="testimonial-one__client-name fedbacknamedesign">{t.username}</h4>
+                                                <p className="testimonial-one__client-sub-title">Student</p>
+                                            </div>
+                                        </div>
+                                        <p className="testimonial-one__text fedbackdescritiontext">{t.desc}</p>
+                                        <div className="testimonial-one__rating">
+                                            <i className="fa fa-star" />
+                                            <i className="fa fa-star" />
+                                            <i className="fa fa-star" />
+                                            <i className="fa fa-star" />
+                                            <i className="fa fa-star" />
                                         </div>
                                     </div>
-                                    <div className="testimonial-one__client-details">
-                                        <h4 className="testimonial-one__client-name fedbacknamedesign">Priti Das</h4>
-                                        <p className="testimonial-one__client-sub-title">Student</p>
-                                    </div>
-                                </div>
-                                <p className="testimonial-one__text fedbackdescritiontext">5 stars for design quality, but also for prompt new customer service and great attention to details work.</p>
-                                <div className="testimonial-one__rating">
-                                    <i className="fa fa-star" />
-                                    <i className="fa fa-star" />
-                                    <i className="fa fa-star" />
-                                    <i className="fa fa-star" />
-                                    <i className="fa fa-star" />
-                                </div>
-                            </div>
 
 
 
-                        </SwiperSlide>
-                        <SwiperSlide className="item">
-                            <div className="testimonial-one__single">
-                                <div className="testimonial-one__client-info">
-                                    <div className="testimonial-one__client-img-box">
-                                        <div className="testimonial-one__client-img">
-                                            <img src="assets/images/testimonial/student.png" alt />
-                                        </div>
-                                    </div>
-                                    <div className="testimonial-one__client-details">
-                                        <h4 className="testimonial-one__client-name fedbacknamedesign">Priti Das</h4>
-                                        <p className="testimonial-one__client-sub-title">Student</p>
-                                    </div>
-                                </div>
-                                <p className="testimonial-one__text fedbackdescritiontext">5 stars for design quality, but also for prompt new customer service and great attention to details work.</p>
-                                <div className="testimonial-one__rating">
-                                    <i className="fa fa-star" />
-                                    <i className="fa fa-star" />
-                                    <i className="fa fa-star" />
-                                    <i className="fa fa-star" />
-                                    <i className="fa fa-star" />
-                                </div>
-                            </div>
+                                </SwiperSlide>
+                            )
+                        }
 
 
-
-                        </SwiperSlide>
-                        <SwiperSlide className="item">
-                            <div className="testimonial-one__single">
-                                <div className="testimonial-one__client-info">
-                                    <div className="testimonial-one__client-img-box">
-                                        <div className="testimonial-one__client-img">
-                                            <img src="assets/images/testimonial/student.png" alt />
-                                        </div>
-                                    </div>
-                                    <div className="testimonial-one__client-details">
-                                        <h4 className="testimonial-one__client-name fedbacknamedesign">Priti Das</h4>
-                                        <p className="testimonial-one__client-sub-title">Student</p>
-                                    </div>
-                                </div>
-                                <p className="testimonial-one__text fedbackdescritiontext">5 stars for design quality, but also for prompt new customer service and great attention to details work.</p>
-                                <div className="testimonial-one__rating">
-                                    <i className="fa fa-star" />
-                                    <i className="fa fa-star" />
-                                    <i className="fa fa-star" />
-                                    <i className="fa fa-star" />
-                                    <i className="fa fa-star" />
-                                </div>
-                            </div>
-
-
-
-                        </SwiperSlide>
-                        <SwiperSlide className="item">
-                            <div className="testimonial-one__single">
-                                <div className="testimonial-one__client-info">
-                                    <div className="testimonial-one__client-img-box">
-                                        <div className="testimonial-one__client-img">
-                                            <img src="assets/images/testimonial/student.png" alt />
-                                        </div>
-                                    </div>
-                                    <div className="testimonial-one__client-details">
-                                        <h4 className="testimonial-one__client-name fedbacknamedesign">Priti Das</h4>
-                                        <p className="testimonial-one__client-sub-title">Student</p>
-                                    </div>
-                                </div>
-                                <p className="testimonial-one__text fedbackdescritiontext">5 stars for design quality, but also for prompt new customer service and great attention to details work.</p>
-                                <div className="testimonial-one__rating">
-                                    <i className="fa fa-star" />
-                                    <i className="fa fa-star" />
-                                    <i className="fa fa-star" />
-                                    <i className="fa fa-star" />
-                                    <i className="fa fa-star" />
-                                </div>
-                            </div>
-
-
-
-                        </SwiperSlide>
-                        <SwiperSlide className="item">
-                            <div className="testimonial-one__single">
-                                <div className="testimonial-one__client-info">
-                                    <div className="testimonial-one__client-img-box">
-                                        <div className="testimonial-one__client-img">
-                                            <img src="assets/images/testimonial/student.png" alt />
-                                        </div>
-                                    </div>
-                                    <div className="testimonial-one__client-details">
-                                        <h4 className="testimonial-one__client-name fedbacknamedesign">Priti Das</h4>
-                                        <p className="testimonial-one__client-sub-title">Student</p>
-                                    </div>
-                                </div>
-                                <p className="testimonial-one__text fedbackdescritiontext">5 stars for design quality, but also for prompt new customer service and great attention to details work.</p>
-                                <div className="testimonial-one__rating">
-                                    <i className="fa fa-star" />
-                                    <i className="fa fa-star" />
-                                    <i className="fa fa-star" />
-                                    <i className="fa fa-star" />
-                                    <i className="fa fa-star" />
-                                </div>
-                            </div>
-
-
-
-                        </SwiperSlide>
 
 
 

@@ -14,6 +14,9 @@ const WhyChoose = () => {
     useEffect(() => {
         choose.map(a => setChooseData(a))
     }, [choose])
+
+
+    console.log(chooseData)
     return (
 
         <section className="why-choose-two">
@@ -26,7 +29,7 @@ const WhyChoose = () => {
                             <img src="assets/images/shapes/section-title-shape-1.png" alt />
                         </div>
                     </div>
-                    <h2 className="section-title__title reshead">Few reasons to choose <br /> our college</h2>
+                    <h2 className="section-title__title reshead">{chooseData.mainTitle}</h2>
                 </div>
                 <div className="row">
                     <div className="col-xl-4">
@@ -37,7 +40,7 @@ const WhyChoose = () => {
                                         <span className><i className="fas fa-chalkboard-teacher newdesignwcu" /></span>
                                     </div>
                                     <div className="content">
-                                        <h4>Experienced Faculty</h4>
+                                        <h4>{chooseData.subTitileOne}</h4>
                                         {/* <p>In a free hour when our power of choice is untrammelled and when nothing
                     prevents.</p>
                   <div class="why-choose-two__read-more">
@@ -50,7 +53,8 @@ const WhyChoose = () => {
                                         <span className><i className="fas fa-book newdesignwcu" /></span>
                                     </div>
                                     <div className="content">
-                                        <h4>Quality Education</h4>
+                                        <h4>{chooseData.subTitileTwo}</h4>
+
                                         {/* <p>In a free hour when our power of choice is untrammelled and when nothing
                     prevents.</p>
                   <div class="why-choose-two__read-more">
@@ -65,7 +69,9 @@ const WhyChoose = () => {
                         <div className="why-choose-two__middle">
                             <div className="why-choose-two__img-box">
                                 <div className="why-choose-two__img-one">
-                                    <img src="assets/images/resources/why-choose-haldiacollege.jpg" alt />
+
+                                    <img src={`http://localhost:5000/${chooseData.image}`} alt />
+
                                     {/* <div class="why-choose-two__img-two">
                     <img src="assets/images/resources/why-choose-haldiacollege.jpg" alt="">
                   </div> */}
@@ -78,7 +84,8 @@ const WhyChoose = () => {
                             <ul className="list-unstyled why-choose-two__list-two clearfix">
                                 <li className="clearfix">
                                     <div className="content">
-                                        <h4>22 Colleges</h4>
+                                        <h4>{chooseData.subTitileFour}</h4>
+
                                         {/* <p>In a free hour when our power of choice is untrammelled and when nothing
                     prevents.</p>
                   <div class="why-choose-two__read-more">
@@ -91,7 +98,8 @@ const WhyChoose = () => {
                                 </li>
                                 <li className="clearfix">
                                     <div className="content">
-                                        <h4>Job Guarantee</h4>
+                                        <h4>{chooseData.subTitileThree}</h4>
+
                                         {/* <p>In a free hour when our power of choice is untrammelled and when nothing
                     prevents.</p>
                   <div class="why-choose-two__read-more">

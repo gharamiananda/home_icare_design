@@ -3,91 +3,37 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import fetcher from "../api";
 import { ToastContainer, toast } from 'react-toastify';
-import { useNavigate, useLocation, Link } from 'react-router-dom';
 
 
-import './AddBanner'
-
-const AddBanner = () => {
-
-
+const AddWhyChooseUs = () => {
     const [imageURL, setImageURL] = useState("");
     const [loading, setLoading] = useState(false);
 
-
-
-    const [banners, setbanners] = useState([]);
-    const [toggle, setToggle] = useState(false);
+    const [choose, setChoose] = useState([]);
+    const [chooseData, setChooseData] = useState({})
 
     useEffect(() => {
-        fetch('http://localhost:5000/banner')
+        fetch('http://localhost:5000/choose_home')
             .then(res => res.json())
-            .then(data => setbanners(data));
-    }, [toggle])
+            .then(data => setChoose(data))
+    }, [])
+    useEffect(() => {
+        choose.map(a => setChooseData(a))
+    }, [choose])
 
-
-
-
-    const deleteBanner = (id) => {
-        const proced = window.confirm('Are You Sure??');
-        if (proced) {
-
-            const url = `http://localhost:5000/add-banner/${id}`;
-            fetch(url, {
-                method: 'DELETE'
-
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-
-
-                    // const remaining = items.filter(item => item._id !== id);
-                    // setItems(remaining);
-                })
-
-            toast("Wow so easy!");
-        }
-
-    }
-
-
-
-    const statusChange = async (id, stat) => {
-        setToggle(!toggle)
-        let statusData;
-
-        if (stat == '1') {
-            statusData = { status: "0" }
-        }
-
-        if (stat == '0') {
-            statusData = { status: "1" }
-        }
-
-
-        console.log(statusData)
-
-        const res = await fetcher.put(`update-status/${id}`, statusData);
-        console.log(res)
-        // toast('Data Successfully uploaded')
-    }
-
-    const { register, handleSubmit, reset, setValue } = useForm();
+    const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = async (data) => {
         const serviceData = {
             ...data,
-            status: '1',
-            picture: imageURL,
+            image: imageURL,
         };
 
-        const res = await fetcher.post("home_banner", serviceData);
+        const res = await fetcher.post("home_choose", serviceData);
         console.log(res);
+        toast.success("Data successfully updated")
         reset();
         setImageURL("");
-        toast('Data Successfully uploaded')
-        setToggle(!toggle)
     };
 
     const handleUploadImage = (event) => {
@@ -112,7 +58,10 @@ const AddBanner = () => {
                 console.log(error);
             });
     };
+
     return (
+
+
         <div className='addbanner'>
 
             {/* <img src={banner1} /> */}
@@ -126,59 +75,65 @@ const AddBanner = () => {
                                 <div className="card-title d-flex align-items-center">
                                     <div><i className="bx bxs-user me-1 font-22 text-info" />
                                     </div>
-                                    <h5 className="mb-0 text-info">Add Banner</h5>
+                                    <h5 className="mb-0 text-info">Add Coose Us</h5>
                                 </div>
                                 <hr />
 
 
                                 <form onSubmit={handleSubmit(onSubmit)} >
                                     <div className="row mb-3">
-                                        <label htmlFor="inputEnterYourName" className="col-sm-3 col-form-label">Banner Title </label>
+                                        <label htmlFor="mainTitle" className="col-sm-3 col-form-label">Main Title </label>
                                         <div className="col-sm-9">
-                                            <input type="text" className="form-control" name='title' id="inputEnterYourName" placeholder="Enter Your Name"
-                                                {...register("title")}
-
+                                            <input type="text" className="form-control" placeholder="Enter Your Name"
+                                                {...register("mainTitle")}
                                             />
                                         </div>
                                     </div>
                                     <div className="row mb-3">
-                                        <label htmlFor="inputEnterYourName" className="col-sm-3 col-form-label">Enter Subtitle Name</label>
+                                        <label htmlFor="subTitileOne" className="col-sm-3 col-form-label">Subtitle One</label>
                                         <div className="col-sm-9">
-                                            <input type="text" className="form-control" name='subtitle' id="inputEnterYourName" placeholder="Enter Your Name"
-                                                {...register("subtitle")}
+                                            <input type="text" className="form-control" placeholder="Enter Your Name"
+                                                {...register("subTitileOne")}
 
                                             />
                                         </div>
                                     </div>
 
                                     <div className="row mb-3">
-                                        <label htmlFor="inputEnterYourName" className="col-sm-3 col-form-label">Banner Link</label>
+                                        <label htmlFor="subTitileTwo" className="col-sm-3 col-form-label">Subtitle Two</label>
                                         <div className="col-sm-9">
-                                            <input type="text" className="form-control" name='link' id="inputEnterYourName" placeholder="Enter Your Name"
-                                                {...register("link")}
-
+                                            <input type="text" className="form-control" placeholder="Enter Your Name"
+                                                {...register("subTitileTwo")}
                                             />
                                         </div>
                                     </div>
-
-
-
-
                                     <div className="row mb-3">
-                                        <label htmlFor="inputAddress4" className="col-sm-3 col-form-label">Banner Description</label>
+                                        <label htmlFor="subTitileThree" className="col-sm-3 col-form-label">Subtitle Three</label>
                                         <div className="col-sm-9">
-                                            <textarea className="form-control" id="inputAddress4" rows={3} placeholder="Address" name='desc'
-                                                {...register("desc")}
+                                            <input type="text" className="form-control" placeholder="Enter Your Name"
+                                                {...register("subTitileThree")}
                                             />
                                         </div>
                                     </div>
+                                    <div className="row mb-3">
+                                        <label htmlFor="subTitileFour" className="col-sm-3 col-form-label">Subtitle Four</label>
+                                        <div className="col-sm-9">
+                                            <input type="text" className="form-control" placeholder="Enter Your Name"
+                                                {...register("subTitileFour")}
+                                            />
+                                        </div>
+                                    </div>
+
+
+
+
                                     <div class="row">
                                         <div class="col-xl-9 mx-auto">
 
                                             <div class="card">
                                                 <div class="card-body">
                                                     <form>
-                                                        <input id="image-uploadify" name='picture' type="file" onChange={handleUploadImage} />
+                                                        <input id="image-uploadify" type="file" onChange={handleUploadImage} />
                                                     </form>
                                                 </div>
                                             </div>
@@ -187,7 +142,6 @@ const AddBanner = () => {
                                     <div className="row">
                                         <label className="col-sm-3 col-form-label" />
                                         <div className="col-sm-9">
-
                                             <button type="submit" className="btn btn-info px-5">Submit</button>
                                         </div>
                                     </div>
@@ -222,27 +176,23 @@ const AddBanner = () => {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {
-                                        banners.map((b, index) =>
-                                            <tr>
-                                                <th scope="row">{index + 1}</th>
-                                                <td>{b.title}</td>
-                                                <td>{b.subtitle}</td>
-                                                <td>
-                                                    <img id='singleImage' src={`http://localhost:5000/${b.picture}`} className='img-fluid' />
 
-                                                </td>
-                                                <td><button onClick={() => statusChange(b._id, b.status)}>{b.status == '1' ? "Active" : "Inactive"}</button></td>
-                                                <td>
-                                                    <button onClick={() => deleteBanner(b._id)} > <i class="fa-solid fa-trash-can"></i></button>
-                                                    <Link
-                                                        to={`${b._id}`}
-                                                    > <i class="fa-solid fa-pen-to-square"></i></Link>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>{chooseData.mainTitle}</td>
+                                        <td> </td>
+                                        <td>
+                                            <img src={`http://localhost:5000/${chooseData.image}`} className='img-fluid' />
 
-                                                </td>
-                                            </tr>
-                                        )
-                                    }
+                                        </td>
+                                        <td>Otto</td>
+                                        <td>
+                                            <i class="fa-solid fa-trash-can"></i>
+                                            <i class="fa-solid fa-pen-to-square"></i>
+
+                                        </td>
+                                    </tr>
+
 
                                 </tbody>
                             </table>
@@ -251,19 +201,9 @@ const AddBanner = () => {
                 </div>
             </div>
         </div>
+
+
     );
 };
 
-export default AddBanner;
-
-
-
-
-
-
-
-
-
-
-
-
+export default AddWhyChooseUs;

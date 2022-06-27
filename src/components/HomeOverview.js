@@ -23,7 +23,7 @@ const HomeOverview = () => {
             <div className="trust-company-shape-2" />
             <div className="trust-company-shape-3" />
             <div className="trust-company-shape-4" />
-            <div className="trust-company-bg jarallax" data-jarallax data-speed="0.2" data-imgposition="50% 0%" style={{ backgroundImage: 'url(assets/images/backgrounds/overview-back.jpg)' }} />
+            <div className="trust-company-bg jarallax" data-jarallax data-speed="0.2" data-imgposition="50% 0%" style={{ backgroundImage: `url(http://localhost:5000/${overviewData.image})` }} />
             <div className="container">
                 <div className="row">
                     <div className="col-lg-5">
@@ -42,7 +42,7 @@ const HomeOverview = () => {
                                     <img src="assets/images/shapes/section-title-shape-1.png" alt />
                                 </div>
                             </div>
-                            <h2 className="trust-company__title">Welcome to the Icare Online Registration Portal.</h2>
+                            <h2 className="trust-company__title">{overviewData.mainTitle}</h2>
                         </div>
                     </div>
                     <div className="col-lg-7">
@@ -53,7 +53,7 @@ const HomeOverview = () => {
                                         <span className="icon-tick" />
                                     </div>
                                     <div className="text">
-                                        <p><a href="#" className="obrviewlnk">IGNOU Study Centre @ ICARE</a></p>
+                                        <p><a href="#" className="obrviewlnk">{overviewData.subone}</a></p>
                                     </div>
                                 </li>
                                 <li>
@@ -61,7 +61,8 @@ const HomeOverview = () => {
                                         <span className="icon-tick" />
                                     </div>
                                     <div className="text">
-                                        <p><a href="#" className="obrviewlnk">Career@ICARE</a></p>
+                                        <p><a href="#" className="obrviewlnk">{overviewData.subTwo}</a></p>
+
                                     </div>
                                 </li>
                                 <li>
@@ -69,7 +70,8 @@ const HomeOverview = () => {
                                         <span className="icon-tick" />
                                     </div>
                                     <div className="text">
-                                        <p><a href="#" className="obrviewlnk">Campus Tour</a></p>
+                                        <p><a href="#" className="obrviewlnk">{overviewData.subThree}</a></p>
+
                                     </div>
                                 </li>
                                 <li>
@@ -77,7 +79,8 @@ const HomeOverview = () => {
                                         <span className="icon-tick" />
                                     </div>
                                     <div className="text">
-                                        <p><a href="#" className="obrviewlnk">Videos &amp; Audio</a></p>
+                                        <p><a href="#" className="obrviewlnk">{overviewData.subFour}</a></p>
+
                                     </div>
                                 </li>
                                 <li>
@@ -85,7 +88,8 @@ const HomeOverview = () => {
                                         <span className="icon-tick" />
                                     </div>
                                     <div className="text">
-                                        <p><a href="#" className="obrviewlnk">MNGO &amp; Social Welfare</a></p>
+                                        <p><a href="#" className="obrviewlnk">{overviewData.subFive}</a></p>
+
                                     </div>
                                 </li>
                                 <li>
@@ -93,7 +97,8 @@ const HomeOverview = () => {
                                         <span className="icon-tick" />
                                     </div>
                                     <div className="text">
-                                        <p><a href="#" className="obrviewlnk">Tenders</a></p>
+                                        <p><a href="#" className="obrviewlnk">{overviewData.subSix}</a></p>
+
                                     </div>
                                 </li>
                                 <li>
@@ -101,7 +106,8 @@ const HomeOverview = () => {
                                         <span className="icon-tick" />
                                     </div>
                                     <div className="text">
-                                        <p><a href="#" className="obrviewlnk">Research and Development Centre</a></p>
+                                        <p><a href="#" className="obrviewlnk">{overviewData.subSeven}</a></p>
+
                                     </div>
                                 </li>
                                 <li>
@@ -109,7 +115,8 @@ const HomeOverview = () => {
                                         <span className="icon-tick" />
                                     </div>
                                     <div className="text">
-                                        <p><a href="#" className="obrviewlnk">Central Tool Room &amp; Testing Laboratories</a></p>
+                                        <p><a href="#" className="obrviewlnk">{overviewData.subEight}</a></p>
+
                                     </div>
                                 </li>
                             </ul>

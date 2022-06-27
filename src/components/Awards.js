@@ -50,49 +50,15 @@ const Awards = () => {
 
 
 
-                        <SwiperSlide className="item">
+                        {certi.map(c => <SwiperSlide className="item">
                             <div className="awards__single">
                                 <div className="awards__img">
-                                    <img src="assets/images/resources/awards-1-1.jpg" alt />
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide className="item">
-                            <div className="awards__single">
-                                <div className="awards__img">
-                                    <img src="assets/images/resources/awards-1-1.jpg" alt />
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide className="item">
-                            <div className="awards__single">
-                                <div className="awards__img">
-                                    <img src="assets/images/resources/awards-1-1.jpg" alt />
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide className="item">
-                            <div className="awards__single">
-                                <div className="awards__img">
-                                    <img src="assets/images/resources/awards-1-1.jpg" alt />
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide className="item">
-                            <div className="awards__single">
-                                <div className="awards__img">
-                                    <img src="assets/images/resources/awards-1-1.jpg" alt />
-                                </div>
-                            </div>
-                        </SwiperSlide>
-                        <SwiperSlide className="item">
-                            <div className="awards__single">
-                                <div className="awards__img">
-                                    <img src="assets/images/resources/awards-1-1.jpg" alt />
+                                    <img src={`http://localhost:5000/${c.picture}`} className='img-fluid' />
                                 </div>
                             </div>
                         </SwiperSlide>
 
+                        )}
 
 
                     </Swiper>

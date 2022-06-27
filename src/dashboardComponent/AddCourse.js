@@ -5,30 +5,27 @@ import fetcher from "../api";
 import { ToastContainer, toast } from 'react-toastify';
 
 
-const AddCollage = () => {
+const AddCourse = () => {
     const [imageURL, setImageURL] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const [collages, setCollages] = useState([]);
-
-
+    const [courses, setCourses] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/collage_home')
+        fetch('http://localhost:5000/course_home')
             .then(res => res.json())
-            .then(data => setCollages(data))
-    }, []);
-    console.log(collages)
+            .then(data => setCourses(data));
+    }, [])
 
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = async (data) => {
         const serviceData = {
             ...data,
-            image: imageURL,
+            picture: imageURL,
         };
 
-        const res = await fetcher.post("home-collage", serviceData);
-        toast.success("Data successfully updated")
+        const res = await fetcher.post("home_course", serviceData);
+        toast.success('Data Successfully uploaded')
 
         console.log(res);
         reset();
@@ -36,7 +33,7 @@ const AddCollage = () => {
     };
 
     const handleUploadImage = (event) => {
-        // setLoading(true);
+        setLoading(true);
         const image = event.target.files[0];
 
         const formData = new FormData();
@@ -51,7 +48,7 @@ const AddCollage = () => {
             .then((res) => {
                 setImageURL(res.data.result.filename)
 
-                // setLoading(false);
+                setLoading(false);
             })
             .catch((error) => {
                 console.log(error);
@@ -73,43 +70,26 @@ const AddCollage = () => {
                                     <div className="card-title d-flex align-items-center">
                                         <div><i className="bx bxs-user me-1 font-22 text-info" />
                                         </div>
-                                        <h5 className="mb-0 text-info">Add Collage</h5>
+                                        <h5 className="mb-0 text-info">Add Courses</h5>
                                     </div>
                                     <hr />
 
 
                                     <form onSubmit={handleSubmit(onSubmit)} >
+
+
+
                                         <div className="row mb-3">
-                                            <label htmlFor="inputEnterYourName" className="col-sm-3 col-form-label">Enter Collage Name</label>
+                                            <label htmlFor="inputEnterYourName" className="col-sm-3 col-form-label">Course Title </label>
                                             <div className="col-sm-9">
                                                 <input type="text" className="form-control" id="inputEnterYourName" placeholder="Enter Your Name"
-                                                    {...register("collageName")}
-
-                                                />
-                                            </div>
-                                        </div>
-
-                                        <div className="row mb-3">
-                                            <label htmlFor="inputEnterYourName" className="col-sm-3 col-form-label">Enter Collage Link</label>
-                                            <div className="col-sm-9">
-                                                <input type="text" className="form-control" id="inputEnterYourName" placeholder="Enter Your Name"
-                                                    {...register("collageLink")}
+                                                    {...register("title")}
 
                                                 />
                                             </div>
                                         </div>
 
 
-
-
-                                        <div className="row mb-3">
-                                            <label htmlFor="inputAddress4" className="col-sm-3 col-form-label">Collage Description</label>
-                                            <div className="col-sm-9">
-                                                <textarea className="form-control" id="inputAddress4" rows={3} placeholder="Address"
-                                                    {...register("collageDesc")}
-                                                />
-                                            </div>
-                                        </div>
                                         <div class="row">
                                             <div class="col-xl-9 mx-auto">
 
@@ -160,14 +140,14 @@ const AddCollage = () => {
                                 </thead>
                                 <tbody>
                                     {
-                                        collages.map(c =>
+                                        courses.map(c =>
 
                                             <tr>
                                                 <th scope="row">1</th>
                                                 {/* <td>{chooseData.mainTitle}</td> */}
                                                 <td> </td>
                                                 <td>
-                                                    <img src={`http://localhost:5000/${c.image}`} className='img-fluid' />
+                                                    <img src={`http://localhost:5000/${c.picture}`} className='img-fluid' />
 
                                                 </td>
                                                 <td>Otto</td>
@@ -177,8 +157,7 @@ const AddCollage = () => {
 
                                                 </td>
                                             </tr>
-                                        )
-                                    }
+                                        )}
 
                                 </tbody>
                             </table>
@@ -190,4 +169,4 @@ const AddCollage = () => {
     );
 };
 
-export default AddCollage;
+export default AddCourse;

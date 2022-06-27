@@ -3241,7 +3241,7 @@ ul {
 .about-one {
   position: relative;
   display: block;
-  padding: 0 0 120px;
+  padding: 120px 0 120px;
 }
 
 .about-one__shape {

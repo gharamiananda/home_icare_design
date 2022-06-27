@@ -86,26 +86,40 @@ const Header = () => {
                                         <a href="#" className="mobile-nav__toggler" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"><i className="fa fa-bars" /></a>
 
                                         <ul className="main-menu__list">
-                                            <li className="current">
-                                                <a href="index.html">Home </a>
+                                            <li >
+                                                <NavLink style={({ isActive }) =>
+                                                    isActive ? activeStyle : undefined
+                                                } to="/">Home </NavLink>
                                             </li>
                                             <li>
-                                                <a href="about-us.html">About Icare</a>
+                                                <NavLink style={({ isActive }) =>
+                                                    isActive ? activeStyle : undefined
+                                                } to="/about-icare">About </NavLink>
                                             </li>
                                             <li>
-                                                <a href="colleges.html">Colleges</a>
+                                                <NavLink style={({ isActive }) =>
+                                                    isActive ? activeStyle : undefined
+                                                } to="/collages">Colleges</NavLink>
                                             </li>
                                             <li>
-                                                <a href="courses.html">Courses</a>
+                                                <NavLink style={({ isActive }) =>
+                                                    isActive ? activeStyle : undefined
+                                                } to="/courses">Courses</NavLink>
                                             </li>
                                             <li>
-                                                <a href="academics.html">Academics</a>
+                                                <NavLink style={({ isActive }) =>
+                                                    isActive ? activeStyle : undefined
+                                                } to="/academics">Academics</NavLink>
                                             </li>
                                             <li>
-                                                <a href="admission.html">Admission</a>
+                                                <NavLink style={({ isActive }) =>
+                                                    isActive ? activeStyle : undefined
+                                                } to="/admission">Admission</NavLink>
                                             </li>
                                             <li>
-                                                <a href="contact-us.html">Contact us</a>
+                                                <NavLink style={({ isActive }) =>
+                                                    isActive ? activeStyle : undefined
+                                                } to="/contact">Contact</NavLink>
                                             </li>
                                         </ul>
                                     </div>

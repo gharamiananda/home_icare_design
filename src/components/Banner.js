@@ -22,8 +22,10 @@ const Banner = () => {
         fetch('http://localhost:5000/banner')
             .then(res => res.json())
             .then(data => setbanners(data));
+
     }, [])
 
+    banners.map(b => console.log(b.picture))
 
 
     return (
@@ -53,7 +55,7 @@ const Banner = () => {
                     {
                         banners.map(b =>
                             <SwiperSlide className="swiper-slide">
-                                <div className="image-layer" style={{ backgroundImage: `url(uploads/${b.picture})` }} />
+                                <div className="image-layer" style={{ backgroundImage: `url(http://localhost:5000/${b.picture})` }} />
                                 {/* /.image-layer */}
                                 <div className="container">
                                     <div className="row">

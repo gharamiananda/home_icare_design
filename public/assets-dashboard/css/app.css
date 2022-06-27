@@ -261,7 +261,7 @@ a {
 }
 
 
-.page-wrapper {
+.page__wrapper__dashboard {
 
 
 	height: 100%;
@@ -333,7 +333,7 @@ a {
 }
 
 
-.wrapper.toggled .page-wrapper {
+.wrapper.toggled .page__wrapper__dashboard {
 
 
 	margin-left: 70px;
@@ -5328,7 +5328,7 @@ input::placeholder {
 	}
 
 
-	.page-wrapper {
+	.page__wrapper__dashboard {
 
 
 		margin-left: 0px;
@@ -5359,7 +5359,7 @@ input::placeholder {
 	}
 
 
-	.wrapper.toggled .page-wrapper {
+	.wrapper.toggled .page__wrapper__dashboard {
 
 
 		margin-left: 0px;
