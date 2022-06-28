@@ -26,9 +26,10 @@ const Aboutpage = () => {
                         </div>
                     </div>
                 </section>
-                {/*Page Header End*/}
-                {/*About One Start*/}
-                <HomeAbout />
+                <div className="pt-120">
+
+                    <HomeAbout />
+                </div>
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-12 vismison_outsection">

@@ -42,3 +42,11 @@
 }
 
 .main-slider .swiper-button-prev {}
+
+.swiper-pointer-events {
+  background-color: #211f1f;
+}
+
+.pt-120 {
+  padding-top: 120px;
+}

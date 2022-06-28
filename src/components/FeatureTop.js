@@ -32,7 +32,7 @@ const FeatureTop = () => {
                                             </div>
                                         </div>
                                         <div className="feature-one__single-inner">
-                                            <p className="feature-one__text">{f.desc}...</p>
+                                            <p className="feature-one__text">{f.desc.slice(0, 80)}...</p>
                                             <div className="feature-one__read-more">
                                                 <a href={f.link}>Read More <i className="fa fa-arrow-right" /></a>
                                             </div>

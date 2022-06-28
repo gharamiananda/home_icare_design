@@ -17,6 +17,7 @@ import { Link } from 'react-router-dom';
 const Banner = () => {
 
     const [banners, setbanners] = useState([]);
+    const [remainings, setRemaining] = useState([]);
 
     useEffect(() => {
         fetch('http://localhost:5000/banner')
@@ -24,6 +25,11 @@ const Banner = () => {
             .then(data => setbanners(data));
 
     }, [])
+
+    useEffect(() => {
+        const remaining = banners.filter(b => b.status == "1")
+        setRemaining(remaining)
+    }, [banners])
 
     banners.map(b => console.log(b.picture))
 
@@ -53,7 +59,7 @@ const Banner = () => {
 
 
                     {
-                        banners.map(b =>
+                        remainings.map(b =>
                             <SwiperSlide className="swiper-slide">
                                 <div className="image-layer" style={{ backgroundImage: `url(http://localhost:5000/${b.picture})` }} />
                                 {/* /.image-layer */}
