@@ -6,7 +6,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 
 
-import './AddBanner'
+import './AddBanner.css'
 
 const AddBanner = () => {
 

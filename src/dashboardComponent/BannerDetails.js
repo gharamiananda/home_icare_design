@@ -15,7 +15,7 @@ const BannerDetails = () => {
 
 
     const [banners, setbanners] = useState({});
-    const [imageURL, setImageURL] = useState(' ');
+    const [imageURL, setImageURL] = useState('');
 
     useEffect(() => {
         fetch(`http://localhost:5000/banner/${banner}`)
@@ -27,10 +27,16 @@ const BannerDetails = () => {
         // setValue('link', `${banners.link}`)
         // setValue('desc', `${banners.desc}`)
         // setValue('picture', `${banners.picture}`)
-    }, [banner])
+    }, [banner, loading])
 
+    useEffect(() => {
+        setValue('title', `${banners.title}`)
+        setValue('subtitle', `${banners.subtitle}`)
+        setValue('link', `${banners.link}`)
+        setValue('desc', `${banners.desc}`)
+        setValue('picture', `${banners.picture}`)
+    }, [banners.title, banners.subtitle, banners.desc, banners.picture])
 
-    
 
 
     console.log(banners.picture)
@@ -50,26 +56,35 @@ const BannerDetails = () => {
 
     const onSubmit = async (data) => {
 
-       
+
 
         console.log(data)
 
 
 
-        const serviceData = {
+        let serviceData = {
             ...data,
             picture: imageURL,
         };
+
+
         console.log(serviceData)
         const res = await fetcher.put(`update-banner/${banner}`, serviceData);
-        console.log(serviceData, res);
-        reset();
-        setImageURL("");
-        toast('Data Successfully uploaded')
+        console.log(serviceData, res.status);
+
+        if (res.status == 200) {
+            toast.success('Data Successfully uploaded')
+            reset();
+            setImageURL("");
+            setLoading(!loading)
+        }
+        else {
+            toast.error('Fail to update data')
+
+        }
     };
 
     const handleUploadImage = (event) => {
-        setLoading(true);
         const image = event.target.files[0];
 
         const formData = new FormData();
@@ -82,9 +97,9 @@ const BannerDetails = () => {
                 formData
             )
             .then((res) => {
-                setImageURL(res.data.result.filename)
+                console.log(res);
+                setImageURL(res?.data?.result?.filename)
 
-                setLoading(false);
             })
             .catch((error) => {
                 console.log(error);
