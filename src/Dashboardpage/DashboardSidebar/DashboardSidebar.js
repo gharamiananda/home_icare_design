@@ -197,7 +197,7 @@ const DashboardSidebar = ({ children }) => {
                         <nav className="navbar navbar-expand">
                             <div className="mobile-toggle-menu text-white me-3"><i className="bx bx-menu" />
                             </div>
-                            <div className="top-menu-left d-none d-lg-block">
+                            {/* <div className="top-menu-left d-none d-lg-block">
                                 <ul className="nav">
                                     <li className="nav-item">
                                         <a className="nav-link text-white" href="app-emailbox.html"><i className="bx bx-envelope" /></a>
@@ -212,24 +212,24 @@ const DashboardSidebar = ({ children }) => {
                                         <a className="nav-link text-white" href="app-to-do.html"><i className="bx bx-check-square" /></a>
                                     </li>
                                 </ul>
-                            </div>
+                            </div> */}
                             <div className="search-bar flex-grow-1">
                                 <div className="position-relative search-bar-box">
-                                    <form>
+                                    {/* <form>
                                         <input type="text" className="form-control search-control" autofocus placeholder="Type to search..." /> <span className="position-absolute top-50 search-show translate-middle-y"><i className="bx bx-search" /></span>
                                         <span className="position-absolute top-50 search-close translate-middle-y"><i className="bx bx-x" /></span>
-                                    </form>
+                                    </form> */}
                                 </div>
                             </div>
                             <div className="top-menu ms-auto">
                                 <ul className="navbar-nav align-items-center">
                                     <li className="nav-item mobile-search-icon">
-                                        <a className="nav-link text-white" href="javascript:;">	<i className="bx bx-search" />
-                                        </a>
+                                        {/* <a className="nav-link text-white" href="javascript:;">	<i className="bx bx-search" />
+                                        </a> */}
                                     </li>
                                     <li className="nav-item dropdown dropdown-large">
-                                        <a className="nav-link dropdown-toggle dropdown-toggle-nocaret text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">	<i className="bx bx-category" />
-                                        </a>
+                                        {/* <a className="nav-link dropdown-toggle dropdown-toggle-nocaret text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">	<i className="bx bx-category" />
+                                        </a> */}
                                         <div className="dropdown-menu dropdown-menu-end">
                                             <div className="row row-cols-3 g-3 p-3">
                                                 <div className="col text-center">
@@ -266,9 +266,9 @@ const DashboardSidebar = ({ children }) => {
                                         </div>
                                     </li>
                                     <li className="nav-item dropdown dropdown-large">
-                                        <a className="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span className="alert-count">7</span>
+                                        {/* <a className="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span className="alert-count">7</span>
                                             <i className="bx bx-bell" />
-                                        </a>
+                                        </a> */}
                                         <div className="dropdown-menu dropdown-menu-end">
                                             <a href="javascript:;">
                                                 <div className="msg-header">
@@ -382,9 +382,9 @@ const DashboardSidebar = ({ children }) => {
                                         </div>
                                     </li>
                                     <li className="nav-item dropdown dropdown-large">
-                                        <a className="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span className="alert-count">8</span>
+                                        {/* <a className="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> <span className="alert-count">8</span>
                                             <i className="bx bx-comment" />
-                                        </a>
+                                        </a> */}
                                         <div className="dropdown-menu dropdown-menu-end">
                                             <a href="javascript:;">
                                                 <div className="msg-header">
@@ -535,7 +535,7 @@ const DashboardSidebar = ({ children }) => {
                             </div>
                             <div className="user-box dropdown border-light-2">
                                 <a className="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="assets/images/avatars/avatar-2.png" className="user-img" alt="user avatar" />
+                                    <img src="assets-dashboard/images/avatars/avatar-2.png" className="user-img" alt="user avatar" />
                                     <div className="user-info ps-3">
                                         <p className="user-name mb-0 text-white">Pauline Seitz</p>
                                         <p className="designattion mb-0">Web Designer</p>
@@ -546,14 +546,14 @@ const DashboardSidebar = ({ children }) => {
                                 <ul className="dropdown-menu dropdown-menu-end">
                                     <li><a className="dropdown-item" href="javascript:;"><i className="bx bx-user" /><span>Profile</span></a>
                                     </li>
-                                    <li><a className="dropdown-item" href="javascript:;"><i className="bx bx-cog" /><span>Settings</span></a>
+                                    {/* <li><a className="dropdown-item" href="javascript:;"><i className="bx bx-cog" /><span>Settings</span></a>
                                     </li>
                                     <li><a className="dropdown-item" href="javascript:;"><i className="bx bx-home-circle" /><span>Dashboard</span></a>
                                     </li>
                                     <li><a className="dropdown-item" href="javascript:;"><i className="bx bx-dollar-circle" /><span>Earnings</span></a>
                                     </li>
                                     <li><a className="dropdown-item" href="javascript:;"><i className="bx bx-download" /><span>Downloads</span></a>
-                                    </li>
+                                    </li> */}
                                     <li>
                                         <div className="dropdown-divider mb-0" />
                                     </li>

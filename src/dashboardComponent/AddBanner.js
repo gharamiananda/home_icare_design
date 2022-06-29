@@ -68,7 +68,7 @@ const AddBanner = () => {
 
         console.log(statusData)
 
-        const res = await fetcher.put(`update-status/${id}`, statusData);
+        const res = await fetcher.put(`banner-status/${id}`, statusData);
         console.log(res)
         // toast('Data Successfully uploaded')
     }
@@ -83,11 +83,19 @@ const AddBanner = () => {
         };
 
         const res = await fetcher.post("home_banner", serviceData);
-        console.log(res);
-        reset();
-        setImageURL("");
-        toast('Data Successfully uploaded')
-        setToggle(!toggle)
+
+
+
+        if (res.status == 200) {
+            toast.success('Data Successfully uploaded')
+            reset();
+            setImageURL("");
+            setLoading(!loading)
+        }
+        else {
+            toast.error('Fail to update data')
+
+        }
     };
 
     const handleUploadImage = (event) => {

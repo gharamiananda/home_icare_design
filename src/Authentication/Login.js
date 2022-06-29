@@ -25,14 +25,15 @@ const Login = () => {
     const onSubmit = data => {
         console.log(data)
         signInWithEmailAndPassword(auth, data.email, data.password);
+        console.log(user, error)
 
-
-
-    }
-    if (user) {
         navigate(from, { replace: true });
+
     }
 
+    if (loading) {
+        return <p>loading....</p>
+    }
 
 
     return (

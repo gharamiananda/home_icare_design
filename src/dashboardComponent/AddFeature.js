@@ -2,12 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
 import fetcher from "../api";
 import { ToastContainer, toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 
 
 const AddFeature = () => {
 
     const { register, handleSubmit, reset } = useForm();
+    const [toggle, setToggle] = useState(false);
 
 
     const [features, setFeatures] = useState([]);
@@ -16,22 +18,79 @@ const AddFeature = () => {
         fetch('http://localhost:5000/feature_home')
             .then(res => res.json())
             .then(data => setFeatures(data));
-    }, [])
+    }, [toggle])
 
 
     const onSubmit = async (data) => {
         const featureData = {
-            ...data
+            ...data,
+            status: '1'
 
         };
 
-        console.log(featureData)
         const res = await fetcher.post("home_feature", featureData);
         console.log(res);
         reset();
         toast('Data Successfully uploaded')
 
     };
+
+
+
+
+
+    const deleteFeature = (id) => {
+        const proced = window.confirm('Are You Sure??');
+        console.log(id)
+        if (proced) {
+
+            const url = `http://localhost:5000/feature_home/${id}`;
+            fetch(url, {
+                method: 'DELETE'
+
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data.acknowledged);
+                    if (data.acknowledged == true) {
+                        toast.success('Delete Successfully')
+                        reset();
+                        setToggle(!toggle)
+                    }
+                    else {
+                        toast.error('Fail to update data')
+                        console.log(data.status);
+                    }
+                })
+
+
+        }
+
+    }
+
+
+
+    const statusChange = async (id, stat) => {
+        setToggle(!toggle)
+        let statusData;
+
+        if (stat == '1') {
+            statusData = { status: "0" }
+        }
+
+        if (stat == '0') {
+            statusData = { status: "1" }
+        }
+
+
+        console.log(statusData)
+
+        const res = await fetcher.put(`feature-status/${id}`, statusData);
+        console.log(res)
+        // toast('Data Successfully uploaded')
+    }
+
+
     return (
         <>
             <div className=''>
@@ -143,9 +202,12 @@ const AddFeature = () => {
 
                                                     </td>
                                                     <td>Otto</td>
+                                                    <td><button onClick={() => statusChange(b._id, b.status)}>{b.status == '1' ? "Active" : "Inactive"}</button></td>
                                                     <td>
-                                                        <i class="fa-solid fa-trash-can"></i>
-                                                        <i class="fa-solid fa-pen-to-square"></i>
+                                                        <button onClick={() => deleteFeature(b._id)} > <i class="fa-solid fa-trash-can"></i></button>
+                                                        <Link
+                                                            to={`${b._id}`}
+                                                        > <i class="fa-solid fa-pen-to-square"></i></Link>
 
                                                     </td>
                                                 </tr>

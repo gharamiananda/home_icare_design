@@ -612,14 +612,14 @@
 
 
 
-  function thmTinyInit() {
-    // tiny slider
-    const tinyElm = document.querySelectorAll(".thm-tiny__slider");
-    tinyElm.forEach(function (tinyElm) {
-      const tinyOptions = JSON.parse(tinyElm.dataset.tinyOptions);
-      let thmTinySlider = tns(tinyOptions);
-    });
-  }
+  // function thmTinyInit() {
+  //   // tiny slider
+  //   const tinyElm = document.querySelectorAll(".thm-tiny__slider");
+  //   tinyElm.forEach(function (tinyElm) {
+  //     const tinyOptions = JSON.parse(tinyElm.dataset.tinyOptions);
+  //     let thmTinySlider = tns(tinyOptions);
+  //   });
+  // }
 
 
 
@@ -801,7 +801,7 @@
     if ($(".preloader").length) {
       $(".preloader").fadeOut();
     }
-    thmSwiperInit();
+    // thmSwiperInit();
     thmOwlInit();
     projectMasonaryLayout();
 

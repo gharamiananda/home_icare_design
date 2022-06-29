@@ -35,6 +35,8 @@ import RequireAuth from './Authentication/RequireAuth';
 import Login from './Authentication/Login';
 import BannerDetails from './dashboardComponent/BannerDetails';
 import AddVision from './dashboardComponent/AddVision';
+import FeatureDetails from './pages/Detailspages/FeatureDetails';
+import CourseDetails from './pages/Detailspages/CourseDetails';
 
 
 
@@ -47,12 +49,15 @@ function App() {
           <Route path="/" element={<Home />} />
 
           <Route path="/dashboard" element={
-            <Dashboard />
+            <RequireAuth>
+              <Dashboard />
+            </RequireAuth>
           } >
             <Route path="add-collage" element={<AddCollage />} />
             <Route path="add-banner" element={<AddBanner />} />
             <Route path="add-banner/:banner" element={< BannerDetails />} />
             <Route path="add-feature" element={<AddFeature />} />
+            <Route path="add-feature/:feature" element={<FeatureDetails />} />
             <Route path="add-about" element={<AddAbouts />} />
             <Route path="add-overview" element={<AddOverView />} />
             <Route path="add-chooseus" element={<AddWhyChooseUs />} />
@@ -60,6 +65,7 @@ function App() {
             <Route path="add-feature" element={<AddFeature />} />
             <Route path="add-certificate" element={<AddReward />} />
             <Route path="add-course" element={<AddCourse />} />
+            <Route path="add-course/:course" element={<CourseDetails />} />
             <Route path="add-vision-mision" element={<AddVision />} />
 
           </Route>

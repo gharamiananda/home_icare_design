@@ -3,11 +3,14 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import fetcher from "../api";
 import { ToastContainer, toast } from 'react-toastify';
+import { Link } from "react-router-dom";
 
 
 const AddCourse = () => {
     const [imageURL, setImageURL] = useState("");
     const [loading, setLoading] = useState(false);
+    const [toggle, setToggle] = useState(false);
+
 
     const [courses, setCourses] = useState([]);
     useEffect(() => {
@@ -54,6 +57,62 @@ const AddCourse = () => {
                 console.log(error);
             });
     };
+
+
+
+
+
+    const deleteCourse = (id) => {
+        const proced = window.confirm('Are You Sure??');
+        if (proced) {
+
+            const url = `http://localhost:5000/course_home/${id}`;
+            fetch(url, {
+                method: 'DELETE'
+
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.acknowledged == true) {
+                        toast.success('Delete Successfully')
+                        reset();
+                        setToggle(!toggle)
+                    }
+                    else {
+                        toast.error('Fail to update data')
+                        console.log(data.status);
+                    }
+                })
+
+        }
+
+    }
+
+
+
+    const statusChange = async (id, stat) => {
+        setToggle(!toggle)
+        let statusData;
+
+        if (stat == '1') {
+            statusData = { status: "0" }
+        }
+
+        if (stat == '0') {
+            statusData = { status: "1" }
+        }
+
+
+        console.log(statusData)
+
+        const res = await fetcher.put(`banner-status/${id}`, statusData);
+        console.log(res)
+        // toast('Data Successfully uploaded')
+    }
+
+
+
 
     return (
         <>
@@ -152,8 +211,10 @@ const AddCourse = () => {
                                                 </td>
                                                 <td>Otto</td>
                                                 <td>
-                                                    <i class="fa-solid fa-trash-can"></i>
-                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                    <button onClick={() => deleteCourse(c._id)} > <i class="fa-solid fa-trash-can"></i></button>
+                                                    <Link
+                                                        to={`${c._id}`}
+                                                    > <i class="fa-solid fa-pen-to-square"></i></Link>
 
                                                 </td>
                                             </tr>
