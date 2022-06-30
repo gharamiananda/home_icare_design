@@ -7,14 +7,19 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 const Collage = () => {
     const [collages, setCollages] = useState([]);
-
+    const [remaining, setRemaining] = useState([])
 
     useEffect(() => {
         fetch('http://localhost:5000/collage_home')
             .then(res => res.json())
             .then(data => setCollages(data))
     }, []);
-    // console.log(collages)
+
+    useEffect(() => {
+        const rem = collages.filter(c => c.status == '1');
+        setRemaining(rem)
+    }, [collages])
+
 
     return (
         <section className="services-carousel-page">
@@ -61,7 +66,7 @@ const Collage = () => {
 
                     >
                         {
-                            collages.map(c =>
+                            remaining.map(c =>
                                 <SwiperSlide className='item'>
                                     <div className="services-one__single">
                                         <div className="services-one__img">

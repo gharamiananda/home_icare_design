@@ -140,27 +140,84 @@ const Header = () => {
 
 
 
+
+
                 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+
                     <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+                        <div class="logo-box">
+                            <a href="index.html" aria-label="logo image"><img src="assets/images/resources/icare-white.png" width="143" alt="" /></a>
+                        </div>
+
                         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
-                        <div>
-                            Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+
+
+                        <div class="mobile-nav__container"><ul class="main-menu__list">
+                            <li >
+                                <NavLink style={({ isActive }) =>
+                                    isActive ? activeStyle : undefined
+                                } to="/">Home </NavLink>
+                            </li>
+                            <li>
+                                <NavLink style={({ isActive }) =>
+                                    isActive ? activeStyle : undefined
+                                } to="/about-icare">About </NavLink>
+                            </li>
+                            <li>
+                                <NavLink style={({ isActive }) =>
+                                    isActive ? activeStyle : undefined
+                                } to="/collages">Colleges</NavLink>
+                            </li>
+                            <li>
+                                <NavLink style={({ isActive }) =>
+                                    isActive ? activeStyle : undefined
+                                } to="/courses">Courses</NavLink>
+                            </li>
+                            <li>
+                                <NavLink style={({ isActive }) =>
+                                    isActive ? activeStyle : undefined
+                                } to="/academics">Academics</NavLink>
+                            </li>
+                            <li>
+                                <NavLink style={({ isActive }) =>
+                                    isActive ? activeStyle : undefined
+                                } to="/admission">Admission</NavLink>
+                            </li>
+                            <li>
+                                <NavLink style={({ isActive }) =>
+                                    isActive ? activeStyle : undefined
+                                } to="/contact">Contact</NavLink>
+                            </li>
+                        </ul>
                         </div>
-                        <div class="dropdown mt-3">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown">
-                                Dropdown button
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <li><a class="dropdown-item" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                            </ul>
+
+                        <ul class="mobile-nav__contact list-unstyled">
+                            <li>
+                                <i class="fa fa-envelope"></i>
+                                <a href="mailto:needhelp@packageName__.com">needhelp@roofsie.com</a>
+                            </li>
+                            <li>
+                                <i class="fa fa-phone-alt"></i>
+                                <a href="tel:666-888-0000">666 888 0000</a>
+                            </li>
+                        </ul>
+
+                        <div class="mobile-nav__top">
+                            <div class="mobile-nav__social">
+                                <a href="#" class="fab fa-twitter"></a>
+                                <a href="#" class="fab fa-facebook-square"></a>
+                                <a href="#" class="fab fa-pinterest-p"></a>
+                                <a href="#" class="fab fa-instagram"></a>
+                            </div>
                         </div>
+
                     </div>
+
                 </div>
+
+
             </header>
             <div className="stricky-header stricked-menu main-menu main-menu-two">
                 <div className="sticky-header__content" />{/* /.sticky-header__content */}

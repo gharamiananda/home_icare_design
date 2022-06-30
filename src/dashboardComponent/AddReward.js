@@ -2,23 +2,27 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import fetcher from "../api";
+import { ToastContainer, toast } from 'react-toastify';
 
 const AddReward = () => {
     const [imageURL, setImageURL] = useState("");
     const [loading, setLoading] = useState(false);
     const [certi, setCeti] = useState([])
+    const [toggle, setToggle] = useState(false);
+
 
     useEffect(() => {
         fetch('http://localhost:5000/home-certificate')
             .then(res => res.json())
             .then(data => setCeti(data));
-    }, [])
+    }, [toggle])
 
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = async (data) => {
         const serviceData = {
             ...data,
+            status: '1',
             picture: imageURL,
         };
 
@@ -50,6 +54,61 @@ const AddReward = () => {
                 console.log(error);
             });
     };
+
+
+
+
+
+
+    const deleteCourse = (id) => {
+        const proced = window.confirm('Are You Sure??');
+        if (proced) {
+
+            const url = `http://localhost:5000/award_home_delete/${id}`;
+            fetch(url, {
+                method: 'DELETE'
+
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.acknowledged == true) {
+                        toast.success('Delete Successfully')
+                        reset();
+                        setToggle(!toggle)
+                    }
+                    else {
+                        toast.error('Fail to update data')
+                        console.log(data.status);
+                    }
+                })
+
+        }
+
+    }
+
+
+
+    const statusChange = async (id, stat) => {
+        setToggle(!toggle)
+        let statusData;
+
+        if (stat == '1') {
+            statusData = { status: "0" }
+        }
+
+        if (stat == '0') {
+            statusData = { status: "1" }
+        }
+
+
+        console.log(statusData)
+
+        const res = await fetcher.put(`award-status/${id}`, statusData);
+        console.log(res)
+        // toast('Data Successfully uploaded')
+    }
+
 
     return (
         <>
@@ -140,8 +199,10 @@ const AddReward = () => {
                                                 </td>
                                                 <td>Otto</td>
                                                 <td>
-                                                    <i class="fa-solid fa-trash-can"></i>
-                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                    <button onClick={() => statusChange(c._id, c.status)}>{c.status == '1' ? "Active" : "Inactive"}</button>
+                                                </td>
+                                                <td>
+                                                    <button onClick={() => deleteCourse(c._id)} > <i class="fa-solid fa-trash-can"></i></button>
 
                                                 </td>
                                             </tr>

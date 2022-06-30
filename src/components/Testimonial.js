@@ -7,12 +7,21 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 const Testimonial = () => {
     const [testimonial, setTestimonial] = useState([]);
+    const [remainings, setRemaining] = useState([]);
+
+
     useEffect(() => {
         fetch('http://localhost:5000/testimonial_home')
             .then(res => res.json())
             .then(data => setTestimonial(data))
     }, [])
+    useEffect(() => {
+        const remaining = testimonial.filter(b => b.status == "1")
+        setRemaining(remaining)
 
+
+
+    }, [testimonial])
     // console.log(testimonial)
     return (
         <section className="testimonial-one">
@@ -58,7 +67,7 @@ const Testimonial = () => {
 
                     >
                         {
-                            testimonial.map(t =>
+                            remainings.map(t =>
                                 <SwiperSlide className="item">
                                     <div className="testimonial-one__single">
                                         <div className="testimonial-one__client-info">

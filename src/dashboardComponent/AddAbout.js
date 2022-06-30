@@ -8,6 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 const AddAbouts = () => {
     const [imageURL, setImageURL] = useState("");
     const [loading, setLoading] = useState(false);
+    const [toggle, setToggle] = useState(false);
 
     const [about, setAbout] = useState([]);
     const [aboutFull, setAboutFull] = useState({})
@@ -17,12 +18,13 @@ const AddAbouts = () => {
             .then(res => res.json())
             .then(data => setAbout(data));
 
-    }, [])
+    }, [toggle])
     useEffect(() => {
         about.map(a => setAboutFull(a))
     }, [about])
+    console.log(aboutFull._id)
 
-    const { register, handleSubmit, reset } = useForm();
+    const { register, handleSubmit, reset, setValue } = useForm();
 
     const onSubmit = async (data) => {
         const serviceData = {
@@ -30,7 +32,7 @@ const AddAbouts = () => {
             image: imageURL,
         };
 
-        const res = await fetcher.post("home_about", serviceData);
+        const res = await fetcher.put(`update-about/${aboutFull._id}`, serviceData);
         console.log(res);
         toast('Data Successfully uploaded')
 
@@ -61,6 +63,40 @@ const AddAbouts = () => {
             });
     };
 
+    const handleEdit = () => {
+        console.log(aboutFull._id)
+        setValue('aboutTitle', `${aboutFull.aboutTitle}`)
+        setValue('percentage', `${aboutFull.percentage}`)
+        setValue('aboutDesc', `${aboutFull.aboutDesc}`)
+
+        setValue('picture', `${aboutFull.picture}`)
+    }
+
+
+
+
+    const statusChange = async (id, stat) => {
+        setToggle(!toggle)
+        let statusData;
+
+        if (stat == '1') {
+            statusData = { status: "0" }
+        }
+
+        if (stat == '0') {
+            statusData = { status: "1" }
+        }
+
+
+        console.log(statusData)
+
+        const res = await fetcher.put(`about-status/${id}`, statusData);
+        console.log(res)
+        // toast('Data Successfully uploaded')
+    }
+
+
+
     return (
 
 
@@ -87,7 +123,7 @@ const AddAbouts = () => {
                                     <div className="row mb-3">
                                         <label htmlFor='aboutTitle' className="col-sm-3 col-form-label">About Title </label>
                                         <div className="col-sm-9">
-                                            <input type="text" className="form-control" id="inputEnterYourName" placeholder="Enter Your Name"
+                                            <input type="text" className="form-control" name='aboutTitle' id="inputEnterYourName" placeholder="Enter Your Name"
                                                 {...register("aboutTitle")}
 
                                             />
@@ -98,7 +134,7 @@ const AddAbouts = () => {
                                     <div className="row mb-3">
                                         <label htmlFor="inputEnterYourName" className="col-sm-3 col-form-label">Satisfied Percentage</label>
                                         <div className="col-sm-9">
-                                            <input type="text" className="form-control" id="inputEnterYourName" placeholder="Enter Your Name"
+                                            <input type="text" className="form-control" name='percentage' id="inputEnterYourName" placeholder="Enter Your Name"
                                                 {...register("percentage")}
 
                                             />
@@ -111,7 +147,7 @@ const AddAbouts = () => {
                                     <div className="row mb-3">
                                         <label htmlFor="aboutDesc" className="col-sm-3 col-form-label">About Description</label>
                                         <div className="col-sm-9">
-                                            <textarea className="form-control" id="inputAddress4" rows={3} placeholder="Address"
+                                            <textarea className="form-control" id="inputAddress4" name='aboutDesc' rows={3} placeholder="Address"
                                                 {...register("aboutDesc")}
                                             />
                                         </div>
@@ -122,7 +158,7 @@ const AddAbouts = () => {
                                             <div class="card">
                                                 <div class="card-body">
                                                     <form>
-                                                        <input id="image-uploadify" type="file" onChange={handleUploadImage} />
+                                                        <input id="image-uploadify" name='picture' type="file" onChange={handleUploadImage} />
                                                     </form>
                                                 </div>
                                             </div>
@@ -156,7 +192,7 @@ const AddAbouts = () => {
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Title</th>
-                                        <th scope="col">Subtitle</th>
+                                        <th scope="col">Percentage</th>
 
                                         <th scope="col">Image</th>
 
@@ -174,11 +210,15 @@ const AddAbouts = () => {
                                             <img src={`http://localhost:5000/${aboutFull.image}`} className='img-fluid' />
 
                                         </td>
-                                        <td>Otto</td>
-                                        <td>
-                                            <i class="fa-solid fa-trash-can"></i>
-                                            <i class="fa-solid fa-pen-to-square"></i>
 
+                                        <td>
+                                            <button onClick={() => statusChange(aboutFull._id, aboutFull.status)}>{aboutFull.status == '1' ? "Active" : "Inactive"}</button>
+                                            </td>
+                                       
+                                        <td>
+
+                                            <button onClick={handleEdit}>      <i class="fa-solid fa-pen-to-square"></i>
+                                            </button>
                                         </td>
                                     </tr>
 

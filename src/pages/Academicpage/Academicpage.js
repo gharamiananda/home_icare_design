@@ -1,10 +1,71 @@
-import React from 'react';
+
 import Awards from '../../components/Awards';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import Testimonial from '../../components/Testimonial';
+import React, { useEffect, useState } from 'react';
+
 
 const Academicpage = () => {
+
+
+    const [toggle, setToggle] = useState(false);
+
+
+    const [pg, setpg] = useState([]);
+    const [finan, setfinan] = useState([]);
+    const [ug, setug] = useState([]);
+
+    const [rempg, setrempg] = useState([]);
+    const [remfinan, setremfinan] = useState([]);
+    const [remug, setremug] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/pg')
+            .then(res => res.json())
+            .then(data => setpg(data));
+
+
+    }, [])
+
+    useEffect(() => {
+        const rpg = pg.filter(r => r.status == '1')
+
+        setrempg(rpg)
+    }, [pg])
+
+
+    useEffect(() => {
+        fetch('http://localhost:5000/ug')
+            .then(res => res.json())
+            .then(data => setug(data));
+
+
+    }, [])
+
+    useEffect(() => {
+        const rug = ug.filter(r => r.status == '1')
+
+        setremug(rug)
+    }, [ug])
+
+
+
+    useEffect(() => {
+        fetch('http://localhost:5000/finan')
+            .then(res => res.json())
+            .then(data => setfinan(data));
+
+
+    }, [])
+
+    useEffect(() => {
+        const rpg = pg.filter(r => r.status == '1')
+
+        setremfinan(rpg)
+    }, [finan])
+
+
     return (
         <>
 
@@ -60,104 +121,16 @@ const Academicpage = () => {
                                     </div>
                                 </div>
                                 <ul className="mvlstarea1">
-                                    <li>
-                                        <span className="icon-confirmation urighticn" />
-                                        Bio-Technology
-                                        <span className="bsdiconx">
-                                            <i className="fa fa-arrow-right icvnxc" />60
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span className="icon-confirmation urighticn" />
-                                        Chemical Engineering
-                                        <span className="bsdiconx">
-                                            <i className="fa fa-arrow-right icvnxc" />60
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span className="icon-confirmation urighticn" />
-                                        Computer Science &amp; Engineering
-                                        <span className="bsdiconx">
-                                            <i className="fa fa-arrow-right icvnxc" />120
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span className="icon-confirmation urighticn" />
-                                        Electronics &amp; Communication Engineering
-                                        <span className="bsdiconx">
-                                            <i className="fa fa-arrow-right icvnxc" />120
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span className="icon-confirmation urighticn" />
-                                        Electronics &amp; Instrumentation Engineering
-                                        <span className="bsdiconx">
-                                            <i className="fa fa-arrow-right icvnxc" />60
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span className="icon-confirmation urighticn" />
-                                        Electrical Engineering
-                                        <span className="bsdiconx">
-                                            <i className="fa fa-arrow-right icvnxc" />60
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span className="icon-confirmation urighticn" />
-                                        Information Technology
-                                        <span className="bsdiconx">
-                                            <i className="fa fa-arrow-right icvnxc" />60
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span className="icon-confirmation urighticn" />
-                                        Mechanical Engineering
-                                        <span className="bsdiconx">
-                                            <i className="fa fa-arrow-right icvnxc" />60
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span className="icon-confirmation urighticn" />
-                                        Food Technology
-                                        <span className="bsdiconx">
-                                            <i className="fa fa-arrow-right icvnxc" />60
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span className="icon-confirmation urighticn" />
-                                        Civil Engineering
-                                        <span className="bsdiconx">
-                                            <i className="fa fa-arrow-right icvnxc" />60
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span className="icon-confirmation urighticn" />
-                                        Production Engineering
-                                        <span className="bsdiconx">
-                                            <i className="fa fa-arrow-right icvnxc" />40
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span className="icon-confirmation urighticn" />
-                                        B.Sc (Nautical Science)
-                                        <span className="bsdiconx">
-                                            <i className="fa fa-arrow-right icvnxc" />
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span className="icon-confirmation urighticn" />
-                                        B.Sc (Nautical Science)
-                                        <span className="bsdiconx">
-                                            <i className="fa fa-arrow-right icvnxc" />
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span className="icon-confirmation urighticn" />
-                                        BCA Course
-                                        <span className="bsdiconx">
-                                            <i className="fa fa-arrow-right icvnxc" />60
-                                        </span>
-                                    </li>
+                                    {rempg.map(u =>
+                                        <li>
+                                            <span className="icon-confirmation urighticn" />
+                                            {u.title}
+                                            <span className="bsdiconx">
+                                                <i className="fa fa-arrow-right icvnxc" />60
+                                            </span>
+                                        </li>
+                                    )}
+
                                 </ul>
                             </div>
                         </div>
@@ -172,27 +145,17 @@ const Academicpage = () => {
                                     </div>
                                 </div>
                                 <ul className="mvlstarea1">
-                                    <li>
-                                        <span className="icon-confirmation urighticn" />
-                                        MBA Course
-                                        <span className="bsdiconx">
-                                            <i className="fa fa-arrow-right icvnxc" />60
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span className="icon-confirmation urighticn" />
-                                        M.Tech(CSE, ME, CHE, BT &amp; ECE)  18 (Each)
-                                        <span className="bsdiconx">
-                                            <i className="fa fa-arrow-right icvnxc" />
-                                        </span>
-                                    </li>
-                                    <li>
-                                        <span className="icon-confirmation urighticn" />
-                                        MCA Course
-                                        <span className="bsdiconx">
-                                            <i className="fa fa-arrow-right icvnxc" />60
-                                        </span>
-                                    </li>
+                                    {
+                                        rempg.map(p =>
+                                            <li>
+                                                <span className="icon-confirmation urighticn" />
+                                                {p.title}
+                                                <span className="bsdiconx">
+                                                    <i className="fa fa-arrow-right icvnxc" />{p.sits}
+                                                </span>
+                                            </li>)
+                                    }
+
                                 </ul>
                             </div>
                         </div>
@@ -207,26 +170,13 @@ const Academicpage = () => {
                                     </div>
                                 </div>
                                 <ul className="mvlstarea1">
-                                    <li>
-                                        <span className="icon-confirmation urighticn" />
-                                        Free Studentship
-                                    </li>
-                                    <li>
-                                        <span className="icon-confirmation urighticn" />
-                                        Half-free Studentship
-                                    </li>
-                                    <li>
-                                        <span className="icon-confirmation urighticn" />
-                                        Scholarship from Important Trust/Fund
-                                    </li>
-                                    <li>
-                                        <span className="icon-confirmation urighticn" />
-                                        Facility from Nationalized Bank for needy students
-                                    </li>
-                                    <li>
-                                        <span className="icon-confirmation urighticn" />
-                                        Railway Travel Concession.
-                                    </li>
+                                    {
+                                        remfinan.map(f => <li>
+                                            <span className="icon-confirmation urighticn" />
+                                            {f.title}
+                                        </li>)
+                                    }
+
                                 </ul>
                             </div>
                         </div>

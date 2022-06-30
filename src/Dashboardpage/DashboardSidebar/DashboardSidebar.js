@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import './DashboardSidebar.css'
 import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
-import auth from '../../firebase/firebase.config';
+import auth from '../../firebase/firebase';
 
 
 const DashboardSidebar = ({ children }) => {
@@ -11,7 +11,7 @@ const DashboardSidebar = ({ children }) => {
         signOut(auth);
     };
     return (
-        <div>
+        <div className='sidebar__my'>
             {/*wrapper*/}
             <div className="wrapper">
                 {/*sidebar wrapper */}
@@ -23,171 +23,282 @@ const DashboardSidebar = ({ children }) => {
                         <div>
                             <h4 className="logo-text">ICare</h4>
                         </div>
-                        <div className="toggle-icon ms-auto"><i className="bx bx-first-page" />
-                        </div>
+                        <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                            <div className="toggle-icon ms-auto"><i className="bx bx-first-page" />
+                            </div>
+                        </a>
                     </div>
-                    {/*navigation*/}
+
+
                     <ul className="metismenu" id="menu">
 
                         <li className="menu-label">Main</li>
 
                         <li>
-                            <a className="has-arrow" href="javascript:;">
-                                <div className="parent-icon"><i className="bx bx-cart-alt" />
-                                </div>
-                                <div className="menu-title">Homepage</div>
-                            </a>
-                            <ul>
-                                <li> <Link to="/dashboard/add-banner"><i className="bx bx-right-arrow-alt" />Add Banner</Link>
-                                </li>
-                                <li> <Link to="/dashboard/add-feature"><i className="bx bx-right-arrow-alt" />Add Top Feature</Link>
-                                </li>
-                                <li> <Link to="/dashboard/add-testimonial"><i className="bx bx-right-arrow-alt" />Add Testimonial</Link>
-                                </li>
-                                <li> <Link to="/dashboard/add-certificate"><i className="bx bx-right-arrow-alt" />Add Certificate</Link>
-                                </li>
 
 
-                                <li> <Link to="/dashboard/add-about"><i className="bx bx-right-arrow-alt" />Add About</Link>
-                                </li>
-                                <li> <Link to="/dashboard/add-overview"><i className="bx bx-right-arrow-alt" />Add Overview</Link>
-                                </li>
-                                <li> <Link to="/dashboard/add-chooseus "><i className="bx bx-right-arrow-alt" />Add Why choose Us</Link>
-                                </li>
-                                <li> <Link to="/dashboard/add-collage"><i className="bx bx-right-arrow-alt" />Add Collage</Link>
-                                </li>
-                                <li> <Link to="/dashboard/add-course"><i className="bx bx-right-arrow-alt" />Add Courses</Link>
-                                </li>
+
+
+
+
+
+
+                            <button class="menu-title btn " type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample4">
+                                <i className="bx bx-atom" />Homepage
+
+
+                            </button>
+
+                            <ul class="collapse" id="collapseExample4">
+                                <div class="card card-body">
+                                    <li> <Link to="/dashboard/add-banner"><i className="bx bx-right-arrow-alt" />Add Banner</Link>
+                                    </li>
+                                    <li> <Link to="/dashboard/add-feature"><i className="bx bx-right-arrow-alt" />Add Top Feature</Link>
+                                    </li>
+                                    <li> <Link to="/dashboard/add-testimonial"><i className="bx bx-right-arrow-alt" />Add Testimonial</Link>
+                                    </li>
+                                    <li> <Link to="/dashboard/add-certificate"><i className="bx bx-right-arrow-alt" />Add Certificate</Link>
+                                    </li>
+
+
+                                    <li> <Link to="/dashboard/add-about"><i className="bx bx-right-arrow-alt" />Add About</Link>
+                                    </li>
+                                    <li> <Link to="/dashboard/add-overview"><i className="bx bx-right-arrow-alt" />Add Overview</Link>
+                                    </li>
+                                    <li> <Link to="/dashboard/add-chooseus "><i className="bx bx-right-arrow-alt" />Add Why choose Us</Link>
+                                    </li>
+                                    <li> <Link to="/dashboard/add-collage"><i className="bx bx-right-arrow-alt" />Add Collage</Link>
+                                    </li>
+                                    <li> <Link to="/dashboard/add-course"><i className="bx bx-right-arrow-alt" />Add Courses</Link>
+                                    </li>
+                                </div>
                             </ul>
+
                         </li>
                         <li>
-                            <a className="has-arrow" href="javascript:;">
-                                <div className="parent-icon"><i className="bx bx-gift" />
+
+
+
+
+
+
+                            <button class="menu-title btn " type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
+                                <i className="bx bx-atom" />About Icare
+
+
+                            </button>
+
+                            <ul class="collapse" id="collapseExample3">
+                                <div class="card card-body">
+                                    <li> <Link to="/dashboard/add-vision-mision"><i className="bx bx-right-arrow-alt" />Add Mission & Vision</Link>
+                                    </li>
                                 </div>
-                                <div className="menu-title">About Icare</div>
-                            </a>
-                            <ul>
-                                <li> <Link to="/dashboard/add-vision-mision"><i className="bx bx-right-arrow-alt" />Add Mission & Vision</Link>
-                                </li>
-                                <li> <a href="component-accordions.html"><i className="bx bx-right-arrow-alt" />Accordions</a>
-                                </li>
-                                <li> <a href="component-badges.html"><i className="bx bx-right-arrow-alt" />Badges</a>
-                                </li>
-                                <li> <a href="component-buttons.html"><i className="bx bx-right-arrow-alt" />Buttons</a>
-                                </li>
-                                <li> <a href="component-cards.html"><i className="bx bx-right-arrow-alt" />Cards</a>
-                                </li>
-                                <li> <a href="component-carousels.html"><i className="bx bx-right-arrow-alt" />Carousels</a>
-                                </li>
-                                <li> <a href="component-list-groups.html"><i className="bx bx-right-arrow-alt" />List Groups</a>
-                                </li>
-                                <li> <a href="component-media-object.html"><i className="bx bx-right-arrow-alt" />Media Objects</a>
-                                </li>
-                                <li> <a href="component-modals.html"><i className="bx bx-right-arrow-alt" />Modals</a>
-                                </li>
-                                <li> <a href="component-navs-tabs.html"><i className="bx bx-right-arrow-alt" />Navs &amp; Tabs</a>
-                                </li>
-                                <li> <a href="component-navbar.html"><i className="bx bx-right-arrow-alt" />Navbar</a>
-                                </li>
-                                <li> <a href="component-paginations.html"><i className="bx bx-right-arrow-alt" />Pagination</a>
-                                </li>
-                                <li> <a href="component-popovers-tooltips.html"><i className="bx bx-right-arrow-alt" />Popovers &amp; Tooltips</a>
-                                </li>
-                                <li> <a href="component-progress-bars.html"><i className="bx bx-right-arrow-alt" />Progress</a>
-                                </li>
-                                <li> <a href="component-spinners.html"><i className="bx bx-right-arrow-alt" />Spinners</a>
-                                </li>
-                                <li> <a href="component-notifications.html"><i className="bx bx-right-arrow-alt" />Notifications</a>
-                                </li>
-                                <li> <a href="component-avtars-chips.html"><i className="bx bx-right-arrow-alt" />Avatrs &amp; Chips</a>
-                                </li>
                             </ul>
-                        </li>
-                        <li>
-                            <a className="has-arrow" href="javascript:;">
-                                <div className="parent-icon"><i className="bx bx-command" />
-                                </div>
-                                <div className="menu-title">Collages</div>
-                            </a>
-                            <ul>
-                                <li> <a href="content-grid-system.html"><i className="bx bx-right-arrow-alt" />Grid System</a>
-                                </li>
-                                <li> <a href="content-typography.html"><i className="bx bx-right-arrow-alt" />Typography</a>
-                                </li>
-                                <li> <a href="content-text-utilities.html"><i className="bx bx-right-arrow-alt" />Text Utilities</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a className="has-arrow" href="javascript:;">
-                                <div className="parent-icon"> <i className="bx bx-atom" />
-                                </div>
-                                <div className="menu-title">Courses</div>
-                            </a>
-                            <ul>
-                                <li> <a href="icons-line-icons.html"><i className="bx bx-right-arrow-alt" />Line Icons</a>
-                                </li>
-                                <li> <a href="icons-boxicons.html"><i className="bx bx-right-arrow-alt" />Boxicons</a>
-                                </li>
-                                <li> <a href="icons-feather-icons.html"><i className="bx bx-right-arrow-alt" />Feather Icons</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a className="has-arrow" href="javascript:;">
-                                <div className="parent-icon"> <i className="bx bx-atom" />
-                                </div>
-                                <div className="menu-title">Academics</div>
-                            </a>
-                            <ul>
-                                <li> <a href="icons-line-icons.html"><i className="bx bx-right-arrow-alt" />Line Icons</a>
-                                </li>
-                                <li> <a href="icons-boxicons.html"><i className="bx bx-right-arrow-alt" />Boxicons</a>
-                                </li>
-                                <li> <a href="icons-feather-icons.html"><i className="bx bx-right-arrow-alt" />Feather Icons</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a className="has-arrow" href="javascript:;">
-                                <div className="parent-icon"> <i className="bx bx-atom" />
-                                </div>
-                                <div className="menu-title">Admission</div>
-                            </a>
-                            <ul>
-                                <li> <a href="icons-line-icons.html"><i className="bx bx-right-arrow-alt" />Line Icons</a>
-                                </li>
-                                <li> <a href="icons-boxicons.html"><i className="bx bx-right-arrow-alt" />Boxicons</a>
-                                </li>
-                                <li> <a href="icons-feather-icons.html"><i className="bx bx-right-arrow-alt" />Feather Icons</a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a className="has-arrow" href="javascript:;">
-                                <div className="parent-icon"> <i className="bx bx-atom" />
-                                </div>
-                                <div className="menu-title">Contact Us</div>
-                            </a>
-                            <ul>
-                                <li> <a href="icons-line-icons.html"><i className="bx bx-right-arrow-alt" />Line Icons</a>
-                                </li>
-                                <li> <a href="icons-boxicons.html"><i className="bx bx-right-arrow-alt" />Boxicons</a>
-                                </li>
-                                <li> <a href="icons-feather-icons.html"><i className="bx bx-right-arrow-alt" />Feather Icons</a>
-                                </li>
-                            </ul>
+
+
+
+
                         </li>
 
 
                         <li>
-                            <a href="https://themeforest.net/user/codervent" target="_blank">
-                                <div className="parent-icon"><i className="bx bx-headphone" />
+
+
+
+                            <button class="menu-title btn " type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+                                <i className="bx bx-atom" />Academics
+
+
+                            </button>
+
+                            <ul class="collapse" id="collapseExample2">
+                                <div class="card card-body">
+                                    <li> <Link to="/dashboard/add-pg-programes"><i className="bx bx-right-arrow-alt" />Add  PG Program</Link>
+                                    </li>
+                                    <li> <Link to="/dashboard/add-financial-programes"><i className="bx bx-right-arrow-alt" />Add  Financial Section</Link>
+                                    </li>
+                                    <li> <Link to="/dashboard/add-ug-programes"><i className="bx bx-right-arrow-alt" />Add  UG Section</Link>
+                                    </li>
                                 </div>
-                                <div className="menu-title">Support</div>
-                            </a>
+                            </ul>
+
+
                         </li>
+
+
+
+
+
+                        <li>
+
+
+
+                            <button class="menu-title btn " type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
+                                <i className="bx bx-atom" />Admission
+
+
+                            </button>
+
+                            <ul class="collapse" id="collapseExample1">
+                                <div class="card card-body">
+                                    <li>
+                                        <Link to="/dashboard/add-vision-page"><i className="bx bx-right-arrow-alt" />Add  Vision About Section</Link>
+                                    </li>
+                                </div>
+                            </ul>
+                        </li>
+
+
                     </ul>
+                    {/*navigation*/}
+
+
+
+
+                    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                        <div class="offcanvas-header">
+                            <div className="sidebar-header">
+                                <div>
+                                    <img src="assets/images/logo-icon.png" className="logo-icon" alt="logo icon" />
+                                </div>
+                                <div>
+                                    <h4 className="logo-text">ICare</h4>
+                                </div>
+                                <a class="" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                                    <div className="toggle-icon ms-auto"><i className="bx bx-first-page" />
+                                    </div>
+                                </a>
+                            </div>
+                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul className="metismenu" id="menu">
+
+                                <li className="menu-label">Main</li>
+
+                                <li>
+
+
+
+
+
+
+
+
+                                    <button class="menu-title btn " type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample4">
+                                        <i className="bx bx-atom" />Homepage
+
+
+                                    </button>
+
+                                    <ul class="collapse" id="collapseExample4">
+                                        <div class="card card-body">
+                                            <li> <Link to="/dashboard/add-banner"><i className="bx bx-right-arrow-alt" />Add Banner</Link>
+                                            </li>
+                                            <li> <Link to="/dashboard/add-feature"><i className="bx bx-right-arrow-alt" />Add Top Feature</Link>
+                                            </li>
+                                            <li> <Link to="/dashboard/add-testimonial"><i className="bx bx-right-arrow-alt" />Add Testimonial</Link>
+                                            </li>
+                                            <li> <Link to="/dashboard/add-certificate"><i className="bx bx-right-arrow-alt" />Add Certificate</Link>
+                                            </li>
+
+
+                                            <li> <Link to="/dashboard/add-about"><i className="bx bx-right-arrow-alt" />Add About</Link>
+                                            </li>
+                                            <li> <Link to="/dashboard/add-overview"><i className="bx bx-right-arrow-alt" />Add Overview</Link>
+                                            </li>
+                                            <li> <Link to="/dashboard/add-chooseus "><i className="bx bx-right-arrow-alt" />Add Why choose Us</Link>
+                                            </li>
+                                            <li> <Link to="/dashboard/add-collage"><i className="bx bx-right-arrow-alt" />Add Collage</Link>
+                                            </li>
+                                            <li> <Link to="/dashboard/add-course"><i className="bx bx-right-arrow-alt" />Add Courses</Link>
+                                            </li>
+                                        </div>
+                                    </ul>
+
+                                </li>
+                                <li>
+
+
+
+
+
+
+                                    <button class="menu-title btn " type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
+                                        <i className="bx bx-atom" />About Icare
+
+
+                                    </button>
+
+                                    <ul class="collapse" id="collapseExample3">
+                                        <div class="card card-body">
+                                            <li> <Link to="/dashboard/add-vision-mision"><i className="bx bx-right-arrow-alt" />Add Mission & Vision</Link>
+                                            </li>
+                                        </div>
+                                    </ul>
+
+
+
+
+                                </li>
+
+
+                                <li>
+
+
+
+                                    <button class="menu-title btn " type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">
+                                        <i className="bx bx-atom" />Academics
+
+
+                                    </button>
+
+                                    <ul class="collapse" id="collapseExample2">
+                                        <div class="card card-body">
+                                            <li> <Link to="/dashboard/add-pg-programes"><i className="bx bx-right-arrow-alt" />Add  PG Program</Link>
+                                            </li>
+                                            <li> <Link to="/dashboard/add-financial-programes"><i className="bx bx-right-arrow-alt" />Add  Financial Section</Link>
+                                            </li>
+                                            <li> <Link to="/dashboard/add-ug-programes"><i className="bx bx-right-arrow-alt" />Add  UG Section</Link>
+                                            </li>
+                                        </div>
+                                    </ul>
+
+
+                                </li>
+
+
+
+
+
+                                <li>
+
+
+
+                                    <button class="menu-title btn " type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
+                                        <i className="bx bx-atom" />Admission
+
+
+                                    </button>
+
+                                    <ul class="collapse" id="collapseExample1">
+                                        <div class="card card-body">
+                                            <li>
+                                                <Link to="/dashboard/add-vision-page"><i className="bx bx-right-arrow-alt" />Add  Vision About Section</Link>
+                                            </li>
+                                        </div>
+                                    </ul>
+                                </li>
+
+
+                            </ul>
+                        </div>
+                    </div>
+
+
+
+
+
                     {/*end navigation*/}
                 </div>
                 {/*end sidebar wrapper */}
@@ -195,8 +306,14 @@ const DashboardSidebar = ({ children }) => {
                 <header>
                     <div className="topbar d-flex align-items-center bg-dark shadow-none border-light-2 border-bottom">
                         <nav className="navbar navbar-expand">
-                            <div className="mobile-toggle-menu text-white me-3"><i className="bx bx-menu" />
-                            </div>
+
+
+                            <a class="" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                                <div className="mobile-toggle-menu text-white me-3"><i className="bx bx-menu" />
+                                </div>
+
+                            </a>
+
                             {/* <div className="top-menu-left d-none d-lg-block">
                                 <ul className="nav">
                                     <li className="nav-item">

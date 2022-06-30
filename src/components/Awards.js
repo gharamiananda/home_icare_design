@@ -12,7 +12,7 @@ const Awards = () => {
             .then(res => res.json())
             .then(data => setCeti(data));
     }, [])
-    console.log(certi)
+
     return (
         <section className="awards hiawardarea">
             <div className="container ">

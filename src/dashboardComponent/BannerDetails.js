@@ -120,7 +120,7 @@ const BannerDetails = () => {
                                 <div className="card-title d-flex align-items-center">
                                     <div><i className="bx bxs-user me-1 font-22 text-info" />
                                     </div>
-                                    <h5 className="mb-0 text-info">Update Banner {banner}</h5>
+                                    <h5 className="mb-0 text-info">Update Banner</h5>
                                 </div>
                                 <hr />
 

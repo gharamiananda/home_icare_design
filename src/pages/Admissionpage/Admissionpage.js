@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
 import Awards from '../../components/Awards';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import Testimonial from '../../components/Testimonial';
 
 const Admissionpage = () => {
+
+
+    const [toggle, setToggle] = useState(false);
+    const [mission, setmission] = useState([]);
+    const [missionData, setmissionData] = useState({});
+
+
+    useEffect(() => {
+        fetch('http://localhost:5000/mission_page')
+            .then(res => res.json())
+            .then(data => setmission(data))
+    }, [toggle]);
+
+    useEffect(() => {
+        mission.map(a => setmissionData(a))
+    }, [mission])
+
     return (
         <>
 
@@ -26,19 +44,20 @@ const Admissionpage = () => {
                     </div>
                 </section>
                 {/*Page Header End*/}
-                <section className="about-two">
+                <section className={(missionData.status == '0') ? 'd-none' : 'about-two'}>
+
                     <div className="container">
                         <div className="row">
                             <div className="col-xl-6">
                                 <div className="about-two__left">
                                     <div className="section-title text-left">
                                         <div className="section-sub-title-box">
-                                            <p className="section-sub-title">Admission</p>
+                                            <p className="section-sub-title">{missionData.subone}</p>
                                             <div className="section-title-shape-1">
                                                 <img src="assets/images/shapes/section-title-shape-1.png" alt />
                                             </div>
                                         </div>
-                                        <h2 className="section-title__title">We’re committed to education exellence</h2>
+                                        <h2 className="section-title__title">{missionData.firstTitle}</h2>
                                     </div>
                                     <ul className="list-unstyled about-three__point">
                                         <li>
@@ -46,7 +65,7 @@ const Admissionpage = () => {
                                                 <i className="fa fa-check" />
                                             </div>
                                             <div className="text">
-                                                <p>Admission process to be published soon.</p>
+                                                <p>{missionData.subTwo}.</p>
                                             </div>
                                         </li>
                                         <li>
@@ -54,7 +73,7 @@ const Admissionpage = () => {
                                                 <i className="fa fa-check" />
                                             </div>
                                             <div className="text">
-                                                <p>You can download our brochure and form for respective colleges</p>
+                                                <p>{missionData.subThree}</p>
                                             </div>
                                         </li>
                                     </ul>
@@ -79,7 +98,7 @@ const Admissionpage = () => {
                                                     <img src="assets/images/shapes/about-two-practice-year-shape.png" alt />
                                                 </div>
                                                 <div className="about-two__practice-year-content">
-                                                    <h3>20</h3>
+                                                    <h3>{missionData.percentage}</h3>
                                                     <p>Years of <br /> experience</p>
                                                 </div>
                                             </div>

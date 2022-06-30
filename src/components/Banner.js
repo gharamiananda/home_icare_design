@@ -29,6 +29,9 @@ const Banner = () => {
     useEffect(() => {
         const remaining = banners.filter(b => b.status == "1")
         setRemaining(remaining)
+
+
+
     }, [banners])
 
     banners.map(b => console.log(b.picture))
@@ -46,7 +49,7 @@ const Banner = () => {
                 spaceBetween={0}
                 slidesPerView={1}
                 navigation
-                loop={true}
+                loop={(!remainings.length == 1) && true}
 
                 autoplay={{
                     delay: 3500,

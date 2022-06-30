@@ -50,3 +50,9 @@
 .pt-120 {
   padding-top: 120px;
 }
+
+.icon-magnifying-glass:before {
+
+  color: transparent;
+  cursor: none;
+}

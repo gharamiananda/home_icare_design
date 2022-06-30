@@ -3,12 +3,22 @@ import React, { useEffect, useState } from 'react';
 
 const FeatureTop = () => {
     const [features, setFeatures] = useState([]);
+    const [remainings, setRemaining] = useState([]);
+
 
     useEffect(() => {
         fetch('http://localhost:5000/feature_home')
             .then(res => res.json())
             .then(data => setFeatures(data));
     }, [])
+    useEffect(() => {
+        const remaining = features.filter(b => b.status == "1")
+        setRemaining(remaining)
+
+
+
+    }, [features])
+    console.log(features)
     return (
         <section className="feature-one">
             <div className="container">
@@ -20,7 +30,7 @@ const FeatureTop = () => {
 
 
                         {
-                            features.map(f =>
+                            remainings.map(f =>
                                 <div className="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms">
                                     <div className="feature-one__single">
                                         <div className="feature-one__top">

@@ -9,11 +9,21 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 const HomeCourse = () => {
     const [courses, setCourses] = useState([]);
+    const [remainings, setRemaining] = useState([]);
+
     useEffect(() => {
         fetch('http://localhost:5000/course_home')
             .then(res => res.json())
             .then(data => setCourses(data));
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        const remaining = courses.filter(b => b.status == "1")
+        setRemaining(remaining)
+
+
+
+    }, [courses])
 
     return (
         <section className="project-one">
@@ -64,7 +74,7 @@ const HomeCourse = () => {
 
                 >
                     {
-                        courses.map(c =>
+                        remainings.map(c =>
 
                             <SwiperSlide className="item">
                                 <div className="project-one__single">

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+
 import Awards from '../../components/Awards';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
@@ -6,6 +7,22 @@ import HomeAbout from '../../components/HomeAbout';
 import Testimonial from '../../components/Testimonial';
 
 const Aboutpage = () => {
+    const [toggle, setToggle] = useState(false);
+    const [mission, setmission] = useState([]);
+    const [missionData, setmissionData] = useState({});
+
+
+    useEffect(() => {
+        fetch('http://localhost:5000/vission_home')
+            .then(res => res.json())
+            .then(data => setmission(data))
+    }, [toggle]);
+
+    useEffect(() => {
+        mission.map(a => setmissionData(a))
+    }, [mission])
+
+
     return (
         <>
             <div>
@@ -30,56 +47,57 @@ const Aboutpage = () => {
 
                     <HomeAbout />
                 </div>
-                <div className="container">
+                <div className={(missionData.status == '0') ? 'd-none' : 'container'}>
+
                     <div className="row">
                         <div className="col-lg-12 vismison_outsection">
                             <div className="section-title text-left">
                                 <div className="section-sub-title-box">
-                                    <p className="section-sub-title">Mission</p>
+                                    <p className="section-sub-title">{missionData.firstTitle}</p>
                                     <div className="section-title-shape-1">
                                         <img src="assets/images/shapes/section-title-shape-1.png" alt />
                                     </div>
                                 </div>
                             </div>
                             <p className="icareinner_abouttext">
-                                To establish and run institutions of higher education in engineering, technology, management, paramedical, medical and other professional courses with the aim of making the Haldia a center for education and training to enable the students to pursue careers of their choice and to obviate the need to travel long distances for fulfilling their aspirations and to enable them to meet the challenge of globalization by fully utilizing the facilities created by ICARE as a gateway to a bright future.
+                                {missionData.collageDesc}
                             </p>
                             <ul className="mvlstarea">
                                 <li>
                                     <span className="icon-confirmation" />
-                                    To develop world class infrastructural facilities in the education sector to supplement existing infrastructure for facilitating rapid industrial development of the region.
+                                    {missionData.subone}
                                 </li>
                                 <li>
                                     <span className="icon-confirmation" />
-                                    To develop world class infrastructural facilities in the education sector to supplement existing infrastructure for facilitating rapid industrial development of the region.
+                                    {missionData.subTwo}
                                 </li>
                                 <li>
                                     <span className="icon-confirmation" />
-                                    To develop world class infrastructural facilities in the education sector to supplement existing infrastructure for facilitating rapid industrial development of the region.
+                                    {missionData.subThree}
                                 </li>
                                 <li>
                                     <span className="icon-confirmation" />
-                                    To develop world class infrastructural facilities in the education sector to supplement existing infrastructure for facilitating rapid industrial development of the region.
+                                    {missionData.subFour}
                                 </li>
                                 <li>
                                     <span className="icon-confirmation" />
-                                    To develop world class infrastructural facilities in the education sector to supplement existing infrastructure for facilitating rapid industrial development of the region.
+                                    {missionData.subFive}
                                 </li>
                                 <li>
                                     <span className="icon-confirmation" />
-                                    To develop world class infrastructural facilities in the education sector to supplement existing infrastructure for facilitating rapid industrial development of the region.
+                                    {missionData.subSix}
                                 </li>
                             </ul>
                             <div className="section-title text-left">
                                 <div className="section-sub-title-box">
-                                    <p className="section-sub-title">Vision</p>
+                                    <p className="section-sub-title">{missionData.secondTitle}</p>
                                     <div className="section-title-shape-1">
                                         <img src="assets/images/shapes/section-title-shape-1.png" alt />
                                     </div>
                                 </div>
                             </div>
                             <p className="icareinner_abouttext">
-                                To be a leading organization for providing education in the fields of technology, management, medical, paramedical science etc., for the socio-economic development of the region creating centers of excellence in education so as to provide value based education of international standards to all segments of society and to stand by the weaker segments of society.
+                                {missionData.secondDesc}
                             </p>
                         </div>
                     </div>

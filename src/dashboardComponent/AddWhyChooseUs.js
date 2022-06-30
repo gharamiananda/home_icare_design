@@ -8,6 +8,7 @@ import { ToastContainer, toast } from 'react-toastify';
 const AddWhyChooseUs = () => {
     const [imageURL, setImageURL] = useState("");
     const [loading, setLoading] = useState(false);
+    const [toggle, setToggle] = useState(false);
 
     const [choose, setChoose] = useState([]);
     const [chooseData, setChooseData] = useState({})
@@ -16,20 +17,21 @@ const AddWhyChooseUs = () => {
         fetch('http://localhost:5000/choose_home')
             .then(res => res.json())
             .then(data => setChoose(data))
-    }, [])
+    }, [toggle])
     useEffect(() => {
         choose.map(a => setChooseData(a))
     }, [choose])
-
-    const { register, handleSubmit, reset } = useForm();
+    console.log(chooseData.status, chooseData)
+    const { register, handleSubmit, reset, setValue } = useForm();
 
     const onSubmit = async (data) => {
         const serviceData = {
             ...data,
+            status: '1',
             image: imageURL,
         };
 
-        const res = await fetcher.post("home_choose", serviceData);
+        const res = await fetcher.post(`update-choose${chooseData._id}`, serviceData);
         console.log(res);
         toast.success("Data successfully updated")
         reset();
@@ -58,6 +60,39 @@ const AddWhyChooseUs = () => {
                 console.log(error);
             });
     };
+
+
+    const statusChange = async (id, stat) => {
+        setToggle(!toggle)
+        let statusData;
+
+        if (stat == '1') {
+            statusData = { status: "0" }
+        }
+
+        if (stat == '0') {
+            statusData = { status: "1" }
+        }
+
+
+        console.log(statusData)
+
+        const res = await fetcher.put(`choose-status/${chooseData._id}`, statusData);
+        console.log(res)
+        // toast('Data Successfully uploaded')
+    }
+
+
+    const handleEdit = () => {
+        console.log(chooseData._id)
+        setValue('mainTitle', `${chooseData.mainTitle}`)
+        setValue('subTitileOne', `${chooseData.subTitileOne}`)
+        setValue('subTitileTwo', `${chooseData.subTitileTwo}`)
+
+        setValue('subTitileThree', `${chooseData.subTitileThree}`)
+        setValue('subTitileFour', `${chooseData.subTitileFour}`)
+        setValue('image', `${chooseData.image}`)
+    }
 
     return (
 
@@ -102,7 +137,7 @@ const AddWhyChooseUs = () => {
                                     <div className="row mb-3">
                                         <label htmlFor="subTitileTwo" className="col-sm-3 col-form-label">Subtitle Two</label>
                                         <div className="col-sm-9">
-                                            <input type="text" className="form-control" placeholder="Enter Your Name"
+                                            <input type="text" className="form-control" placeholder="Enter Your Name" name='subTitileTwo'
                                                 {...register("subTitileTwo")}
                                             />
                                         </div>
@@ -187,9 +222,13 @@ const AddWhyChooseUs = () => {
                                         </td>
                                         <td>Otto</td>
                                         <td>
-                                            <i class="fa-solid fa-trash-can"></i>
-                                            <i class="fa-solid fa-pen-to-square"></i>
+                                            <button onClick={() => statusChange(chooseData._id, chooseData.status)}>{chooseData.status == '1' ? "Active" : "Inactive"}</button>
+                                        </td>
 
+                                        <td>
+
+                                            <button onClick={handleEdit}>      <i class="fa-solid fa-pen-to-square"></i>
+                                            </button>
                                         </td>
                                     </tr>
 

@@ -11,18 +11,19 @@ const AddOverView = () => {
     const [loading, setLoading] = useState(false);
     const [overview, setOverview] = useState([]);
     const [overviewData, setOverviewData] = useState({});
+    const [toggle, setToggle] = useState(false);
 
     useEffect(() => {
         fetch('http://localhost:5000/overview_home')
             .then(res => res.json())
             .then(data => setOverview(data))
-    }, []);
+    }, [toggle]);
 
     useEffect(() => {
         overview.map(a => setOverviewData(a))
     }, [overview]);
 
-    const { register, handleSubmit, reset } = useForm();
+    const { register, handleSubmit, reset, setValue } = useForm();
 
     const onSubmit = async (data) => {
         const testimonialData = {
@@ -62,6 +63,51 @@ const AddOverView = () => {
                 console.log(error);
             });
     };
+
+
+
+
+
+    const handleEdit = () => {
+        console.log(overviewData._id)
+        setValue('mainTitle', `${overviewData.mainTitle}`)
+        setValue('subone', `${overviewData.subone}`)
+        setValue('subTwo', `${overviewData.subTwo}`)
+        setValue('subThree', `${overviewData.subThree}`)
+        setValue('subThree', `${overviewData.subThree}`)
+        setValue('subFour', `${overviewData.subFour}`)
+        setValue('subFive', `${overviewData.subFive}`)
+        setValue('subSix', `${overviewData.subSix}`)
+        setValue('subSix', `${overviewData.subSix}`)
+        setValue('subSeven', `${overviewData.subSeven}`)
+        setValue('subEight', `${overviewData.subEight}`)
+
+        setValue('image', `${overviewData.image}`)
+    }
+
+
+
+
+    const statusChange = async (id, stat) => {
+        setToggle(!toggle)
+        let statusData;
+
+        if (stat == '1') {
+            statusData = { status: "0" }
+        }
+
+        if (stat == '0') {
+            statusData = { status: "1" }
+        }
+
+
+        console.log(statusData)
+
+        const res = await fetcher.put(`overview-status/${id}`, statusData);
+        console.log(res)
+        // toast('Data Successfully uploaded')
+    }
+
     return (
         <>
 
@@ -230,11 +276,14 @@ const AddOverView = () => {
                                             <img src={`http://localhost:5000/${overviewData.image}`} className='img-fluid' />
 
                                         </td>
-                                        <td>Otto</td>
                                         <td>
-                                            <i class="fa-solid fa-trash-can"></i>
-                                            <i class="fa-solid fa-pen-to-square"></i>
+                                            <button onClick={() => statusChange(overviewData._id, overviewData.status)}>{overviewData.status == '1' ? "Active" : "Inactive"}</button>
+                                        </td>
 
+                                        <td>
+
+                                            <button onClick={handleEdit}>      <i class="fa-solid fa-pen-to-square"></i>
+                                            </button>
                                         </td>
                                     </tr>
 

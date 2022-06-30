@@ -4,19 +4,22 @@ import { useForm } from "react-hook-form";
 import fetcher from "../api";
 import { ToastContainer, toast } from 'react-toastify';
 
+import { Link } from "react-router-dom";
+
 
 const AddCollage = () => {
     const [imageURL, setImageURL] = useState("");
     const [loading, setLoading] = useState(false);
 
     const [collages, setCollages] = useState([]);
+    const [toggle, setToggle] = useState(false);
 
 
     useEffect(() => {
         fetch('http://localhost:5000/collage_home')
             .then(res => res.json())
             .then(data => setCollages(data))
-    }, []);
+    }, [toggle]);
     console.log(collages)
 
     const { register, handleSubmit, reset } = useForm();
@@ -24,6 +27,7 @@ const AddCollage = () => {
     const onSubmit = async (data) => {
         const serviceData = {
             ...data,
+            status: "1",
             image: imageURL,
         };
 
@@ -57,6 +61,59 @@ const AddCollage = () => {
                 console.log(error);
             });
     };
+
+
+
+
+    const deleteCourse = (id) => {
+        const proced = window.confirm('Are You Sure??');
+        if (proced) {
+
+            const url = `http://localhost:5000/collage_home_delete/${id}`;
+            fetch(url, {
+                method: 'DELETE'
+
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.acknowledged == true) {
+                        toast.success('Delete Successfully')
+                        reset();
+                        setToggle(!toggle)
+                    }
+                    else {
+                        toast.error('Fail to update data')
+                        console.log(data.status);
+                    }
+                })
+
+        }
+
+    }
+
+
+
+    const statusChange = async (id, stat) => {
+        setToggle(!toggle)
+        let statusData;
+
+        if (stat == '1') {
+            statusData = { status: "0" }
+        }
+
+        if (stat == '0') {
+            statusData = { status: "1" }
+        }
+
+
+        console.log(statusData)
+
+        const res = await fetcher.put(`collage-status/${id}`, statusData);
+        console.log(res)
+        // toast('Data Successfully uploaded')
+    }
+
 
     return (
         <>
@@ -170,10 +227,15 @@ const AddCollage = () => {
                                                     <img src={`http://localhost:5000/${c.image}`} className='img-fluid' />
 
                                                 </td>
-                                                <td>Otto</td>
+
                                                 <td>
-                                                    <i class="fa-solid fa-trash-can"></i>
-                                                    <i class="fa-solid fa-pen-to-square"></i>
+                                                    <button onClick={() => statusChange(c._id, c.status)}>{c.status == '1' ? "Active" : "Inactive"}</button>
+                                                </td>
+                                                <td>
+                                                    <button onClick={() => deleteCourse(c._id)} > <i class="fa-solid fa-trash-can"></i></button>
+                                                    <Link
+                                                        to={`${c._id}`}
+                                                    > <i class="fa-solid fa-pen-to-square"></i></Link>
 
                                                 </td>
                                             </tr>

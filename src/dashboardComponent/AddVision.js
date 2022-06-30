@@ -9,38 +9,75 @@ import { ToastContainer, toast } from 'react-toastify';
 const AddVision = () => {
     const [imageURL, setImageURL] = useState("");
     const [loading, setLoading] = useState(false);
-    const [overview, setOverview] = useState([]);
-    const [overviewData, setOverviewData] = useState({});
+    const [mission, setmission] = useState([]);
+    const [missionData, setmissionData] = useState({});
+    const [toggle, setToggle] = useState(false);
+
 
     useEffect(() => {
-        fetch('http://localhost:5000/overview_home')
+        fetch('http://localhost:5000/vission_home')
             .then(res => res.json())
-            .then(data => setOverview(data))
-    }, []);
+            .then(data => setmission(data))
+    }, [toggle]);
 
     useEffect(() => {
-        overview.map(a => setOverviewData(a))
-    }, [overview]);
+        mission.map(a => setmissionData(a))
+    }, [mission]);
 
-    const { register, handleSubmit, reset } = useForm();
+    const { register, handleSubmit, reset, setValue } = useForm();
 
     const onSubmit = async (data) => {
         const testimonialData = {
-            ...data,
-            image: imageURL
+            ...data
+
 
         };
 
 
-        const res = await fetcher.post("home_vission", testimonialData);
+        const res = await fetcher.put(`home_vission_update/${missionData._id}`, testimonialData);
         toast.success('Data Successfully uploaded!')
         reset();
-        setImageURL("");
+
     };
 
+    const handleEdit = () => {
+        console.log(missionData._id)
+        setValue('firstTitle', `${missionData.firstTitle}`)
+        setValue('collageDesc', `${missionData.collageDesc}`)
+        setValue('subone', `${missionData.subone}`)
+        setValue('subTwo', `${missionData.subTwo}`)
+        setValue('subThree', `${missionData.subThree}`)
+        setValue('subFour', `${missionData.subFour}`)
+        setValue('subFive', `${missionData.subFive}`)
+        setValue('subSix', `${missionData.subSix}`)
+        setValue('secondTitle', `${missionData.secondTitle}`)
+        setValue('secondDesc', `${missionData.secondDesc}`)
 
 
-  
+    }
+
+
+    const statusChange = async (id, stat) => {
+        setToggle(!toggle)
+        let statusData;
+
+        if (stat == '1') {
+            statusData = { status: "0" }
+        }
+
+        if (stat == '0') {
+            statusData = { status: "1" }
+        }
+
+
+        console.log(statusData)
+
+        const res = await fetcher.put(`vission-status/${id}`, statusData);
+        console.log(res)
+        // toast('Data Successfully uploaded')
+    }
+
+
     return (
         <>
 
@@ -159,7 +196,7 @@ const AddVision = () => {
 
 
 
-                                       
+
                                         <div className="row">
                                             <label className="col-sm-3 col-form-label" />
                                             <div className="col-sm-9">
@@ -187,10 +224,10 @@ const AddVision = () => {
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Title</th>
-                                        <th scope="col">Subtitle</th>
+                                        <th scope="col">First Title</th>
+                                        <th scope="col">Second Title</th>
 
-                                        <th scope="col">Image</th>
+
 
                                         <th scope="col">Status</th>
                                         <th scope="col">Action</th>
@@ -200,18 +237,18 @@ const AddVision = () => {
 
                                     <tr>
                                         <th scope="row">1</th>
-                                        <td>{overviewData.mainTitle}</td>
+                                        <td>{missionData.firstTitle}</td>
 
-                                        <td> </td>
+                                        <td>{missionData.secondTitle} </td>
+
                                         <td>
-                                            <img src={`http://localhost:5000/${overviewData.image}`} className='img-fluid' />
-
+                                            <button onClick={() => statusChange(missionData._id, missionData.status)}>{missionData.status == '1' ? "Active" : "Inactive"}</button>
                                         </td>
-                                        <td>Otto</td>
-                                        <td>
-                                            <i class="fa-solid fa-trash-can"></i>
-                                            <i class="fa-solid fa-pen-to-square"></i>
 
+                                        <td>
+
+                                            <button onClick={handleEdit}>      <i class="fa-solid fa-pen-to-square"></i>
+                                            </button>
                                         </td>
                                     </tr>
 

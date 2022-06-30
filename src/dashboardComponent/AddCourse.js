@@ -17,19 +17,20 @@ const AddCourse = () => {
         fetch('http://localhost:5000/course_home')
             .then(res => res.json())
             .then(data => setCourses(data));
-    }, [])
+    }, [toggle])
 
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = async (data) => {
         const serviceData = {
             ...data,
+            status: "1",
             picture: imageURL,
         };
 
         const res = await fetcher.post("home_course", serviceData);
         toast.success('Data Successfully uploaded')
-
+        setToggle(!toggle)
         console.log(res);
         reset();
         setImageURL("");
@@ -106,7 +107,7 @@ const AddCourse = () => {
 
         console.log(statusData)
 
-        const res = await fetcher.put(`banner-status/${id}`, statusData);
+        const res = await fetcher.put(`course-status/${id}`, statusData);
         console.log(res)
         // toast('Data Successfully uploaded')
     }
@@ -189,7 +190,7 @@ const AddCourse = () => {
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Title</th>
-                                        <th scope="col">Subtitle</th>
+
 
                                         <th scope="col">Image</th>
 
@@ -204,12 +205,14 @@ const AddCourse = () => {
                                             <tr>
                                                 <th scope="row">1</th>
                                                 {/* <td>{chooseData.mainTitle}</td> */}
-                                                <td> </td>
+                                                <td>{c.title} </td>
                                                 <td>
                                                     <img src={`http://localhost:5000/${c.picture}`} className='img-fluid' />
 
                                                 </td>
-                                                <td>Otto</td>
+                                                <td>
+                                                    <button onClick={() => statusChange(c._id, c.status)}>{c.status == '1' ? "Active" : "Inactive"}</button>
+                                                </td>
                                                 <td>
                                                     <button onClick={() => deleteCourse(c._id)} > <i class="fa-solid fa-trash-can"></i></button>
                                                     <Link

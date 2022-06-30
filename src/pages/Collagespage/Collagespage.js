@@ -29,6 +29,7 @@ const Collagespage = () => {
 
 
             <Collage />
+            <Testimonial />
             <Awards />
             <Footer />
         </div>
