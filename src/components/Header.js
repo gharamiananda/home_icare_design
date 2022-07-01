@@ -39,7 +39,7 @@ const Header = () => {
                             <div className="main-header-two__shape-6" />
                             <div className="main-header-two__shape-7" />
                             <div className="main-header-two__logo">
-                                <a href="index.html"><img src="assets/images/resources/icare.png" alt className="mainlogoheader" /></a>
+                                <Link to="/"><img src="assets/images/resources/icare.png" alt className="mainlogoheader" /></Link>
                             </div>
                             <div className="main-header-two__address">
                                 <ul className="list-unstyled main-header-two__address-list">

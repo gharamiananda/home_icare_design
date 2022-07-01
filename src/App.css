@@ -56,3 +56,7 @@
   color: transparent;
   cursor: none;
 }
+
+.sidebar-header {
+  justify-content: space-around;
+}

@@ -3,9 +3,14 @@ import { Link, NavLink } from 'react-router-dom';
 import './DashboardSidebar.css'
 import { getAuth, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import auth from '../../firebase/firebase';
+import userEvent from '@testing-library/user-event';
+import logo from '../../images/favicons/icare.png'
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 
 const DashboardSidebar = ({ children }) => {
+
+    const [user, loading, error] = useAuthState(auth);
 
     const logout = () => {
         signOut(auth);
@@ -18,15 +23,15 @@ const DashboardSidebar = ({ children }) => {
                 <div className="sidebar-wrapper" data-simplebar="true">
                     <div className="sidebar-header">
                         <div>
-                            <img src="assets/images/logo-icon.png" className="logo-icon" alt="logo icon" />
+                            <img src={logo} className="logo-icon" alt="logo icon" />
                         </div>
                         <div>
                             <h4 className="logo-text">ICare</h4>
                         </div>
-                        <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                            <div className="toggle-icon ms-auto"><i className="bx bx-first-page" />
-                            </div>
-                        </a>
+
+                        <div className="toggle-icon ms-auto"><i className="bx bx-first-page" />
+                        </div>
+
                     </div>
 
 
@@ -159,7 +164,7 @@ const DashboardSidebar = ({ children }) => {
                         <div class="offcanvas-header">
                             <div className="sidebar-header">
                                 <div>
-                                    <img src="assets/images/logo-icon.png" className="logo-icon" alt="logo icon" />
+                                    <img src={logo} className="logo-icon" alt="logo icon" />
                                 </div>
                                 <div>
                                     <h4 className="logo-text">ICare</h4>
@@ -654,8 +659,8 @@ const DashboardSidebar = ({ children }) => {
                                 <a className="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <img src="assets-dashboard/images/avatars/avatar-2.png" className="user-img" alt="user avatar" />
                                     <div className="user-info ps-3">
-                                        <p className="user-name mb-0 text-white">Pauline Seitz</p>
-                                        <p className="designattion mb-0">Web Designer</p>
+                                        <p className="user-name mb-0 text-white">Admin Area</p>
+                                        <p className="designattion mb-0">{user.email}</p>
                                     </div>
                                 </a>
 
