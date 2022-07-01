@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import Awards from '../../components/Awards';
 import Footer from '../../components/Footer';
@@ -23,6 +24,32 @@ const Aboutpage = () => {
     }, [mission])
 
 
+
+    const [innerBan, setInnerBan] = useState({});
+    const [ibd, setibd] = useState([]);
+
+
+
+
+
+
+
+    useEffect(() => {
+        fetch('http://localhost:5000/inner_banner_get')
+            .then(res => res.json())
+            .then(data => setibd(data))
+    }, []);
+
+
+    useEffect(() => {
+        const fib = ibd.find(ib => ib.page == 'About')
+
+        setInnerBan(fib)
+    }, [
+        ibd
+    ])
+
+
     return (
         <>
             <div>
@@ -30,7 +57,7 @@ const Aboutpage = () => {
                 <Header />
                 {/*Page Header Start*/}
                 <section className="page-header">
-                    <div className="page-header-bg" style={{ backgroundImage: 'url(assets/images/backgrounds/main1.jpg)' }}>
+                    <div className="page-header-bg" style={{ backgroundImage: `url(http://localhost:5000/${innerBan?.image})` }}>
                     </div>
                     <div className="container">
                         <div className="page-header__inner">
@@ -39,7 +66,7 @@ const Aboutpage = () => {
                                 <li><span>/</span></li>
                                 <li>About</li>
                             </ul>
-                            <h2>About us</h2>
+                            <h2>{innerBan?.collageName}</h2>
                         </div>
                     </div>
                 </section>

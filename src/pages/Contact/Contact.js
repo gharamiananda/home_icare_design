@@ -1,8 +1,22 @@
 import React from 'react';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
+import { useForm } from "react-hook-form";
+import fetcher from "../../api";
 
 const Contact = () => {
+    const { register, formState: { errors }, handleSubmit } = useForm();
+
+    const onSubmit = async (data) => {
+        console.log(data)
+        const res = await fetcher.post(`c_form_post`, data);
+        console.log(res);
+
+
+
+    };
+
+
     return (
 
         <div>
@@ -81,35 +95,60 @@ const Contact = () => {
                     <div className="row">
                         <div className="col-xl-12">
                             <div className="contact-page__form">
-                                <form action="https://roofsie-html.vercel.app/main-html/assets/inc/sendemail.php" className="comment-one__form contact-form-validated" noValidate="novalidate">
+
+
+
+                                {/* <input {...register("firstName", { required: true })} />
+                                {errors.firstName?.type === 'required' && "First name is required"}
+
+                                <input {...register("lastName", { required: true })} />
+                                {errors.lastName && <p>Last name is required</p>}
+
+                                <input {...register("mail", { required: "Email Address is required" })} />
+                                <p>{errors.mail?.message}</p>
+
+                                <input type="submit" />
+                            </form> */}
+
+
+                                <form className="comment-one__form contact-form-validated" onSubmit={handleSubmit(onSubmit)}>
                                     <div className="row">
                                         <div className="col-xl-6">
                                             <div className="comment-form__input-box">
-                                                <input type="text" placeholder="Name" name="name" />
+                                                <input type="text" placeholder="Name" name="name" {...register("name", { required: true })} />
+                                                {errors.name?.type === 'required' && "First name is required"}
                                             </div>
                                         </div>
                                         <div className="col-xl-6">
                                             <div className="comment-form__input-box">
-                                                <input type="email" placeholder="Email" name="email" />
+                                                <input type="email" placeholder="Email" name="email"
+                                                    {...register("email", { required: true })}
+                                                />
                                             </div>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col-xl-6">
                                             <div className="comment-form__input-box">
-                                                <input type="text" placeholder="Phone" name="name" />
+                                                <input type="text" placeholder="Phone" name="phone"
+                                                    {...register("phone")}
+                                                />
                                             </div>
                                         </div>
                                         <div className="col-xl-6">
                                             <div className="comment-form__input-box">
-                                                <input type="email" placeholder="Address" name="email" />
+                                                <input type="text" placeholder="Subject" name="subject"
+                                                    {...register("subject", { required: true })}
+                                                />
                                             </div>
                                         </div>
                                     </div>
                                     <div className="row">
                                         <div className="col-xl-12">
                                             <div className="comment-form__input-box text-message-box">
-                                                <textarea name="message" placeholder="Comments" defaultValue={""} />
+                                                <textarea name="message"
+                                                    {...register("message", { required: true })}
+                                                    placeholder="Comments" />
                                             </div>
                                             <div className="comment-form__btn-box">
                                                 <button type="submit" className="thm-btn comment-form__btn"> <i className="fa fa-arrow-right" /> Submit</button>
@@ -117,15 +156,35 @@ const Contact = () => {
                                         </div>
                                     </div>
                                 </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
+            </section >
             {/*Contact Page End*/}
 
-            <Footer />
-        </div>
+            < Footer />
+        </div >
 
 
     );

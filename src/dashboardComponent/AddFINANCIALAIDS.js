@@ -177,10 +177,15 @@ const AddFINANCIALAIDS = () => {
                                                 <td>{b.sits}</td>
 
 
-                                                <td><button onClick={() => statusChange(b._id, b.status)}>{b.status == '1' ? "Active" : "Inactive"}</button></td>
+                                                <td><button
+                                                    className={(b.status == "1") ? 'btn btn-success' : "btn btn-danger"}
+                                                    onClick={() => statusChange(b._id, b.status)}>{b.status == '1' ? "Active" : "Inactive"}</button></td>
                                                 <td>
-                                                    <button onClick={() => deleteFeature(b._id)} > <i class="fa-solid fa-trash-can"></i></button>
+                                                    <button
+                                                        className="text-danger border-0"
+                                                        onClick={() => deleteFeature(b._id)} > <i class="fa-solid fa-trash-can"></i></button>
                                                     <Link
+                                                        className="text-primary border-0"
                                                         to={`${b._id}`}
                                                     > <i class="fa-solid fa-pen-to-square"></i></Link>
 

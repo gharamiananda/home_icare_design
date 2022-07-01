@@ -211,15 +211,16 @@ const AddAbouts = () => {
 
                                         </td>
 
-                                        <td>
-                                            <button onClick={() => statusChange(aboutFull._id, aboutFull.status)}>{aboutFull.status == '1' ? "Active" : "Inactive"}</button>
-                                            </td>
-                                       
+                                        <td><button className={(aboutFull.status == "1") ? 'btn btn-success' : "btn btn-danger"} onClick={() => statusChange(aboutFull._id, aboutFull.status)}>{aboutFull.status == '1' ? "Active" : "Inactive"}</button></td>
                                         <td>
 
-                                            <button onClick={handleEdit}>      <i class="fa-solid fa-pen-to-square"></i>
+                                            <button onClick={handleEdit} className="text-primary border-0">      <i class="fa-solid fa-pen-to-square"></i>
                                             </button>
                                         </td>
+
+
+
+
                                     </tr>
 
 

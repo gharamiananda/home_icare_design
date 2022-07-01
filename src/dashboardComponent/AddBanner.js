@@ -54,7 +54,7 @@ const AddBanner = () => {
 
 
     const statusChange = async (id, stat) => {
-        setToggle(!toggle)
+
         let statusData;
 
         if (stat == '1') {
@@ -70,7 +70,8 @@ const AddBanner = () => {
 
         const res = await fetcher.put(`banner-status/${id}`, statusData);
         console.log(res)
-        // toast('Data Successfully uploaded')
+        setToggle(!toggle)
+        toast('Status Changes Successfully')
     }
 
     const { register, handleSubmit, reset, setValue } = useForm();
@@ -240,10 +241,10 @@ const AddBanner = () => {
                                                     <img id='singleImage' src={`http://localhost:5000/${b.picture}`} className='img-fluid' />
 
                                                 </td>
-                                                <td><button onClick={() => statusChange(b._id, b.status)}>{b.status == '1' ? "Active" : "Inactive"}</button></td>
+                                                <td><button className={(b.status == "1") ? 'btn btn-success' : "btn btn-danger"} onClick={() => statusChange(b._id, b.status)}>{b.status == '1' ? "Active" : "Inactive"}</button></td>
                                                 <td>
-                                                    <button onClick={() => deleteBanner(b._id)} > <i class="fa-solid fa-trash-can"></i></button>
-                                                    <Link
+                                                    <button className="text-danger btn border-0" onClick={() => deleteBanner(b._id)} > <i class="fa-solid fa-trash-can"></i></button>
+                                                    <Link className="text-primary "
                                                         to={`${b._id}`}
                                                     > <i class="fa-solid fa-pen-to-square"></i></Link>
 

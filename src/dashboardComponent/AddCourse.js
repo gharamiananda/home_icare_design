@@ -200,10 +200,10 @@ const AddCourse = () => {
                                 </thead>
                                 <tbody>
                                     {
-                                        courses.map(c =>
+                                        courses.map((c, i) =>
 
                                             <tr>
-                                                <th scope="row">1</th>
+                                                <th scope="row">{i + 1}</th>
                                                 {/* <td>{chooseData.mainTitle}</td> */}
                                                 <td>{c.title} </td>
                                                 <td>
@@ -211,12 +211,17 @@ const AddCourse = () => {
 
                                                 </td>
                                                 <td>
-                                                    <button onClick={() => statusChange(c._id, c.status)}>{c.status == '1' ? "Active" : "Inactive"}</button>
+                                                    <button
+                                                        className={(c.status == "1") ? 'btn btn-success' : "btn btn-danger"}
+                                                        onClick={() => statusChange(c._id, c.status)}>{c.status == '1' ? "Active" : "Inactive"}</button>
                                                 </td>
                                                 <td>
-                                                    <button onClick={() => deleteCourse(c._id)} > <i class="fa-solid fa-trash-can"></i></button>
+                                                    <button
+                                                        className="text-danger border-0"
+                                                        onClick={() => deleteCourse(c._id)} > <i class="fa-solid fa-trash-can"></i></button>
                                                     <Link
                                                         to={`${c._id}`}
+                                                        className="text-primary border-0"
                                                     > <i class="fa-solid fa-pen-to-square"></i></Link>
 
                                                 </td>

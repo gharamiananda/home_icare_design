@@ -192,24 +192,29 @@ const AddFeature = () => {
                                     </thead>
                                     <tbody>
                                         {
-                                            features.map(b =>
+                                            features.map((b, i) =>
                                                 <tr>
-                                                    <th scope="row">1</th>
+                                                    <th scope="row">{i + 1}</th>
                                                     <td>{b.title}</td>
                                                     <td>{b.fontLink}</td>
                                                     <td>
                                                         {b.readMoreLink}
 
                                                     </td>
-                                                    <td>Otto</td>
-                                                    <td><button onClick={() => statusChange(b._id, b.status)}>{b.status == '1' ? "Active" : "Inactive"}</button></td>
+
+
+
+
+
+                                                    <td><button className={(b.status == "1") ? 'btn btn-success' : "btn btn-danger"} onClick={() => statusChange(b._id, b.status)}>{b.status == '1' ? "Active" : "Inactive"}</button></td>
                                                     <td>
-                                                        <button onClick={() => deleteFeature(b._id)} > <i class="fa-solid fa-trash-can"></i></button>
-                                                        <Link
+                                                        <button className="text-danger btn border-0" onClick={() => deleteFeature(b._id)} > <i class="fa-solid fa-trash-can"></i></button>
+                                                        <Link className="text-primary "
                                                             to={`${b._id}`}
                                                         > <i class="fa-solid fa-pen-to-square"></i></Link>
 
                                                     </td>
+
                                                 </tr>
                                             )
                                         }

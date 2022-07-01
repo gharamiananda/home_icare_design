@@ -129,7 +129,7 @@ const Header = () => {
                                         <a href="#" className="main-menu-two__search search-toggler icon-magnifying-glass" />
                                     </div>
                                     <div className="main-menu-two__btn-box">
-                                        <a href="contact.html" className="thm-btn main-menu-two__btn"> <i className="fa fa-arrow-right" /> Enquiry</a>
+                                        <Link to="/contact" className="thm-btn main-menu-two__btn"> <i className="fa fa-arrow-right" /> Enquiry</Link>
                                     </div>
                                 </div>
                             </div>

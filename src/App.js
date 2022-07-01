@@ -48,6 +48,9 @@ import UgDetail from './pages/Detailspages/UgDetail';
 import FinanDetail from './pages/Detailspages/FinanDetail';
 import LoginN from './Authentication/LoginN';
 import SendPasswordReset from './Authentication/SendPasswordReset';
+import ContactForm from './dashboardComponent/ContactForm';
+import NewsLetter from './dashboardComponent/NewsLetter';
+import AddInnerBanner from './dashboardComponent/AddInnerBanner';
 
 
 
@@ -88,12 +91,15 @@ function App() {
             <Route path="add-financial-programes/:finan" element={<FinanDetail />} />
             <Route path="add-ug-programes" element={<AddUGPROGRAMMES />} />
             <Route path="add-ug-programes/:ug" element={<UgDetail />} />
+            <Route path="contact-form" element={<ContactForm />} />
+            <Route path="news-letter" element={<NewsLetter />} />
+            <Route path="add-inner-banner" element={<AddInnerBanner />} />
 
           </Route>
 
 
 
-          <Route path="/about-icare" element={<Aboutpage />} />
+          <Route path="/about" element={<Aboutpage />} />
           <Route path="/collages" element={<Collagespage />} />
           <Route path="/courses" element={<Coursepage />} />
 

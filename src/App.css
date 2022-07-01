@@ -60,3 +60,18 @@
 .sidebar-header {
   justify-content: space-around;
 }
+
+td img {
+  width: 100px;
+}
+
+.login .form-control {
+
+  border: unset;
+}
+
+.login .form-control input {
+
+  border: 1px solid #ced4da;
+  margin-left: 5px;
+}

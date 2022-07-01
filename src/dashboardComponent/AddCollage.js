@@ -19,7 +19,7 @@ const AddCollage = () => {
         fetch('http://localhost:5000/collage_home')
             .then(res => res.json())
             .then(data => setCollages(data))
-    }, [toggle]);
+    }, [toggle, loading]);
     console.log(collages)
 
     const { register, handleSubmit, reset } = useForm();
@@ -32,11 +32,23 @@ const AddCollage = () => {
         };
 
         const res = await fetcher.post("home-collage", serviceData);
-        toast.success("Data successfully updated")
 
-        console.log(res);
-        reset();
-        setImageURL("");
+
+
+        if (res.data.acknowledged == true) {
+            toast.success("Data successfully updated")
+            reset();
+            setToggle(!toggle)
+            setImageURL("");
+        }
+        else {
+            toast.error('Fail to update data')
+            console.log(data.status);
+        }
+
+
+
+
     };
 
     const handleUploadImage = (event) => {
@@ -162,7 +174,7 @@ const AddCollage = () => {
                                         <div className="row mb-3">
                                             <label htmlFor="inputAddress4" className="col-sm-3 col-form-label">Collage Description</label>
                                             <div className="col-sm-9">
-                                                <textarea className="form-control" id="inputAddress4" rows={3} placeholder="Address"
+                                                <textarea className="form-control" id="inputAddress4" rows={3} placeholder="Collage Description"
                                                     {...register("collageDesc")}
                                                 />
                                             </div>
@@ -207,7 +219,7 @@ const AddCollage = () => {
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Title</th>
-                                        <th scope="col">Subtitle</th>
+
 
                                         <th scope="col">Image</th>
 
@@ -217,23 +229,21 @@ const AddCollage = () => {
                                 </thead>
                                 <tbody>
                                     {
-                                        collages.map(c =>
+                                        collages.map((c, i) =>
 
                                             <tr>
-                                                <th scope="row">1</th>
-                                                {/* <td>{chooseData.mainTitle}</td> */}
-                                                <td> </td>
+                                                <th scope="row">{i + 1}</th>
+
+                                                <td> {c.collageName}</td>
                                                 <td>
                                                     <img src={`http://localhost:5000/${c.image}`} className='img-fluid' />
 
                                                 </td>
 
+                                                <td><button className={(c.status == "1") ? 'btn btn-success' : "btn btn-danger"} onClick={() => statusChange(c._id, c.status)}>{c.status == '1' ? "Active" : "Inactive"}</button></td>
                                                 <td>
-                                                    <button onClick={() => statusChange(c._id, c.status)}>{c.status == '1' ? "Active" : "Inactive"}</button>
-                                                </td>
-                                                <td>
-                                                    <button onClick={() => deleteCourse(c._id)} > <i class="fa-solid fa-trash-can"></i></button>
-                                                    <Link
+                                                    <button className="text-danger btn border-0" onClick={() => deleteCourse(c._id)} > <i class="fa-solid fa-trash-can"></i></button>
+                                                    <Link className="text-primary "
                                                         to={`${c._id}`}
                                                     > <i class="fa-solid fa-pen-to-square"></i></Link>
 

@@ -6,6 +6,7 @@ import auth from '../../firebase/firebase';
 import userEvent from '@testing-library/user-event';
 import logo from '../../images/favicons/icare.png'
 import { useAuthState } from 'react-firebase-hooks/auth';
+import avater from '../../images/avatar-2.png'
 
 
 const DashboardSidebar = ({ children }) => {
@@ -23,10 +24,10 @@ const DashboardSidebar = ({ children }) => {
                 <div className="sidebar-wrapper" data-simplebar="true">
                     <div className="sidebar-header">
                         <div>
-                            <img src={logo} className="logo-icon" alt="logo icon" />
+                            <img src={logo} className="logo-icon w-100" alt="logo icon" />
                         </div>
                         <div>
-                            <h4 className="logo-text">ICare</h4>
+
                         </div>
 
                         <div className="toggle-icon ms-auto"><i className="bx bx-first-page" />
@@ -153,6 +154,27 @@ const DashboardSidebar = ({ children }) => {
                             </ul>
                         </li>
 
+                        <li>
+                            <Link class="menu-title btn " type="button" to='/dashboard/contact-form'>
+                                <i className="bx bx-atom" />Contact Form
+
+
+                            </Link>
+                        </li>
+                        <li>
+                            <Link class="menu-title btn " type="button" to='/dashboard/news-letter'>
+                                <i className="bx bx-atom" />News Letter
+
+
+                            </Link>
+
+                            <Link class="menu-title btn " type="button" to='/dashboard/add-inner-banner'>
+                                <i className="bx bx-atom" />Add inner Banner
+
+
+                            </Link>
+                        </li>
+
 
                     </ul>
                     {/*navigation*/}
@@ -164,10 +186,10 @@ const DashboardSidebar = ({ children }) => {
                         <div class="offcanvas-header">
                             <div className="sidebar-header">
                                 <div>
-                                    <img src={logo} className="logo-icon" alt="logo icon" />
+                                    <img src={logo} className="logo-icon w-100" alt="logo icon" />
                                 </div>
                                 <div>
-                                    <h4 className="logo-text">ICare</h4>
+
                                 </div>
                                 <a class="" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                                     <div className="toggle-icon ms-auto"><i className="bx bx-first-page" />
@@ -294,6 +316,21 @@ const DashboardSidebar = ({ children }) => {
                                         </div>
                                     </ul>
                                 </li>
+                                <Link class="menu-title btn " type="button" to='/dashboard/contact-form'>
+                                    <i className="bx bx-atom" />Contact Form
+
+
+                                </Link>
+                                <Link class="menu-title btn " type="button" to='/dashboard/news-letter'>
+                                    <i className="bx bx-atom" />News Letter
+
+
+                                </Link>
+                                <Link class="menu-title btn " type="button" to='/dashboard/add-inner-banner'>
+                                    <i className="bx bx-atom" />Add inner Banner
+
+
+                                </Link>
 
 
                             </ul>
@@ -657,9 +694,9 @@ const DashboardSidebar = ({ children }) => {
                             </div>
                             <div className="user-box dropdown border-light-2">
                                 <a className="d-flex align-items-center nav-link dropdown-toggle dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <img src="assets-dashboard/images/avatars/avatar-2.png" className="user-img" alt="user avatar" />
+                                    <img src={avater} className="user-img" alt="user avatar" />
                                     <div className="user-info ps-3">
-                                        <p className="user-name mb-0 text-white">Admin Area</p>
+                                        <p className="user-name mb-0 text-white">Admin</p>
                                         <p className="designattion mb-0">{user.email}</p>
                                     </div>
                                 </a>
@@ -713,7 +750,7 @@ const DashboardSidebar = ({ children }) => {
                 {/*Start Back To Top Button*/} <a href="javaScript:;" className="back-to-top"><i className="bx bxs-up-arrow-alt" /></a>
                 {/*End Back To Top Button*/}
                 <footer className="page-footer">
-                    <p className="mb-0">Copyright © 2021. All right reserved.</p>
+                    <p className="mb-0">Copyright © 2022. All right reserved.Develop by DITS</p>
                 </footer>
             </div>
             {/*end wrapper*/}

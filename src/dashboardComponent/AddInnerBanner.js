@@ -4,36 +4,58 @@ import { useForm } from "react-hook-form";
 import fetcher from "../api";
 import { ToastContainer, toast } from 'react-toastify';
 
-const AddReward = () => {
+import { Link } from "react-router-dom";
+
+
+const AddInnerBanner = () => {
+
     const [imageURL, setImageURL] = useState("");
     const [loading, setLoading] = useState(false);
-    const [certi, setCeti] = useState([])
+
+    const [collages, setCollages] = useState([]);
     const [toggle, setToggle] = useState(false);
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/home-certificate')
+        fetch('http://localhost:5000/inner_banner_get')
             .then(res => res.json())
-            .then(data => setCeti(data));
-    }, [toggle])
+            .then(data => setCollages(data))
+    }, [toggle, loading]);
+    console.log(collages)
 
-    const { register, handleSubmit, reset } = useForm();
+    const { register, handleSubmit, reset, setValue } = useForm();
 
     const onSubmit = async (data) => {
         const serviceData = {
             ...data,
-            status: '1',
-            picture: imageURL,
+            status: "1",
+            image: imageURL,
         };
 
-        const res = await fetcher.post("home_certificate", serviceData);
-        console.log(res);
-        reset();
-        setImageURL("");
+
+        console.log(serviceData)
+        const res = await fetcher.put(`inner_banner_update/${data.page}`, serviceData);
+
+
+
+        if (res.data.acknowledged == true) {
+            toast.success("Data successfully updated")
+            reset();
+            setToggle(!toggle)
+            setImageURL("");
+        }
+        else {
+            toast.error('Fail to update data')
+            console.log(data.status);
+        }
+
+
+
+
     };
 
     const handleUploadImage = (event) => {
-        setLoading(true);
+        // setLoading(true);
         const image = event.target.files[0];
 
         const formData = new FormData();
@@ -48,7 +70,7 @@ const AddReward = () => {
             .then((res) => {
                 setImageURL(res.data.result.filename)
 
-                setLoading(false);
+                // setLoading(false);
             })
             .catch((error) => {
                 console.log(error);
@@ -58,34 +80,6 @@ const AddReward = () => {
 
 
 
-
-
-    const deleteCourse = (id) => {
-        const proced = window.confirm('Are You Sure??');
-        if (proced) {
-
-            const url = `http://localhost:5000/award_home_delete/${id}`;
-            fetch(url, {
-                method: 'DELETE'
-
-            })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data);
-                    if (data.acknowledged == true) {
-                        toast.success('Delete Successfully')
-                        reset();
-                        setToggle(!toggle)
-                    }
-                    else {
-                        toast.error('Fail to update data')
-                        console.log(data.status);
-                    }
-                })
-
-        }
-
-    }
 
 
 
@@ -104,10 +98,27 @@ const AddReward = () => {
 
         console.log(statusData)
 
-        const res = await fetcher.put(`award-status/${id}`, statusData);
+        const res = await fetcher.put(`collage-status/${id}`, statusData);
         console.log(res)
-        setToggle(!toggle)
         // toast('Data Successfully uploaded')
+    }
+
+
+    let imagepath = ' ';
+
+    const handleEdit = (page) => {
+
+        const remaining = collages.find(p => p.page == page);
+
+
+        setValue('collageName', `${remaining.collageName}`)
+        setValue('page', `${remaining.page}`)
+        setValue('page', `${remaining.page}`)
+
+        imagepath = remaining.image;
+        console.log(imagepath)
+        setLoading(!loading)
+
     }
 
 
@@ -126,16 +137,37 @@ const AddReward = () => {
                                     <div className="card-title d-flex align-items-center">
                                         <div><i className="bx bxs-user me-1 font-22 text-info" />
                                         </div>
-                                        <h5 className="mb-0 text-info">Add Certificate</h5>
+                                        <h5 className="mb-0 text-info">Add Collage</h5>
                                     </div>
                                     <hr />
 
 
                                     <form onSubmit={handleSubmit(onSubmit)} >
+                                        <div className="row mb-3">
+                                            <label htmlFor="inputEnterYourName" className="col-sm-3 col-form-label">Enter Title</label>
+                                            <div className="col-sm-9">
+                                                <input type="text" className="form-control" id="inputEnterYourName" placeholder="Enter Your Name"
+                                                    {...register("collageName")}
 
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="row mb-3">
+                                            <div className="col-lg-9 mx-auto">
+                                                <select class="form-select "
+                                                    {...register("page", { required: true })}
+                                                    aria-label="Default select example">
+                                                    <option selected>Select the page </option>
+                                                    <option value="About">About</option>
+                                                    <option value="Colleges">Colleges</option>
+                                                    <option value="Courses">Courses</option>
+                                                    <option value="Academics">Academics</option>
+                                                    <option value="Admission">Admission</option>
+                                                    <option value="Contact">Contact</option>
+                                                </select>
+                                            </div>
 
-
-
+                                        </div>
 
 
                                         <div class="row">
@@ -153,6 +185,8 @@ const AddReward = () => {
                                         <div className="row">
                                             <label className="col-sm-3 col-form-label" />
                                             <div className="col-sm-9">
+
+
                                                 <button type="submit" className="btn btn-info px-5">Submit</button>
                                             </div>
                                         </div>
@@ -178,7 +212,7 @@ const AddReward = () => {
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Title</th>
-                                        <th scope="col">Subtitle</th>
+
 
                                         <th scope="col">Image</th>
 
@@ -188,29 +222,22 @@ const AddReward = () => {
                                 </thead>
                                 <tbody>
                                     {
-                                        certi.map((b, i) =>
+                                        collages.map((c, i) =>
 
                                             <tr>
                                                 <th scope="row">{i + 1}</th>
-                                                {/* <td>{chooseData.mainTitle}</td> */}
-                                                <td> </td>
+
+                                                <td> {c.collageName}</td>
                                                 <td>
-                                                    <img src={`http://localhost:5000/${b.picture}`} className='img-fluid' />
+                                                    <img src={`http://localhost:5000/${c?.image}`} className='img-fluid' />
 
                                                 </td>
-                                                <td>Otto</td>
-                                                {/* <td>
-                                                    <button onClick={() => statusChange(c._id, c.status)}>{c.status == '1' ? "Active" : "Inactive"}</button>
-                                                </td>
+
+                                                <td><button className={(c?.status == "1") ? 'btn btn-success' : "btn btn-danger"} onClick={() => statusChange(c?._id, c.status)}>{c?.status == '1' ? "Active" : "Inactive"}</button></td>
                                                 <td>
-                                                    <button onClick={() => deleteCourse(c._id)} > <i class="fa-solid fa-trash-can"></i></button>
 
-                                                </td> */}
-
-                                                <td><button className={(b.status == "1") ? 'btn btn-success' : "btn btn-danger"} onClick={() => statusChange(b._id, b.status)}>{b.status == '1' ? "Active" : "Inactive"}</button></td>
-                                                <td>
-                                                    <button className="text-danger btn border-0" onClick={() => deleteCourse(b._id)} > <i class="fa-solid fa-trash-can"></i></button>
-
+                                                    <button onClick={() => handleEdit(c.page)} className="text-primary border-0">      <i class="fa-solid fa-pen-to-square"></i>
+                                                    </button>
 
                                                 </td>
                                             </tr>
@@ -227,4 +254,4 @@ const AddReward = () => {
     );
 };
 
-export default AddReward;
+export default AddInnerBanner;

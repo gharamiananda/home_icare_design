@@ -78,7 +78,7 @@ const AddTestimonial = () => {
 
         console.log(statusData)
 
-        const res = await fetcher.put(`award-status/${id}`, statusData);
+        const res = await fetcher.put(`testimonial-status/${id}`, statusData);
         setToggle(!toggle)
     }
 
@@ -136,10 +136,10 @@ const AddTestimonial = () => {
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <th scope="col">Title</th>
-                                            <th scope="col">Subtitle</th>
+                                            <th scope="col">Username</th>
+                                            <th scope="col">Review Description</th>
 
-                                            <th scope="col">Image</th>
+
 
                                             <th scope="col">Status</th>
                                             <th scope="col">Action</th>
@@ -147,24 +147,22 @@ const AddTestimonial = () => {
                                     </thead>
                                     <tbody>
                                         {
-                                            testimonial.map(c =>
+                                            testimonial.map((b, i) =>
 
                                                 <tr>
-                                                    <th scope="row">1</th>
-                                                    {/* <td>{chooseData.mainTitle}</td> */}
-                                                    <td> </td>
-                                                    <td>
-                                                        {/* <img src={`http://localhost:5000/${c.image}`} className='img-fluid' /> */}
+                                                    <th scope="row">{i + 1}</th>
 
-                                                    </td>
-                                                    <td>Otto</td>
+                                                    <td> {b.username}</td>
+
+                                                    <td>{b.desc}</td>
+
+
+
+                                                    <td><button className={(b.status == "1") ? 'btn btn-success' : "btn btn-danger"} onClick={() => statusChange(b._id, b.status)}>{b.status == '1' ? "Active" : "Inactive"}</button></td>
                                                     <td>
-                                                        <button onClick={() => statusChange(c._id, c.status)}>{c.status == '1' ? "Active" : "Inactive"}</button>
-                                                    </td>
-                                                    <td>
-                                                        <button onClick={() => deleteCourse(c._id)} > <i class="fa-solid fa-trash-can"></i></button>
-                                                        <Link
-                                                            to={`${c._id}`}
+                                                        <button className="text-danger btn border-0" onClick={() => deleteCourse(b._id)} > <i class="fa-solid fa-trash-can"></i></button>
+                                                        <Link className="text-primary "
+                                                            to={`${b._id}`}
                                                         > <i class="fa-solid fa-pen-to-square"></i></Link>
 
                                                     </td>

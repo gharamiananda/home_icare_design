@@ -257,7 +257,7 @@ const AddOverView = () => {
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Title</th>
-                                        <th scope="col">Subtitle</th>
+
 
                                         <th scope="col">Image</th>
 
@@ -271,20 +271,28 @@ const AddOverView = () => {
                                         <th scope="row">1</th>
                                         <td>{overviewData.mainTitle}</td>
 
-                                        <td> </td>
+
                                         <td>
                                             <img src={`http://localhost:5000/${overviewData.image}`} className='img-fluid' />
 
                                         </td>
                                         <td>
-                                            <button onClick={() => statusChange(overviewData._id, overviewData.status)}>{overviewData.status == '1' ? "Active" : "Inactive"}</button>
+                                            <button
+                                                className={(overviewData.status == "1") ? 'btn btn-success' : "btn btn-danger"}
+                                                onClick={() => statusChange(overviewData._id, overviewData.status)}>{overviewData.status == '1' ? "Active" : "Inactive"}</button>
                                         </td>
 
                                         <td>
 
-                                            <button onClick={handleEdit}>      <i class="fa-solid fa-pen-to-square"></i>
+                                            <button onClick={handleEdit}
+                                                className="text-primary border-0">      <i class="fa-solid fa-pen-to-square"></i>
                                             </button>
                                         </td>
+
+
+
+
+
                                     </tr>
 
 

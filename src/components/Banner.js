@@ -49,7 +49,7 @@ const Banner = () => {
                 spaceBetween={0}
                 slidesPerView={1}
                 navigation
-                loop={(!remainings.length == 1) && true}
+                loop={true}
 
                 autoplay={{
                     delay: 3500,

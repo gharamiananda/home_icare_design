@@ -1,6 +1,35 @@
+import { async } from '@firebase/util';
 import React from 'react';
+import { useForm } from "react-hook-form";
+import { NavLink } from 'react-router-dom';
+import fetcher from '../api';
+import { ToastContainer, toast } from 'react-toastify';
+
 
 const Footer = () => {
+    const { register, handleSubmit } = useForm();
+
+
+    const onSubmit = async data => {
+        console.log(data.email)
+        const res = await fetcher.post('news_post', data);
+
+        if (res.data.insertedId) {
+            toast.success('Data sent  Successfully')
+
+
+        }
+        else {
+            toast.error('Fail to update data')
+
+        }
+
+
+    };
+    let activeStyle = {
+
+        color: "#0a58ca"
+    };
     return (
         <footer className="site-footer">
             {/* <div class="site-footer-img-1">
@@ -29,12 +58,41 @@ const Footer = () => {
                             <div className="footer-widget__column footer-widget__explore clearfix">
                                 <h3 className="footer-widget__title">Useful Links</h3>
                                 <ul className="footer-widget__explore-list list-unstyled clearfix">
-                                    <li><a href="about-us.html">About ICARE</a></li>
-                                    <li><a href="#">Colleges</a></li>
-                                    <li><a href="courses.html">Courses</a></li>
-                                    <li><a href="academics.html">Academics</a></li>
-                                    <li><a href="admission.html">Admission</a></li>
-                                    <li><a href="contact-us.html">Contact Us</a></li>
+                                    <li >
+                                        <NavLink style={({ isActive }) =>
+                                            isActive ? activeStyle : undefined
+                                        } to="/">Home </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink style={({ isActive }) =>
+                                            isActive ? activeStyle : undefined
+                                        } to="/about-icare">About </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink style={({ isActive }) =>
+                                            isActive ? activeStyle : undefined
+                                        } to="/collages">Colleges</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink style={({ isActive }) =>
+                                            isActive ? activeStyle : undefined
+                                        } to="/courses">Courses</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink style={({ isActive }) =>
+                                            isActive ? activeStyle : undefined
+                                        } to="/academics">Academics</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink style={({ isActive }) =>
+                                            isActive ? activeStyle : undefined
+                                        } to="/admission">Admission</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink style={({ isActive }) =>
+                                            isActive ? activeStyle : undefined
+                                        } to="/contact">Contact</NavLink>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -42,12 +100,25 @@ const Footer = () => {
                             <div className="footer-widget__column footer-widget__newsletter clearfix">
                                 <h3 className="footer-widget__title">Newsletter</h3>
                                 <p className="footer-widget__newsletter-text">Subscribe to our newsletter and get update in your inbox.</p>
-                                <form className="footer-widget__newsletter-form">
+
+
+
+
+                                <form className="footer-widget__newsletter-form"
+                                    onSubmit={handleSubmit(onSubmit)}>
                                     <div className="footer-widget__newsletter-input-box">
-                                        <input type="email" placeholder="Enter Email Address" name="email" />
+                                        <input type="email" placeholder="Enter Email Address" name="email"
+
+                                            {...register("email", { required: true })}
+                                        />
                                         <button type="submit" className="footer-widget__newsletter-btn thm-btn"><i className="fa fa-arrow-right" />Subscribe</button>
                                     </div>
                                 </form>
+
+
+
+
+
                             </div>
                         </div>
                         <div className="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
@@ -86,6 +157,8 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
+
+            < ToastContainer />
         </footer>
     );
 };

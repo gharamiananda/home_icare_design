@@ -202,7 +202,7 @@ const AddWhyChooseUs = () => {
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Title</th>
-                                        <th scope="col">Subtitle</th>
+
 
                                         <th scope="col">Image</th>
 
@@ -215,19 +215,24 @@ const AddWhyChooseUs = () => {
                                     <tr>
                                         <th scope="row">1</th>
                                         <td>{chooseData.mainTitle}</td>
-                                        <td> </td>
+
                                         <td>
                                             <img src={`http://localhost:5000/${chooseData.image}`} className='img-fluid' />
 
                                         </td>
-                                        <td>Otto</td>
+
                                         <td>
-                                            <button onClick={() => statusChange(chooseData._id, chooseData.status)}>{chooseData.status == '1' ? "Active" : "Inactive"}</button>
+                                            <button
+                                                className={(chooseData.status == "1") ? 'btn btn-success' : "btn btn-danger"}
+
+                                                onClick={() => statusChange(chooseData._id, chooseData.status)}>{chooseData.status == '1' ? "Active" : "Inactive"}</button>
                                         </td>
 
                                         <td>
 
-                                            <button onClick={handleEdit}>      <i class="fa-solid fa-pen-to-square"></i>
+                                            <button onClick={handleEdit}
+                                                className='border-0 text-primary'
+                                            >      <i class="fa-solid fa-pen-to-square"></i>
                                             </button>
                                         </td>
                                     </tr>

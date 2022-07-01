@@ -276,12 +276,16 @@ const AddMissionAbout = () => {
                                         <td>{missionData.percentage} </td>
 
                                         <td>
-                                            <button onClick={() => statusChange(missionData._id, missionData.status)}>{missionData.status == '1' ? "Active" : "Inactive"}</button>
+                                            <button
+                                                className={(missionData.status == "1") ? 'btn btn-success' : "btn btn-danger"}
+                                                onClick={() => statusChange(missionData._id, missionData.status)}>{missionData.status == '1' ? "Active" : "Inactive"}</button>
                                         </td>
 
                                         <td>
 
-                                            <button onClick={handleEdit}>      <i class="fa-solid fa-pen-to-square"></i>
+                                            <button onClick={handleEdit}
+                                                className="text-primary border-0"
+                                            >      <i class="fa-solid fa-pen-to-square"></i>
                                             </button>
                                         </td>
                                     </tr>

@@ -242,12 +242,16 @@ const AddVision = () => {
                                         <td>{missionData.secondTitle} </td>
 
                                         <td>
-                                            <button onClick={() => statusChange(missionData._id, missionData.status)}>{missionData.status == '1' ? "Active" : "Inactive"}</button>
+                                            <button
+                                                className={(missionData.status == "1") ? 'btn btn-success' : "btn btn-danger"}
+                                            onClick={() => statusChange(missionData._id, missionData.status)}>{missionData.status == '1' ? "Active" : "Inactive"}</button>
                                         </td>
 
                                         <td>
 
-                                            <button onClick={handleEdit}>      <i class="fa-solid fa-pen-to-square"></i>
+                                            <button
+                                                className="text-primary border-0"
+                                            onClick={handleEdit}>      <i class="fa-solid fa-pen-to-square"></i>
                                             </button>
                                         </td>
                                     </tr>

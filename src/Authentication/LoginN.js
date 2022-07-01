@@ -24,11 +24,11 @@ const LoginN = () => {
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
 
-    useEffect(() => {
-        if (user) {
-            navigate(from, { replace: true });
-        }
-    }, [user, from, navigate])
+    // useEffect(() => {
+    //     if (user) {
+    //         navigate(from, { replace: true });
+    //     }
+    // }, [user, from, navigate])
 
     if (loading) {
         return <p>Loading...</p>
@@ -40,13 +40,39 @@ const LoginN = () => {
 
     const onSubmit = data => {
         signInWithEmailAndPassword(data.email, data.password);
+
+
+
+
+
+        if (user) {
+            const url = 'http://localhost:5000/login_check';
+
+
+            fetch(url, {
+                method: 'POST',
+                body: JSON.stringify({
+                    email: user.email
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+                .then((response) => response.json())
+                .then((data) => {
+                    localStorage.setItem("accessToken", data.token);
+                    navigate(from, { replace: true });
+                });
+
+
+        }
     }
 
     return (
 
         <>
 
-            <div className="wrapper">
+            <div className="login">
                 <div className="authentication-header" />
                 <div className="section-authentication-signin d-flex align-items-center justify-content-center my-5 my-lg-0">
                     <div className="container-fluid">
@@ -73,7 +99,7 @@ const LoginN = () => {
                                             <div className="form-body">
                                                 <form onSubmit={handleSubmit(onSubmit)}>
 
-                                                    <div className="form-control w-full max-w-xs">
+                                                    <div className="form-control w-full max-w-xs mb-3">
                                                         <label className="label">
                                                             <span className="label-text">Email</span>
                                                         </label>
