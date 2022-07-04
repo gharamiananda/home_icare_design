@@ -4,6 +4,7 @@ import { Navigation, Autoplay, Pagination, Scrollbar, A11y } from 'swiper';
 import './OurCollage.css';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Link } from 'react-router-dom';
 
 const Collage = () => {
     const [collages, setCollages] = useState([]);
@@ -80,7 +81,7 @@ const Collage = () => {
                                             <h3 className="services-one__title"><a href="#">{c.collageName}</a></h3>
                                             <p className="services-one__text clgdescription">{c.collageDesc}</p>
                                             <div className="services-one__read-more">
-                                                <a href={c.collageLink}>Read More <i className="fa fa-arrow-right" /></a>
+                                                <Link to={`/collages/${c.collageName.split(' ').join('-')}`}>Read More <i className="fa fa-arrow-right" /></Link>
                                             </div>
                                         </div>
                                     </div>

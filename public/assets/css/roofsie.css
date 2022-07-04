@@ -7422,6 +7422,7 @@ ul {
   position: relative;
   display: block;
   margin-left: 70px;
+  min-height: 500px;
 }
 
 .about-three__right .section-title {

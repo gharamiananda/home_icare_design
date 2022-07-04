@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import { useForm } from "react-hook-form";
@@ -17,6 +17,26 @@ const Contact = () => {
     };
 
 
+
+    const [innerBan, setInnerBan] = useState({});
+    const [ibd, setibd] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/inner_banner_get')
+            .then(res => res.json())
+            .then(data => setibd(data))
+    }, []);
+
+
+    useEffect(() => {
+        const fib = ibd.find(ib => ib.page == 'Contact')
+
+        setInnerBan(fib)
+    }, [
+        ibd
+    ])
+
+
     return (
 
         <div>
@@ -24,7 +44,7 @@ const Contact = () => {
             <Header />
             {/*Page Header Start*/}
             <section className="page-header">
-                <div className="page-header-bg" style={{ backgroundImage: 'url(assets/images/backgrounds/main1.jpg)' }}>
+                <div className="page-header-bg" style={{ backgroundImage: `url(http://localhost:5000/${innerBan?.image})` }}>
                 </div>
                 <div className="container">
                     <div className="page-header__inner">
@@ -33,7 +53,7 @@ const Contact = () => {
                             <li><span>/</span></li>
                             <li>Contact</li>
                         </ul>
-                        <h2>Contact Us</h2>
+                        <h2>{innerBan?.collageName}</h2>
                     </div>
                 </div>
             </section>

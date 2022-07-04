@@ -66,7 +66,7 @@ const Footer = () => {
                                     <li>
                                         <NavLink style={({ isActive }) =>
                                             isActive ? activeStyle : undefined
-                                        } to="/about-icare">About </NavLink>
+                                        } to="/about">About </NavLink>
                                     </li>
                                     <li>
                                         <NavLink style={({ isActive }) =>

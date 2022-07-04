@@ -83,11 +83,6 @@ const DashboardSidebar = ({ children }) => {
                         </li>
                         <li>
 
-
-
-
-
-
                             <button class="menu-title btn " type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample3">
                                 <i className="bx bx-atom" />About Icare
 
@@ -101,10 +96,27 @@ const DashboardSidebar = ({ children }) => {
                                 </div>
                             </ul>
 
+                        </li>
+
+                        <li>
+
+                            <button class="menu-title btn " type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample9" aria-expanded="false" aria-controls="collapseExample9">
+                                <i className="bx bx-atom" />Collage Detail
 
 
+                            </button>
+
+                            <ul class="collapse" id="collapseExample9">
+                                <div class="card card-body">
+                                    <li> <Link to="/dashboard/collage-detail-about"><i className="bx bx-right-arrow-alt" />Collage Detail About</Link>
+                                    </li>
+                                    <li> <Link to="/dashboard/read-more"><i className="bx bx-right-arrow-alt" />Read More</Link>
+                                    </li>
+                                </div>
+                            </ul>
 
                         </li>
+
 
 
                         <li>

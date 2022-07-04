@@ -42,7 +42,7 @@ const AddInnerBanner = () => {
             toast.success("Data successfully updated")
             reset();
             setToggle(!toggle)
-            setImageURL("");
+
         }
         else {
             toast.error('Fail to update data')
@@ -84,7 +84,7 @@ const AddInnerBanner = () => {
 
 
     const statusChange = async (id, stat) => {
-        setToggle(!toggle)
+
         let statusData;
 
         if (stat == '1') {
@@ -99,6 +99,8 @@ const AddInnerBanner = () => {
         console.log(statusData)
 
         const res = await fetcher.put(`collage-status/${id}`, statusData);
+        setToggle(!toggle);
+        setLoading(!loading)
         console.log(res)
         // toast('Data Successfully uploaded')
     }
@@ -160,6 +162,7 @@ const AddInnerBanner = () => {
                                                     <option selected>Select the page </option>
                                                     <option value="About">About</option>
                                                     <option value="Colleges">Colleges</option>
+                                                    <option value="CollageDetail">Colleges Detail</option>
                                                     <option value="Courses">Courses</option>
                                                     <option value="Academics">Academics</option>
                                                     <option value="Admission">Admission</option>

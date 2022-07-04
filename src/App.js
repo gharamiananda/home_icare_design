@@ -51,6 +51,9 @@ import SendPasswordReset from './Authentication/SendPasswordReset';
 import ContactForm from './dashboardComponent/ContactForm';
 import NewsLetter from './dashboardComponent/NewsLetter';
 import AddInnerBanner from './dashboardComponent/AddInnerBanner';
+import CollageDetailpage from './pages/CollageDetailpage/CollageDetailpage';
+import CollageDetailAbout from './dashboardComponent/CollageDetailAbout';
+import AddCollageDetailsMore from './dashboardComponent/AddCollageDetailsMore';
 
 
 
@@ -94,6 +97,8 @@ function App() {
             <Route path="contact-form" element={<ContactForm />} />
             <Route path="news-letter" element={<NewsLetter />} />
             <Route path="add-inner-banner" element={<AddInnerBanner />} />
+            <Route path="collage-detail-about" element={<CollageDetailAbout />} />
+            <Route path="read-more" element={< AddCollageDetailsMore />} />
 
           </Route>
 
@@ -101,6 +106,7 @@ function App() {
 
           <Route path="/about" element={<Aboutpage />} />
           <Route path="/collages" element={<Collagespage />} />
+          <Route path="/collages/:id" element={<CollageDetailpage />} />
           <Route path="/courses" element={<Coursepage />} />
 
           <Route path="/admission" element={<Admissionpage />} />

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import logo from '../images/resources/icare.png'
 
 const Header = () => {
     let activeStyle = {
@@ -39,7 +40,7 @@ const Header = () => {
                             <div className="main-header-two__shape-6" />
                             <div className="main-header-two__shape-7" />
                             <div className="main-header-two__logo">
-                                <Link to="/"><img src="assets/images/resources/icare.png" alt className="mainlogoheader" /></Link>
+                                <Link to="/"><img src={logo} alt className="mainlogoheader" /></Link>
                             </div>
                             <div className="main-header-two__address">
                                 <ul className="list-unstyled main-header-two__address-list">
@@ -94,7 +95,7 @@ const Header = () => {
                                             <li>
                                                 <NavLink style={({ isActive }) =>
                                                     isActive ? activeStyle : undefined
-                                                } to="/about-icare">About </NavLink>
+                                                } to="/about">About </NavLink>
                                             </li>
                                             <li>
                                                 <NavLink style={({ isActive }) =>
@@ -163,7 +164,7 @@ const Header = () => {
                             <li>
                                 <NavLink style={({ isActive }) =>
                                     isActive ? activeStyle : undefined
-                                } to="/about-icare">About </NavLink>
+                                } to="/about">About </NavLink>
                             </li>
                             <li>
                                 <NavLink style={({ isActive }) =>
