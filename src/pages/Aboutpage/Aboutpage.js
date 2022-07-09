@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-
+import book1 from '../../images/shapes/section-title-shape-1.png'
 import Awards from '../../components/Awards';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
@@ -11,13 +11,29 @@ const Aboutpage = () => {
     const [toggle, setToggle] = useState(false);
     const [mission, setmission] = useState([]);
     const [missionData, setmissionData] = useState({});
+    const [filterteam, setFilterTeam] = useState([])
+    const [team, setTeam] = useState([]);
 
+
+
+
+    useEffect(() => {
+        fetch('http://localhost:5000/team_member_get')
+            .then(res => res.json())
+            .then(data => setTeam(data))
+    }, []);
 
     useEffect(() => {
         fetch('http://localhost:5000/vission_home')
             .then(res => res.json())
             .then(data => setmission(data))
     }, [toggle]);
+
+    useEffect(() => {
+        const remain = team.filter(t => t.status == '1')
+
+        setFilterTeam(remain)
+    }, [team]);
 
     useEffect(() => {
         mission.map(a => setmissionData(a))
@@ -82,7 +98,7 @@ const Aboutpage = () => {
                                 <div className="section-sub-title-box">
                                     <p className="section-sub-title">{missionData.firstTitle}</p>
                                     <div className="section-title-shape-1">
-                                        <img src="assets/images/shapes/section-title-shape-1.png" alt />
+                                        <img src={book1} alt />
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +135,8 @@ const Aboutpage = () => {
                                 <div className="section-sub-title-box">
                                     <p className="section-sub-title">{missionData.secondTitle}</p>
                                     <div className="section-title-shape-1">
-                                        <img src="assets/images/shapes/section-title-shape-1.png" alt />
+                                        <img src={book1} alt />
+
                                     </div>
                                 </div>
                             </div>
@@ -129,7 +146,59 @@ const Aboutpage = () => {
                         </div>
                     </div>
                 </div>
-                {/* ===============mission & vision======================== */}
+
+                <section className="team-page">
+                    <div className="container">
+
+
+                        <div className="section-title text-left">
+                            <div className="section-sub-title-box">
+                                <p className="section-sub-title"> Meet Our Team</p>
+                                <div className="section-title-shape-1">
+                                    <img src={book1} alt />
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="row">
+                            {
+                                filterteam.map(t =>
+
+                                    <div className="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                                        <div className="team-one__single">
+                                            <div className="team-one__img-box">
+                                                <div className="team-one__img">
+                                                    <img src={`http://localhost:5000/${t.image}`} alt />
+                                                </div>
+                                                <ul className="list-unstyled team-one__social">
+                                                    <li><a href={t.social1} ><i className="fab fa-facebook-square" /></a></li>
+                                                    <li><a href="#"><i className="fab fa-twitter" /></a></li>
+
+                                                    <li><a href="#"><i className="fab fa-instagram" /></a></li>
+                                                </ul>
+                                            </div>
+                                            <div className="team-one__content-box">
+                                                <div className="team-one__content">
+                                                    <h3 className="team-one__name"><a href="team-details.html">{t.membername}</a></h3>
+                                                    <p className="team-one__sub-title">{t.designation}</p>
+                                                    <ul className="list-unstyled team-one__social-two">
+                                                        <li><a href="#"><i className="fas fa-share-alt" /></a></li>
+                                                    </ul>
+                                                    <div className="team-one__shape">
+                                                        <img src="assets/images/shapes/team-one-shape.png" alt />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            }
+
+                        </div>
+                    </div>
+                </section>
+
 
 
                 <Testimonial />

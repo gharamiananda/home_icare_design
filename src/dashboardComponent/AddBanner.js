@@ -41,12 +41,13 @@ const AddBanner = () => {
                 .then(data => {
                     console.log(data);
 
-
+                    toast.success("Successfully delete the data!");
+                    setToggle(!toggle)
                     // const remaining = items.filter(item => item._id !== id);
                     // setItems(remaining);
                 })
 
-            toast("Wow so easy!");
+
         }
 
     }

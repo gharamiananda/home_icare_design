@@ -37,6 +37,8 @@ import BannerDetails from './dashboardComponent/BannerDetails';
 import AddVision from './dashboardComponent/AddVision';
 import FeatureDetails from './pages/Detailspages/FeatureDetails';
 import CourseDetails from './pages/Detailspages/CourseDetails';
+import CollageCourseDetail from './pages/Detailspages/CollageCourseDetail';
+
 import ColllageDetails from './pages/Detailspages/ColllageDetails';
 import TestimonialDetail from './pages/Detailspages/TestimonialDetail';
 import AddMissionAbout from './dashboardComponent/AddMissionAbout';
@@ -54,6 +56,8 @@ import AddInnerBanner from './dashboardComponent/AddInnerBanner';
 import CollageDetailpage from './pages/CollageDetailpage/CollageDetailpage';
 import CollageDetailAbout from './dashboardComponent/CollageDetailAbout';
 import AddCollageDetailsMore from './dashboardComponent/AddCollageDetailsMore';
+import AddTeam from './dashboardComponent/AddTeam';
+import AddCollageCourse from './dashboardComponent/AddCollageCourse';
 
 
 
@@ -99,6 +103,9 @@ function App() {
             <Route path="add-inner-banner" element={<AddInnerBanner />} />
             <Route path="collage-detail-about" element={<CollageDetailAbout />} />
             <Route path="read-more" element={< AddCollageDetailsMore />} />
+            <Route path="add-team" element={< AddTeam />} />
+            <Route path="add-collage-course" element={< AddCollageCourse />} />
+            <Route path="add-collage-course/:course" element={< CollageCourseDetail />} />
 
           </Route>
 

@@ -1,43 +1,66 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
-import fetcher from "../api";
+import fetcher from "../../api";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate, useLocation, Link , useParams } from 'react-router-dom';
 
 
 
-const AddCollageDetailsMore = () => {
+const CollageCourseDetail = () => {
+
+const {course}
+ = useParams();
+
+const navigate = useNavigate();
+
+const [collageCourse, setCollageCourse] = useState([]);
+    const [toggle, setToggle] = useState(false);
+
+    const [mission2, setmission2] = useState([]);
+
+
+  useEffect(() => {
+        fetch('http://localhost:5000/collage_course_get')
+            .then(res => res.json())
+            .then(data => setCollageCourse(data))
+    }, [course, toggle]);
+
+
     const [imageURLOne, setImageURLOne] = useState("");
     const [imageURLTwo, setImageURLTwo] = useState("");
     const [loading, setLoading] = useState(false);
     const [mission, setmission] = useState([]);
     const [missionData, setmissionData] = useState({});
-    const [toggle, setToggle] = useState(false);
+const [modal, setModal] = useState(false)
+    const [myId, setMyId] = useState(' ')
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/collage_details_about_get')
-            .then(res => res.json())
-            .then(data => setmission(data))
-    }, [toggle]);
+   const find  = collageCourse.find(c=> c._id == course)
 
-    useEffect(() => {
-        mission.map(a => setmissionData(a))
-    }, [mission]);
+   setmission2(find)
 
-    const { register, handleSubmit, reset, setValue } = useForm();
+     setValue('course', `${mission2?.course}`)
+
+        setValue('collage', `${mission2?.collage}`)
+    }, [collageCourse, toggle]);
+
+  console.log(mission2)
+
+    const { register, handleSubmit, reset, setValue} = useForm();
+    // const { register2, handleSubmit2, reset2, setValue } = useForm();
 
     const onSubmit = async (data) => {
         const testimonialData = {
             ...data,
-
-
+            status: '1'
 
 
         };
         console.log(testimonialData, data.collage)
 
-        const res = await fetcher.put(`collage_details_more_update/${data.collage}`, testimonialData);
+        const res = await fetcher.put(`collage_course_update/${course}`, testimonialData);
 
         console.log(testimonialData)
         setToggle(!toggle)
@@ -47,20 +70,19 @@ const AddCollageDetailsMore = () => {
 
 
         setToggle(!toggle)
+
+
+        navigate('/dashboard/add-collage-course')
     };
 
     const handleEdit = (id) => {
-        console.log(id)
+      
         const remaining = mission2.find(r => r._id == id)
-        setValue('phone', `${remaining.phone}`)
-        setValue('address', `${remaining.address}`)
+     
 
-        setValue('websiteLink', `${remaining.websiteLink}`)
-        setValue('collage', `${remaining.collage}`)
+        setMyId(id)
 
-
-
-
+console.log(myId)
 
 
 
@@ -68,7 +90,7 @@ const AddCollageDetailsMore = () => {
 
 
     const statusChange = async (id, stat) => {
-        setToggle(!toggle)
+      
         let statusData;
 
         if (stat == '1') {
@@ -82,22 +104,29 @@ const AddCollageDetailsMore = () => {
 
         console.log(statusData)
 
-        const res = await fetcher.put(`collage_details_more_status/${id}`, statusData);
+        const res = await fetcher.put(`collage_course_status/${id}`, statusData);
         console.log(res)
-        // toast('Data Successfully uploaded')
+       setToggle(!toggle)
     }
 
-    const [mission2, setmission2] = useState([]);
 
 
 
 
-    useEffect(() => {
-        fetch('http://localhost:5000/collage_details_more_get')
-            .then(res => res.json())
-            .then(data => setmission2(data))
-    }, [toggle]);
+   
+    
 
+  
+
+    const onSubmit2 = data =>{
+        
+        const remaining = mission2.find(r => r._id == myId)
+        console.log(remaining)
+        setValue('course', `${remaining?.course}`)
+
+        setValue('collage', `${remaining?.collage}`)
+        
+        };
 
     return (
         <>
@@ -143,48 +172,21 @@ const AddCollageDetailsMore = () => {
                                                     <option value="Research & Development Centre">	Research & Development Centre</option>
                                                     <option value="Dr B.C. Roy Hospital">Dr B.C. Roy Hospital</option>
                                                     <option value="Haldia Institute of Nursing Science">Haldia Institute of Nursing Science</option>
-                                                    <option value="INDIRA GANDHI NATIONAL OPEN UNIVERSITY">INDIRA GANDHI NATIONAL OPEN UNIVERSITY</option>
+                                                       <option value="INDIRA GANDHI NATIONAL OPEN UNIVERSITY">INDIRA GANDHI NATIONAL OPEN UNIVERSITY</option>
                                                 </select>
                                             </div>
 
                                         </div>
 
                                         <div className="row mb-3">
-                                            <label htmlFor="phone" className="col-sm-3 col-form-label"> Phone No</label>
+                                            <label htmlFor="course" className="col-sm-3 col-form-label"> Course Name</label>
                                             <div className="col-sm-9">
-                                                <input type="text" className="form-control" placeholder="Enter phone no"
-                                                    {...register("phone", { required: true })}
+                                                <input type="text" className="form-control" placeholder="Enter course no"
+                                                    {...register("course", { required: true })}
 
                                                 />
                                             </div>
                                         </div>
-
-
-
-                                        <div className="row mb-3">
-                                            <label htmlFor="address" className="col-sm-3 col-form-label">Address</label>
-                                            <div className="col-sm-9">
-                                                <textarea type="text" className="form-control" placeholder="Enter Collage Address"
-                                                    {...register("address")}
-
-                                                />
-                                            </div>
-                                        </div>
-
-
-                                        <div className="row mb-3">
-                                            <label htmlFor="websiteLink" className="col-sm-3 col-form-label"> websiteLink </label>
-                                            <div className="col-sm-9">
-                                                <input type="text" className="form-control" placeholder="Enter websiteLink no"
-                                                    {...register("websiteLink", { required: true })}
-
-                                                />
-                                            </div>
-                                        </div>
-
-
-
-
 
 
 
@@ -211,64 +213,14 @@ const AddCollageDetailsMore = () => {
 
             </div>
 
-            <div className="row" >
-                <div className="col">
-                    <div class="card">
-                        <div class="card-body">
-                            <table class="table table-bordered mb-0">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Collage Name</th>
-                                        <th scope="col">Contact</th>
+            
 
 
 
-
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    {
-                                        mission2.map((m, i) =>
-                                            <tr>
-                                                <th scope="row">{i + 1}</th>
-                                                <td>{m?.collage}</td>
-                                                <td>{m?.phone}</td>
-
-
-
-                                                <td>
-                                                    <button
-                                                        className={(m.status == "1") ? 'btn btn-success' : "btn btn-danger"}
-                                                        onClick={() => statusChange(m._id, m.status)}>{m.status == '1' ? "Active" : "Inactive"}</button>
-                                                </td>
-
-                                                <td>
-
-                                                    <button onClick={() => handleEdit(m._id)}
-                                                        className="text-primary border-0"
-                                                    >      <i class="fa-solid fa-pen-to-square"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
-
-                                        )
-                                    }
-
-
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
 
         </>
     );
 };
 
-export default AddCollageDetailsMore;
+export default CollageCourseDetail;

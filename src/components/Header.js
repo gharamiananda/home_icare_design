@@ -1,8 +1,25 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../images/resources/icare.png'
+import { useForm } from "react-hook-form";
+import fetcher from "../api";
 
 const Header = () => {
+
+
+
+
+    const { register, formState: { errors }, handleSubmit } = useForm();
+
+    const onSubmit = async (data) => {
+        console.log(data)
+        const res = await fetcher.post(`c_form_post`, data);
+        console.log(res);
+
+
+
+    };
+
     let activeStyle = {
 
         color: "#0a58ca"
@@ -130,7 +147,13 @@ const Header = () => {
                                         <a href="#" className="main-menu-two__search search-toggler icon-magnifying-glass" />
                                     </div>
                                     <div className="main-menu-two__btn-box">
-                                        <Link to="/contact" className="thm-btn main-menu-two__btn"> <i className="fa fa-arrow-right" /> Enquiry</Link>
+                                        <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop" className="thm-btn main-menu-two__btn border-0"> <i className="fa fa-arrow-right" /> Donate</button>
+
+
+
+
+
+
                                     </div>
                                 </div>
                             </div>
@@ -223,6 +246,156 @@ const Header = () => {
             <div className="stricky-header stricked-menu main-menu main-menu-two">
                 <div className="sticky-header__content" />{/* /.sticky-header__content */}
             </div>{/* /.stricky-header */}
+
+
+
+
+
+
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Icare</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <section className="contact-page">
+                                <div className="contact-page-shape-1">
+                                    {/* <img src="assets/images/shapes/contact-page-shape-1.png" alt /> */}
+                                </div>
+                                <div className="container">
+                                    <div className="section-title text-center">
+                                        <div className="section-sub-title-box">
+                                            <p className="section-sub-title">Donate us</p>
+                                            <div className="section-title-shape-1">
+                                                <img src="assets/images/shapes/section-title-shape-1.png" alt />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-xl-12">
+                                            <div className="contact-page__form">
+
+
+
+                                                {/* <input {...register("firstName", { required: true })} />
+                                {errors.firstName?.type === 'required' && "First name is required"}
+
+                                <input {...register("lastName", { required: true })} />
+                                {errors.lastName && <p>Last name is required</p>}
+
+                                <input {...register("mail", { required: "Email Address is required" })} />
+                                <p>{errors.mail?.message}</p>
+
+                                <input type="submit" />
+                            </form> */}
+
+
+                                                <form className="comment-one__form contact-form-validated" onSubmit={handleSubmit(onSubmit)}>
+                                                    <div className="row">
+                                                        <div className="col-xl-6">
+                                                            <div className="comment-form__input-box">
+                                                                <input type="text" placeholder="Name" name="name" {...register("name", { required: true })} />
+                                                                {errors.name?.type === 'required' && "First name is required"}
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-xl-6">
+                                                            <div className="comment-form__input-box">
+                                                                <input type="email" placeholder="Email" name="email"
+                                                                    {...register("email", { required: true })}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div className="row">
+                                                        <div className="col-xl-6">
+                                                            <div className="comment-form__input-box">
+                                                                <input type="text" placeholder="Phone" name="phone"
+                                                                    {...register("phone")}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-xl-6">
+                                                            <div className="comment-form__input-box">
+                                                                <input type="text" placeholder="Subject" name="subject"
+                                                                    {...register("subject", { required: true })}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="row">
+                                                        <div className="col-xl-6">
+                                                            <div className="comment-form__input-box">
+                                                                <input type="text" placeholder="City" name="City"
+                                                                    {...register("City")}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-xl-6">
+                                                            <div className="comment-form__input-box">
+                                                                <input type="text" placeholder="Organization" name="Organization"
+                                                                    {...register("Organization", { required: true })}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div className="row">
+                                                        <div className="col-xl-6">
+                                                            <div className="comment-form__input-box">
+                                                                <input type="text" placeholder="Zip/Pin code" name="Zip/Pin code"
+                                                                    {...register("code")}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                        <div className="col-xl-6">
+                                                            <div className="comment-form__input-box">
+                                                                <input type="text" placeholder="State" name="State"
+                                                                    {...register("State", { required: true })}
+                                                                />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div className="row">
+                                                        <div className="col-xl-12">
+                                                            <div className="comment-form__input-box text-message-box">
+                                                                <textarea name="message"
+                                                                    {...register("message", { required: true })}
+                                                                    placeholder="Special Instruction" />
+                                                            </div>
+                                                            <div className="comment-form__btn-box">
+                                                                <button type="submit" className="thm-btn comment-form__btn"> <i className="fa fa-arrow-right" /> Submit</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section >
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     );
 };

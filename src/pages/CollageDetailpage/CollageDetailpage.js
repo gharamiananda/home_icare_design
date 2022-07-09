@@ -29,7 +29,7 @@ const CollageDetailpage = () => {
 
 
     useEffect(() => {
-        const fib = ibd.find(ib => ib.page == 'Admission')
+        const fib = ibd.find(ib => ib.page == 'CollageDetail')
 
         setInnerBan(fib)
     }, [
@@ -49,7 +49,50 @@ const CollageDetailpage = () => {
     }, [mission, id]);
 
 
-    console.log(missionData, mission, id)
+
+    const [mission2, setmission2] = useState([]);
+    const [missionData2, setmissionData2] = useState({});
+
+
+
+    useEffect(() => {
+        fetch('http://localhost:5000/collage_details_more_get')
+            .then(res => res.json())
+            .then(data => setmission2(data))
+    }, []);
+
+    useEffect(() => {
+        const data = mission2.find(m => m.collage.split(' ').join('-') === id);
+        console.log(data)
+        setmissionData2(data)
+    }, [mission2, id]);
+
+
+const [collageCourse, setCollageCourse] = useState([]);
+const [collageCourse2, setCollageCourse2] = useState([]);
+const [collageCourser, setCollageCourser] = useState([]);
+
+
+  useEffect(() => {
+        fetch('http://localhost:5000/collage_course_get')
+            .then(res => res.json())
+            .then(data => setCollageCourse(data))
+    }, []);
+
+    useEffect(() => {
+        const data = collageCourse.filter(m =>( m.collage.split(' ').join('-') === id) && m.status == '1');
+        console.log(data)
+     setCollageCourse2(data)
+
+
+
+    }, [collageCourse]);
+console.log(collageCourse2,collageCourse)
+
+
+
+
+
     return (
         <>
 
@@ -65,7 +108,7 @@ const CollageDetailpage = () => {
                             <li><span>/</span></li>
                             <li>College</li>
                         </ul>
-                        <h2>{innerBan?.collageName}</h2>
+                        <h2>{missionData?.collage}</h2>
                     </div>
                 </div>
             </section>
@@ -119,272 +162,79 @@ const CollageDetailpage = () => {
                             </p>
                         </div>
                     </div>
-                    <section className="about-two clgdtsoutsection">
-                        <div className="container">
-                            <h2 className="dcousehdng">The courses offered are</h2>
-                            <div className="row">
-                                <div className="col-xl-6">
-                                    <div className="about-two__left">
-                                        <div className="section-title text-left">
-                                            <div className="section-sub-title-box">
-                                                <p className="section-sub-title">B. Tech</p>
-                                                <div className="section-title-shape-1">
-                                                    <img src="assets/images/shapes/section-title-shape-1.png" alt />
-                                                </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-12 clgaddress_outsection">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="clgdadres_dtoutsection">
+                                            <div class="hex">
+                                                <i class="fas fa-map-marker-alt"></i>
                                             </div>
-                                        </div>
-                                        <ul className="list-unstyled about-three__point">
-                                            <li>
-                                                <div className="icon">
-                                                    <i className="fa fa-check" />
-                                                </div>
-                                                <div className="text">
-                                                    <p className="clginnerdetailstext">Biotechnology</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div className="icon">
-                                                    <i className="fa fa-check" />
-                                                </div>
-                                                <div className="text">
-                                                    <p className="clginnerdetailstext">Chemical Engineering</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div className="icon">
-                                                    <i className="fa fa-check" />
-                                                </div>
-                                                <div className="text">
-                                                    <p className="clginnerdetailstext">Computer Science &amp; Engineering</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div className="icon">
-                                                    <i className="fa fa-check" />
-                                                </div>
-                                                <div className="text">
-                                                    <p className="clginnerdetailstext">Electronics &amp; Communication Engineering</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div className="icon">
-                                                    <i className="fa fa-check" />
-                                                </div>
-                                                <div className="text">
-                                                    <p className="clginnerdetailstext">Applied Electronics &amp; Instrumentation Engineering</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div className="icon">
-                                                    <i className="fa fa-check" />
-                                                </div>
-                                                <div className="text">
-                                                    <p className="clginnerdetailstext">Electrical Engineering</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div className="icon">
-                                                    <i className="fa fa-check" />
-                                                </div>
-                                                <div className="text">
-                                                    <p className="clginnerdetailstext">Information Technology</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div className="icon">
-                                                    <i className="fa fa-check" />
-                                                </div>
-                                                <div className="text">
-                                                    <p className="clginnerdetailstext">Mechanical Engineering</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div className="icon">
-                                                    <i className="fa fa-check" />
-                                                </div>
-                                                <div className="text">
-                                                    <p className="clginnerdetailstext">Production Engineering</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div className="icon">
-                                                    <i className="fa fa-check" />
-                                                </div>
-                                                <div className="text">
-                                                    <p className="clginnerdetailstext">Instrumentation &amp; Control Engineering</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div className="icon">
-                                                    <i className="fa fa-check" />
-                                                </div>
-                                                <div className="text">
-                                                    <p className="clginnerdetailstext">Civil Engineering</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div className="icon">
-                                                    <i className="fa fa-check" />
-                                                </div>
-                                                <div className="text">
-                                                    <p className="clginnerdetailstext">Food Technology</p>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div className="col-xl-6">
-                                    <div className="about-two__right">
-                                        <div className="about-two__img-box wow slideInRight" data-wow-delay="100ms" data-wow-duration="2500ms">
-                                            <div className="about-two__img">
-                                                <img src="assets/images/resources/hitclg.jpg" alt />
-                                            </div>
-                                            <div className="about-two__img-two">
-                                                <img src="assets/images/resources/hitclg1.jpg" alt />
-                                            </div>
-                                            <div className="about-two__line">
-                                                <img src="assets/images/shapes/about-two-line.png" alt />
-                                            </div>
-                                            <div className="about-two__shape-1" />
-                                            {/* <div class="about-two__practice-year">
-                                          <div class="about-two__practice-year-inner">
-                                              <div class="about-two__practice-year-shape">
-                                                  <img src="assets/images/shapes/about-two-practice-year-shape.png" alt="">
-                                              </div>
-                                              <div class="about-two__practice-year-content">
-                                                  <h3>20</h3>
-                                                  <p>Years of <br> practicing</p>
-                                              </div>
-                                          </div>
-                                      </div> */}
+                                            {(missionData2?.address) && <p class="allclgdadress">
+                                                {missionData2?.address}
+                                            </p>}
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div className="row clgdtsoutsection1">
-                                <div className="col-xl-6">
-                                    <div className="about-two__right">
-                                        <div className="about-two__img-box wow slideInLeft" data-wow-delay="100ms" data-wow-duration="2500ms">
-                                            <div className="about-two__img">
-                                                <img src="assets/images/resources/hitclg.jpg" alt />
+                                    <div class="col-lg-4">
+                                        <div class="clgdadres_dtoutsection">
+                                            <div class="hex">
+                                                <i class="fas fa-phone-alt"></i>
                                             </div>
-                                            <div className="about-two__img-two">
-                                                <img src="assets/images/resources/hitclg2.jpg" alt />
-                                            </div>
-                                            <div className="about-two__line">
-                                                <img src="assets/images/shapes/about-two-line.png" alt />
-                                            </div>
-                                            <div className="about-two__shape-1" />
-                                            {/* <div class="about-two__practice-year">
-                                          <div class="about-two__practice-year-inner">
-                                              <div class="about-two__practice-year-shape">
-                                                  <img src="assets/images/shapes/about-two-practice-year-shape.png" alt="">
-                                              </div>
-                                              <div class="about-two__practice-year-content">
-                                                  <h3>20</h3>
-                                                  <p>Years of <br> practicing</p>
-                                              </div>
-                                          </div>
-                                      </div> */}
+                                            {(missionData2?.phone) && <p class="allclgdadress1">
+                                                {missionData2?.phone}
+                                            </p>}
                                         </div>
                                     </div>
-                                </div>
-                                <div className="col-xl-6">
-                                    <div className="about-two__left">
-                                        <div className="section-title text-left">
-                                            <div className="section-sub-title-box">
-                                                <p className="section-sub-title elsubtitlex">PG Programme</p>
-                                                <div className="section-title-shape-1 elsubtitlex1">
-                                                    <img src="assets/images/shapes/section-title-shape-1.png" alt className="elsubtitlex" />
-                                                </div>
+                                    <div class="col-lg-4">
+                                        <div class="clgdadres_dtoutsection">
+                                            <div class="hex">
+                                                <i class="fas fa-globe"></i>
                                             </div>
+                                            {(missionData2?.websiteLink) &&
+                                           < a href={`${missionData2?.websiteLink}`}  > <p class="allclgdadress2">
+                                                {missionData2?.websiteLink}
+                                            </p>
+                                            </a>
+                                            
+                                            }
+
                                         </div>
-                                        <ul className="list-unstyled about-three__point">
-                                            <li>
-                                                <div className="icon">
-                                                    <i className="fa fa-check" />
-                                                </div>
-                                                <div className="text">
-                                                    <p className="clginnerdetailstext
-                                                  ">MBA 2. MCA 3. M.Tech in Chemical Engineering</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div className="icon">
-                                                    <i className="fa fa-check" />
-                                                </div>
-                                                <div className="text">
-                                                    <p className="clginnerdetailstext
-                                                  ">M.Tech in Electronics &amp; Communication Engg.</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div className="icon">
-                                                    <i className="fa fa-check" />
-                                                </div>
-                                                <div className="text">
-                                                    <p className="clginnerdetailstext
-                                                  ">M.Tech in Computer Science &amp; Engg.</p>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div className="icon">
-                                                    <i className="fa fa-check" />
-                                                </div>
-                                                <div className="text">
-                                                    <p className="clginnerdetailstext
-                                                  ">M.Tech in Mechanical Engineering</p>
-                                                </div>
-                                            </li>
-                                        </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </section>
-                </div>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-lg-12 clgaddress_outsection">
-                            <div className="row">
-                                <div className="col-lg-4">
-                                    <div className="clgdadres_dtoutsection">
-                                        <div className="hex">
-                                            <i className="fas fa-map-marker-alt" />
+
+
+
+                        <div className="row">
+                            <div className="col-lg-12 academicsiolist_outsection">
+                                <div className="section-title text-left">
+                                    <div className="section-sub-title-box  mt-5">
+                                        <p className="section-sub-title">Course OFFER</p>
+                                        <div className="section-title-shape-1">
+                                            <img src={book1} alt />
                                         </div>
-                                        <p className="allclgdadress">
-                                            ICARE Complex, HIT campus, P.O. Hatiberia-721657, Haldia., Dist. Purba Medinipur, West Bengal
-                                        </p>
                                     </div>
                                 </div>
-                                <div className="col-lg-4">
-                                    <div className="clgdadres_dtoutsection">
-                                        <div className="hex">
-                                            <i className="fas fa-phone-alt" />
-                                        </div>
-                                        <p className="allclgdadress1">
-                                            +91 (03224) 25900/252850/253062
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="col-lg-4">
-                                    <div className="clgdadres_dtoutsection">
-                                        <div className="hex">
-                                            <i className="fas fa-globe" />
-                                        </div>
-                                        <p className="allclgdadress2">
-                                            www.hithaldia.in
-                                        </p>
-                                    </div>
-                                </div>
+                                <ul className="mvlstarea1">
+                                    {collageCourse2.map(u => 
+                            <li>
+                                <span className="icon-confirmation urighticn" />
+                                {u?.course}
+                               
+                            </li>
+                        )}
+
+                                </ul>
                             </div>
                         </div>
+
                     </div>
                 </div>
+
             </section>
 
-            <Testimonial />
-            <Awards />
             <Footer />
 
         </>

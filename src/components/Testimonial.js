@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import book1 from '../images/shapes/section-title-shape-1.png'
 
 import { Navigation, Autoplay, Pagination, Scrollbar, A11y } from 'swiper';
 
@@ -31,7 +32,7 @@ const Testimonial = () => {
                     <div className="section-sub-title-box">
                         <p className="section-sub-title">testimonials</p>
                         <div className="section-title-shape-1">
-                            <img src="assets/images/shapes/section-title-shape-1.png" alt />
+                            <img src={book1} alt />
                         </div>
                     </div>
                     <h2 className="section-title__title">What they’re talking <br /> about us</h2>

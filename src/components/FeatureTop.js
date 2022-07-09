@@ -35,16 +35,16 @@ const FeatureTop = () => {
                                     <div className="feature-one__single">
                                         <div className="feature-one__top">
                                             <div className="feature-one__icon">
-                                                <span className="icon-roof-5"><i className={f.fontLink} /></span>
+                                                <span className="icon-roof-5"><i className={f?.fontLink} /></span>
                                             </div>
                                             <div className="feature-one__title-box">
-                                                <h3 className="feature-one__title"><a href="about.html">{f.title}</a></h3>
+                                                <h3 className="feature-one__title"><a href="about.html">{f?.title}</a></h3>
                                             </div>
                                         </div>
                                         <div className="feature-one__single-inner">
-                                            <p className="feature-one__text">{f.desc.slice(0, 80)}...</p>
+                                            <p className="feature-one__text">{f?.desc.slice(0, 59)}...</p>
                                             <div className="feature-one__read-more">
-                                                <a href={f.link}>Read More <i className="fa fa-arrow-right" /></a>
+                                                <a href={f?.readMoreLink}>Read More <i className="fa fa-arrow-right" /></a>
                                             </div>
                                         </div>
                                     </div>

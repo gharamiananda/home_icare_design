@@ -79,7 +79,7 @@ const Collage = () => {
                                                 <span><i className="fas fa-university" /></span>
                                             </div>
                                             <h3 className="services-one__title"><a href="#">{c.collageName}</a></h3>
-                                            <p className="services-one__text clgdescription">{c.collageDesc}</p>
+                                            <p className="services-one__text clgdescription">{c.collageDesc.slice(0, 140)}</p>
                                             <div className="services-one__read-more">
                                                 <Link to={`/collages/${c.collageName.split(' ').join('-')}`}>Read More <i className="fa fa-arrow-right" /></Link>
                                             </div>
