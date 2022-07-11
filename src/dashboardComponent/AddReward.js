@@ -27,9 +27,19 @@ const AddReward = () => {
         };
 
         const res = await fetcher.post("home_certificate", serviceData);
-        console.log(res);
-        reset();
-        setImageURL("");
+
+
+
+        if (res.data.acknowledged == true) {
+            toast.success("Data successfully updated")
+            reset();
+            setToggle(!toggle)
+            setImageURL("");
+        }
+        else {
+            toast.error('Fail to update data')
+            console.log(data.status);
+        }
     };
 
     const handleUploadImage = (event) => {

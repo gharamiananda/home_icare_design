@@ -64,11 +64,10 @@ const HomeAbout = () => {
                                     </div>
                                     <p className="about-one__text">{aboutFull.aboutDesc}</p>
                                     <div className="yl-about-qoute">
-                                        <span>"A University needs to be a centre of excellence
-                                            for pursuit of knowledge."</span>
+                                        <span>"To groom students to become enlightened citizens sensitive to the needs of the society and good human being with leadership quality."</span>
                                         <div className="yl-quote-author yl-headline">
-                                            <h4><a href="#">Mr Lakshman Seth</a></h4>
-                                            <span>Chairman</span>
+                                            <h4>ICARE-</h4>
+                                            <span> The Ultimate Educational Destination</span>
                                         </div>
                                     </div>
                                 </div>
@@ -79,7 +78,7 @@ const HomeAbout = () => {
 
             </section>
 
-            
+
         </div>
     );
 };

@@ -68,7 +68,7 @@ const Banner = () => {
                                 {/* /.image-layer */}
                                 <div className="container">
                                     <div className="row">
-                                        <div className="col-xl-7 col-lg-8">
+                                        <div className="col-xl-9 col-lg-9">
                                             <div className="main-slider__content">
                                                 <p className="main-slider__sub-title">{b.subtitle}</p>
                                                 <h2 className="main-slider__title">{b.title}</h2>

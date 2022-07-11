@@ -17,7 +17,7 @@ const AddCourse = () => {
         fetch('http://localhost:5000/course_home')
             .then(res => res.json())
             .then(data => setCourses(data));
-    }, [toggle])
+    }, [toggle, loading])
 
     const { register, handleSubmit, reset } = useForm();
 
@@ -93,7 +93,7 @@ const AddCourse = () => {
 
 
     const statusChange = async (id, stat) => {
-        setToggle(!toggle)
+
         let statusData;
 
         if (stat == '1') {
@@ -109,6 +109,7 @@ const AddCourse = () => {
 
         const res = await fetcher.put(`course-status/${id}`, statusData);
         console.log(res)
+        setLoading(!loading)
         // toast('Data Successfully uploaded')
     }
 

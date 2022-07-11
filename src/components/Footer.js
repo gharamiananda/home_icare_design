@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { NavLink } from 'react-router-dom';
 import fetcher from '../api';
 import { ToastContainer, toast } from 'react-toastify';
-
+import wlogo from '../images/resources/icare-white.png'
 
 const Footer = () => {
     const { register, handleSubmit } = useForm();
@@ -43,6 +43,8 @@ const Footer = () => {
                     <div className="row">
                         <div className="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
                             <div className="footer-widget__column footer-widget__about">
+
+                                <img src={wlogo} className='img-fluid' />
                                 <div className="footer-widget__about-text-box">
                                     <p className="footer-widget__about-text">Indian Center for Advance - ment of Research and Education, Haldia (ICARE) set up in 1995, is a non-profit making voluntary organization</p>
                                 </div>

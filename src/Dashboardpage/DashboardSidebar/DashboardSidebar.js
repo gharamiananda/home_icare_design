@@ -189,6 +189,11 @@ const DashboardSidebar = ({ children }) => {
 
 
                             </Link>
+                            <Link class="menu-title btn " type="button" to='/dashboard/donate'>
+                                <i className="bx bx-atom" />Donate
+
+
+                            </Link>
                         </li>
 
 
@@ -349,7 +354,11 @@ const DashboardSidebar = ({ children }) => {
 
 
                                 </Link>
+                                <Link class="menu-title btn " type="button" to='/dashboard/donate'>
+                                    <i className="bx bx-atom" />Donate
 
+
+                                </Link>
 
                             </ul>
                         </div>
@@ -721,8 +730,8 @@ const DashboardSidebar = ({ children }) => {
 
 
                                 <ul className="dropdown-menu dropdown-menu-end">
-                                    <li><a className="dropdown-item" href="javascript:;"><i className="bx bx-user" /><span>Profile</span></a>
-                                    </li>
+                                    {/* <li><a className="dropdown-item" href="javascript:;"><i className="bx bx-user" /><span>Profile</span></a>
+                                    </li> */}
                                     {/* <li><a className="dropdown-item" href="javascript:;"><i className="bx bx-cog" /><span>Settings</span></a>
                                     </li>
                                     <li><a className="dropdown-item" href="javascript:;"><i className="bx bx-home-circle" /><span>Dashboard</span></a>

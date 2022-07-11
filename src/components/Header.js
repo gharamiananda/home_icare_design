@@ -13,7 +13,7 @@ const Header = () => {
 
     const onSubmit = async (data) => {
         console.log(data)
-        const res = await fetcher.post(`c_form_post`, data);
+        const res = await fetcher.post(`donate_post`, data);
         console.log(res);
 
 

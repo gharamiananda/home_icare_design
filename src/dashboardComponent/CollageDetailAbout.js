@@ -177,7 +177,7 @@ const CollageDetailAbout = () => {
                                                     <option value="	Research & Development Centre">	Research & Development Centre</option>
                                                     <option value="Dr B.C. Roy Hospital">Dr B.C. Roy Hospital</option>
                                                     <option value="Haldia Institute of Nursing Science">Haldia Institute of Nursing Science</option>
-                                                       <option value="INDIRA GANDHI NATIONAL OPEN UNIVERSITY">INDIRA GANDHI NATIONAL OPEN UNIVERSITY</option>
+                                                    <option value="INDIRA GANDHI NATIONAL OPEN UNIVERSITY (IGNOU)">INDIRA GANDHI NATIONAL OPEN UNIVERSITY (IGNOU)</option>
                                                 </select>
                                             </div>
 

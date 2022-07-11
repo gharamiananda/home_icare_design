@@ -58,6 +58,7 @@ import CollageDetailAbout from './dashboardComponent/CollageDetailAbout';
 import AddCollageDetailsMore from './dashboardComponent/AddCollageDetailsMore';
 import AddTeam from './dashboardComponent/AddTeam';
 import AddCollageCourse from './dashboardComponent/AddCollageCourse';
+import Donate from './dashboardComponent/Donate';
 
 
 
@@ -99,6 +100,10 @@ function App() {
             <Route path="add-ug-programes" element={<AddUGPROGRAMMES />} />
             <Route path="add-ug-programes/:ug" element={<UgDetail />} />
             <Route path="contact-form" element={<ContactForm />} />
+            <Route path="donate" element={<Donate />} />
+
+
+
             <Route path="news-letter" element={<NewsLetter />} />
             <Route path="add-inner-banner" element={<AddInnerBanner />} />
             <Route path="collage-detail-about" element={<CollageDetailAbout />} />

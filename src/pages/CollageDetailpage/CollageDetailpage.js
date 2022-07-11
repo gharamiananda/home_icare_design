@@ -68,26 +68,26 @@ const CollageDetailpage = () => {
     }, [mission2, id]);
 
 
-const [collageCourse, setCollageCourse] = useState([]);
-const [collageCourse2, setCollageCourse2] = useState([]);
-const [collageCourser, setCollageCourser] = useState([]);
+    const [collageCourse, setCollageCourse] = useState([]);
+    const [collageCourse2, setCollageCourse2] = useState([]);
+    const [collageCourser, setCollageCourser] = useState([]);
 
 
-  useEffect(() => {
+    useEffect(() => {
         fetch('http://localhost:5000/collage_course_get')
             .then(res => res.json())
             .then(data => setCollageCourse(data))
     }, []);
 
     useEffect(() => {
-        const data = collageCourse.filter(m =>( m.collage.split(' ').join('-') === id) && m.status == '1');
+        const data = collageCourse.filter(m => (m.collage.split(' ').join('-') === id) && m.status == '1');
         console.log(data)
-     setCollageCourse2(data)
+        setCollageCourse2(data)
 
 
 
     }, [collageCourse]);
-console.log(collageCourse2,collageCourse)
+    console.log(collageCourse2, collageCourse)
 
 
 
@@ -117,7 +117,7 @@ console.log(collageCourse2,collageCourse)
             <section className="about-three about-four">
                 <div className={(missionData?.status == '1') ? 'container' : 'd-none'}>
                     <div className="row">
-                        <div className="col-xl-6 ">
+                        <div className="col-xl-6 mb-5">
                             <div className="about-three__left">
                                 <div className="about-three__img-box wow slideInLeft" data-wow-delay="100ms" data-wow-duration="2500ms">
                                     <div className="about-three__img">
@@ -141,12 +141,7 @@ console.log(collageCourse2,collageCourse)
                                         </div>
                                     </div>
                                 </div>
-                                <p className="icareinner_abouttext">
-                                    ICARE Complex, HIT campus, P.O. Hatiberia-721657, Haldia., Dist. Purba Medinipur, West Bengal
-                                </p>
-                                <p className="icareinner_abouttext">
-                                    HIT, established in the year 1995-96 is the first privately initiated (with Govt. aid) degree Engineering College in this State. It has emerged as the biggest private Engineering College in Eastern India.
-                                </p>
+
                                 <p className="icareinner_abouttext">
                                     {missionData?.subone}
                                 </p>
@@ -192,11 +187,11 @@ console.log(collageCourse2,collageCourse)
                                                 <i class="fas fa-globe"></i>
                                             </div>
                                             {(missionData2?.websiteLink) &&
-                                           < a href={`${missionData2?.websiteLink}`}  > <p class="allclgdadress2">
-                                                {missionData2?.websiteLink}
-                                            </p>
-                                            </a>
-                                            
+                                                < a href={`${missionData2?.websiteLink}`}  > <p class="allclgdadress2">
+                                                    {missionData2?.websiteLink}
+                                                </p>
+                                                </a>
+
                                             }
 
                                         </div>
@@ -218,13 +213,13 @@ console.log(collageCourse2,collageCourse)
                                     </div>
                                 </div>
                                 <ul className="mvlstarea1">
-                                    {collageCourse2.map(u => 
-                            <li>
-                                <span className="icon-confirmation urighticn" />
-                                {u?.course}
-                               
-                            </li>
-                        )}
+                                    {collageCourse2.map(u =>
+                                        <li>
+                                            <span className="icon-confirmation urighticn" />
+                                            {u?.course}
+
+                                        </li>
+                                    )}
 
                                 </ul>
                             </div>
