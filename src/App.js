@@ -59,6 +59,12 @@ import AddCollageDetailsMore from './dashboardComponent/AddCollageDetailsMore';
 import AddTeam from './dashboardComponent/AddTeam';
 import AddCollageCourse from './dashboardComponent/AddCollageCourse';
 import Donate from './dashboardComponent/Donate';
+import Career from './components/Career';
+import Tenders from './components/Tenders';
+import CentralToolRoom from './components/CentralToolRoom';
+import Resume from './dashboardComponent/Resume';
+import AddTender from './dashboardComponent/AddTender';
+import AddToolRoom from './dashboardComponent/AddToolRoom';
 
 
 
@@ -101,6 +107,9 @@ function App() {
             <Route path="add-ug-programes/:ug" element={<UgDetail />} />
             <Route path="contact-form" element={<ContactForm />} />
             <Route path="donate" element={<Donate />} />
+            <Route path="resume" element={<Resume />} />
+            <Route path="tender" element={<AddTender />} />
+            <Route path="toolRoom" element={<AddToolRoom />} />
 
 
 
@@ -124,6 +133,9 @@ function App() {
           <Route path="/admission" element={<Admissionpage />} />
           <Route path="/academics" element={<Academicpage />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/career" element={<Career />} />
+          <Route path="/tenders" element={<Tenders />} />
+          <Route path="/centralToolRoom" element={<CentralToolRoom />} />
 
           <Route path="/login" element={<LoginN />} />
           <Route path="/forget-password" element={<SendPasswordReset />} />

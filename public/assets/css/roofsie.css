@@ -3955,6 +3955,7 @@ ul {
 .project-one__single {
   position: relative;
   display: block;
+  margin-bottom: 50px;
 }
 
 .project-one__img-box {
@@ -4044,7 +4045,9 @@ ul {
 }
 
 .project-one__img img {
-  width: 100%;
+  width: 370px;
+  height: 350px;
+  object-fit: cover;
   border-radius: var(--roofsie-bdr-radius);
   -webkit-transform: scale(1);
   transform: scale(1);
@@ -11233,7 +11236,7 @@ body.boxed-wrapper {
 }
 
 .icareinner_abouttext {
-  font-size: 13px;
+  font-size: 15px;
   text-align: justify;
   line-height: 22px;
   padding: 0px 0px 15px 0px;

@@ -78,8 +78,9 @@ const HomeCourse = () => {
 
                             <SwiperSlide className="item">
                                 <div className="project-one__single">
-                                    <div className="project-one__img-box">
-                                        <div className="project-one__img">
+                                    <a href={c?.link}>
+                                        <div className="project-one__img-box">
+                                            <div className="project-one__img">
 
 
 
@@ -88,21 +89,22 @@ const HomeCourse = () => {
 
 
 
-                                            <img src={`http://localhost:5000/${c.picture}`} className='img-fluid' />
+                                                <img src={`http://localhost:5000/${c.picture}`} className='img-fluid' />
 
 
 
 
 
+                                            </div>
+                                            <div className="project-one__content">
+                                                <h4 className="project-one__title">{c.title}
+                                                </h4>
+                                            </div>
+                                            <div className="project-one__link">
+                                                <a className="img-popup" data-fancybox="gallery2" href={`http://localhost:5000/${c.picture}`} ><i className="fa fa-link" /></a>
+                                            </div>
                                         </div>
-                                        <div className="project-one__content">
-                                            <h4 className="project-one__title"><a href="work-details.html">{c.title}</a>
-                                            </h4>
-                                        </div>
-                                        <div className="project-one__link">
-                                            <a className="img-popup" data-fancybox="gallery2" href={`http://localhost:5000/${c.picture}`} ><i className="fa fa-link" /></a>
-                                        </div>
-                                    </div>
+                                    </a>
                                 </div>
 
 

@@ -3,37 +3,43 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import fetcher from "../api";
 import { ToastContainer, toast } from 'react-toastify';
-import { Link } from "react-router-dom";
 
-
-const AddCourse = () => {
+const AddTender = () => {
     const [imageURL, setImageURL] = useState("");
     const [loading, setLoading] = useState(false);
+    const [certi, setCeti] = useState([])
     const [toggle, setToggle] = useState(false);
 
 
-    const [courses, setCourses] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/course_home')
+        fetch('http://localhost:5000/tender_get')
             .then(res => res.json())
-            .then(data => setCourses(data));
-    }, [toggle, loading])
+            .then(data => setCeti(data));
+    }, [toggle])
 
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = async (data) => {
         const serviceData = {
             ...data,
-            status: "1",
+            status: '1',
             picture: imageURL,
         };
 
-        const res = await fetcher.post("home_course", serviceData);
-        toast.success('Data Successfully uploaded')
-        setToggle(!toggle)
-        console.log(res);
-        reset();
-        setImageURL("");
+        const res = await fetcher.post("tender_post", serviceData);
+
+
+
+        if (res.data.acknowledged == true) {
+            toast.success("Data successfully updated")
+            reset();
+            setToggle(!toggle)
+            setImageURL("");
+        }
+        else {
+            toast.error('Fail to update data')
+            console.log(data.status);
+        }
     };
 
     const handleUploadImage = (event) => {
@@ -63,11 +69,12 @@ const AddCourse = () => {
 
 
 
+
     const deleteCourse = (id) => {
         const proced = window.confirm('Are You Sure??');
         if (proced) {
 
-            const url = `http://localhost:5000/course_home/${id}`;
+            const url = `http://localhost:5000/tender_delete/${id}`;
             fetch(url, {
                 method: 'DELETE'
 
@@ -93,7 +100,7 @@ const AddCourse = () => {
 
 
     const statusChange = async (id, stat) => {
-
+        setToggle(!toggle)
         let statusData;
 
         if (stat == '1') {
@@ -107,13 +114,11 @@ const AddCourse = () => {
 
         console.log(statusData)
 
-        const res = await fetcher.put(`course-status/${id}`, statusData);
+        const res = await fetcher.put(`tender_status/${id}`, statusData);
         console.log(res)
-        setLoading(!loading)
+        setToggle(!toggle)
         // toast('Data Successfully uploaded')
     }
-
-
 
 
     return (
@@ -131,7 +136,7 @@ const AddCourse = () => {
                                     <div className="card-title d-flex align-items-center">
                                         <div><i className="bx bxs-user me-1 font-22 text-info" />
                                         </div>
-                                        <h5 className="mb-0 text-info">Add Courses</h5>
+                                        <h5 className="mb-0 text-info">Add Certificate</h5>
                                     </div>
                                     <hr />
 
@@ -140,25 +145,7 @@ const AddCourse = () => {
 
 
 
-                                        <div className="row mb-3">
-                                            <label htmlFor="inputEnterYourName" className="col-sm-3 col-form-label">Course Title </label>
-                                            <div className="col-sm-9">
-                                                <input type="text" className="form-control" id="inputEnterYourName" placeholder="Enter Course Title"
-                                                    {...register("title")}
 
-                                                />
-                                            </div>
-                                        </div>
-
-                                        <div className="row mb-3">
-                                            <label htmlFor="inputEnterYourName" className="col-sm-3 col-form-label">Collage Link </label>
-                                            <div className="col-sm-9">
-                                                <input type="text" className="form-control" id="inputEnterYourName" placeholder="Enter collage Link"
-                                                    {...register("link")}
-
-                                                />
-                                            </div>
-                                        </div>
 
 
                                         <div class="row">
@@ -201,7 +188,7 @@ const AddCourse = () => {
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Title</th>
-
+                                        <th scope="col">Subtitle</th>
 
                                         <th scope="col">Image</th>
 
@@ -211,33 +198,34 @@ const AddCourse = () => {
                                 </thead>
                                 <tbody>
                                     {
-                                        courses.map((c, i) =>
+                                        certi.map((b, i) =>
 
                                             <tr>
                                                 <th scope="row">{i + 1}</th>
                                                 {/* <td>{chooseData.mainTitle}</td> */}
-                                                <td>{c.title} </td>
+                                                <td> </td>
                                                 <td>
-                                                    <img src={`http://localhost:5000/${c.picture}`} className='img-fluid' />
+                                                    <img src={`http://localhost:5000/${b.picture}`} className='img-fluid' />
 
                                                 </td>
-                                                <td>
-                                                    <button
-                                                        className={(c.status == "1") ? 'btn btn-success' : "btn btn-danger"}
-                                                        onClick={() => statusChange(c._id, c.status)}>{c.status == '1' ? "Active" : "Inactive"}</button>
+                                                <td>Otto</td>
+                                                {/* <td>
+                                                    <button onClick={() => statusChange(c._id, c.status)}>{c.status == '1' ? "Active" : "Inactive"}</button>
                                                 </td>
                                                 <td>
-                                                    <button
-                                                        className="text-danger border-0"
-                                                        onClick={() => deleteCourse(c._id)} > <i class="fa-solid fa-trash-can"></i></button>
-                                                    <Link
-                                                        to={`${c._id}`}
-                                                        className="text-primary border-0"
-                                                    > <i class="fa-solid fa-pen-to-square"></i></Link>
+                                                    <button onClick={() => deleteCourse(c._id)} > <i class="fa-solid fa-trash-can"></i></button>
+
+                                                </td> */}
+
+                                                <td><button className={(b.status == "1") ? 'btn btn-success' : "btn btn-danger"} onClick={() => statusChange(b._id, b.status)}>{b.status == '1' ? "Active" : "Inactive"}</button></td>
+                                                <td>
+                                                    <button className="text-danger btn border-0" onClick={() => deleteCourse(b._id)} > <i class="fa-solid fa-trash-can"></i></button>
+
 
                                                 </td>
                                             </tr>
-                                        )}
+                                        )
+                                    }
 
                                 </tbody>
                             </table>
@@ -249,4 +237,4 @@ const AddCourse = () => {
     );
 };
 
-export default AddCourse;
+export default AddTender;

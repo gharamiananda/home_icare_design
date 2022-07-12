@@ -31,6 +31,7 @@ const CourseDetails = () => {
 
     useEffect(() => {
         setValue('title', `${courses.title}`)
+        setValue('link', `${courses.link}`)
         setValue('picture', `${courses.picture}`)
 
     }, [courses.title, courses.picture])
@@ -119,13 +120,22 @@ const CourseDetails = () => {
                                     <div className="row mb-3">
                                         <label htmlFor="inputEnterYourName" className="col-sm-3 col-form-label">Course Title </label>
                                         <div className="col-sm-9">
-                                            <input type="text" className="form-control" id="inputEnterYourName" placeholder="Enter Your Name"
+                                            <input type="text" className="form-control" id="inputEnterYourName" placeholder="Enter Course Title"
                                                 {...register("title")}
 
                                             />
                                         </div>
                                     </div>
 
+                                    <div className="row mb-3">
+                                        <label htmlFor="inputEnterYourName" className="col-sm-3 col-form-label">Collage Link </label>
+                                        <div className="col-sm-9">
+                                            <input type="text" className="form-control" id="inputEnterYourName" placeholder="Enter collage Link"
+                                                {...register("link")}
+
+                                            />
+                                        </div>
+                                    </div>
 
                                     <div class="row">
                                         <div class="col-xl-9 mx-auto">

@@ -6,8 +6,31 @@ import Header from '../../components/Header';
 import HomeCourse from '../../components/HomeCourse';
 import Testimonial from '../../components/Testimonial';
 
+
+
+import { Navigation, Autoplay, Pagination, Scrollbar, A11y } from 'swiper';
+
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
 const Coursepage = () => {
 
+    const [courses, setCourses] = useState([]);
+    const [remainings, setRemaining] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/course_home')
+            .then(res => res.json())
+            .then(data => setCourses(data));
+    }, []);
+
+    useEffect(() => {
+        const remaining = courses.filter(b => b.status == "1")
+        setRemaining(remaining)
+
+
+
+    }, [courses])
 
 
 
@@ -49,10 +72,63 @@ const Coursepage = () => {
                     </div>
                 </div>
             </section>
-            {/*Page Header End*/}
-            {/*COURSES Start*/}
-            <HomeCourse />
-            {/*COURSES  End*/}
+            <section className="project-one">
+                <div className="project-one__top">
+                    <div className="container">
+                        <div className="section-title text-center">
+                            <div className="section-sub-title-box">
+                                <p className="section-sub-title">Courses Offered</p>
+                                <div className="section-title-shape-1">
+                                    <img src="assets/images/shapes/section-title-shape-1.png" alt />
+                                </div>
+                            </div>
+                            <h2 className="section-title__title">There are the following ten <br /> departments under faculties.</h2>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className="project-one__bottom">
+
+                    <div className='container'>
+                        <div className='row'>
+                            {remainings.map(c =>
+                                <div className='col-md-6 col-lg-4'>
+
+
+                                    <div className="item">
+                                        <div className="project-one__single">
+                                            <a href={c?.link}>
+                                                <div className="project-one__img-box">
+                                                    <div className="project-one__img">
+                                                        <img src={`http://localhost:5000/${c.picture}`} className='img-fluid' />
+
+                                                    </div>
+                                                    <div className="project-one__content">
+                                                        <h4 className="project-one__title">{c.title}
+                                                        </h4>
+                                                    </div>
+                                                    <div className="project-one__link">
+                                                        <a className="img-popup" data-fancybox="gallery2" href={`http://localhost:5000/${c.picture}`} ><i className="fa fa-link" /></a>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+                </div>
+            </section>
 
 
             <Testimonial />

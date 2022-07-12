@@ -194,6 +194,26 @@ const DashboardSidebar = ({ children }) => {
 
 
                             </Link>
+                            <Link class="menu-title btn " type="button" to='/dashboard/resume'>
+                                <i className="bx bx-atom" />Resume
+
+
+                            </Link>
+
+                            <Link class="menu-title btn " type="button" to='/dashboard/tender'>
+                                <i className="bx bx-atom" />Add Tenders
+
+
+                            </Link>
+
+                            <Link class="menu-title btn " type="button" to='/dashboard/toolRoom'>
+                                <i className="bx bx-atom" />Add Tool Room Section
+
+
+                            </Link>
+
+
+
                         </li>
 
 
@@ -359,7 +379,22 @@ const DashboardSidebar = ({ children }) => {
 
 
                                 </Link>
+                                <Link class="menu-title btn " type="button" to='/dashboard/resume'>
+                                    <i className="bx bx-atom" />Resume
 
+
+                                </Link>
+                                <Link class="menu-title btn " type="button" to='/dashboard/tender'>
+                                    <i className="bx bx-atom" />Add Tenders
+
+
+                                </Link>
+
+                                <Link class="menu-title btn " type="button" to='/dashboard/toolRoom'>
+                                    <i className="bx bx-atom" />Add Tool Room Section
+
+
+                                </Link>
                             </ul>
                         </div>
                     </div>

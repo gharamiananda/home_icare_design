@@ -5,7 +5,7 @@ import fetcher from "../api";
 import { ToastContainer, toast } from 'react-toastify';
 
 
-const AddAbouts = () => {
+const AddToolRoom = () => {
     const [imageURL, setImageURL] = useState("");
     const [loading, setLoading] = useState(false);
     const [toggle, setToggle] = useState(false);
@@ -14,7 +14,7 @@ const AddAbouts = () => {
     const [aboutFull, setAboutFull] = useState({})
 
     useEffect(() => {
-        fetch('http://localhost:5000/about_home')
+        fetch('http://localhost:5000/toolroom_get')
             .then(res => res.json())
             .then(data => setAbout(data));
 
@@ -32,13 +32,19 @@ const AddAbouts = () => {
             image: imageURL,
         };
 
-        const res = await fetcher.put(`update-about/${aboutFull._id}`, serviceData);
-        console.log(res);
-        toast('Data Successfully uploaded')
+        const res = await fetcher.put(`toolroom_update/${aboutFull._id}`, serviceData);
 
-        reset();
-        setImageURL("");
-        setLoading(!loading)
+        if (res.data.acknowledged == true) {
+            toast.success("Data successfully updated")
+            reset();
+            setToggle(!toggle)
+            setImageURL("");
+        }
+        else {
+            toast.error('Fail to update data')
+            console.log(data.status);
+        }
+
     };
 
     const handleUploadImage = (event) => {
@@ -65,10 +71,17 @@ const AddAbouts = () => {
     };
 
     const handleEdit = () => {
-        console.log(aboutFull._id)
-        setValue('aboutTitle', `${aboutFull.aboutTitle}`)
-        setValue('percentage', `${aboutFull.percentage}`)
-        setValue('aboutDesc', `${aboutFull.aboutDesc}`)
+        // console.log(aboutFull._id)
+        // setValue('aboutTitle', `${aboutFull.aboutTitle}`)
+        // setValue('percentage', `${aboutFull.percentage}`)
+        // setValue('aboutDesc', `${aboutFull.aboutDesc}`)
+        // titlte2: data.titlte2,
+        setValue('titlte2', `${aboutFull.titlte2}`)
+        setValue('title1', `${aboutFull.title1}`)
+        setValue('descOne', `${aboutFull.descOne}`)
+        setValue('descTwo', `${aboutFull.descTwo}`)
+
+
 
         setValue('picture', `${aboutFull.picture}`)
     }
@@ -91,7 +104,7 @@ const AddAbouts = () => {
 
         console.log(statusData)
 
-        const res = await fetcher.put(`about-status/${id}`, statusData);
+        const res = await fetcher.put(`toolroom_status/${id}`, statusData);
         console.log(res)
         // toast('Data Successfully uploaded')
     }
@@ -121,11 +134,23 @@ const AddAbouts = () => {
 
 
                                 <form onSubmit={handleSubmit(onSubmit)} >
+
+
                                     <div className="row mb-3">
-                                        <label htmlFor='aboutTitle' className="col-sm-3 col-form-label">About Title </label>
+                                        <label htmlFor="inputEnterYourName" className="col-sm-3 col-form-label">Enter Title One</label>
                                         <div className="col-sm-9">
-                                            <input type="text" className="form-control" name='aboutTitle' id="inputEnterYourName" placeholder="Enter Your Name"
-                                                {...register("aboutTitle")}
+                                            <input type="text" className="form-control" id="inputEnterYourName" placeholder="Enter Your Name"
+                                                {...register("titlte2")}
+
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <div className="row mb-3">
+                                        <label htmlFor="inputEnterYourName" className="col-sm-3 col-form-label">Enter Title  Two</label>
+                                        <div className="col-sm-9">
+                                            <input type="text" className="form-control" id="inputEnterYourName" placeholder="Enter Your Name"
+                                                {...register("title1")}
 
                                             />
                                         </div>
@@ -133,23 +158,18 @@ const AddAbouts = () => {
 
 
                                     <div className="row mb-3">
-                                        <label htmlFor="inputEnterYourName" className="col-sm-3 col-form-label">Collages Attach with us</label>
+                                        <label htmlFor="inputAddress4" className="col-sm-3 col-form-label">Description One</label>
                                         <div className="col-sm-9">
-                                            <input type="text" className="form-control" name='percentage' id="inputEnterYourName" placeholder="Enter Your Name"
-                                                {...register("percentage")}
-
+                                            <textarea className="form-control" id="inputAddress4" rows={3} placeholder="Description One"
+                                                {...register("descOne")}
                                             />
                                         </div>
                                     </div>
-
-
-
-
                                     <div className="row mb-3">
-                                        <label htmlFor="aboutDesc" className="col-sm-3 col-form-label">About Description</label>
+                                        <label htmlFor="inputAddress4" className="col-sm-3 col-form-label">Description Two</label>
                                         <div className="col-sm-9">
-                                            <textarea className="form-control" id="inputAddress4" name='aboutDesc' rows={3} placeholder="Address"
-                                                {...register("aboutDesc")}
+                                            <textarea className="form-control" id="inputAddress4" rows={3} placeholder="Description  Two"
+                                                {...register("descTwo")}
                                             />
                                         </div>
                                     </div>
@@ -159,7 +179,7 @@ const AddAbouts = () => {
                                             <div class="card">
                                                 <div class="card-body">
                                                     <form>
-                                                        <input id="image-uploadify" name='picture' type="file" onChange={handleUploadImage} />
+                                                        <input id="image-uploadify" type="file" onChange={handleUploadImage} />
                                                     </form>
                                                 </div>
                                             </div>
@@ -193,7 +213,7 @@ const AddAbouts = () => {
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Title</th>
-                                        <th scope="col">Percentage</th>
+
 
                                         <th scope="col">Image</th>
 
@@ -205,8 +225,8 @@ const AddAbouts = () => {
 
                                     <tr>
                                         <th scope="row">1</th>
-                                        <td>{aboutFull.aboutTitle}</td>
-                                        <td>{aboutFull.percentage}</td>
+                                        <td>{aboutFull.title1}</td>
+
                                         <td>
                                             <img src={`http://localhost:5000/${aboutFull.image}`} className='img-fluid' />
 
@@ -236,4 +256,4 @@ const AddAbouts = () => {
     );
 };
 
-export default AddAbouts;
+export default AddToolRoom;

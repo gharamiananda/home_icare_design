@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 const HomeOverview = () => {
@@ -60,7 +61,7 @@ const HomeOverview = () => {
                                             <span className="icon-tick" />
                                         </div>
                                         <div className="text">
-                                            <p><a href="#" className="obrviewlnk">{overviewData.subone}</a></p>
+                                            <p><Link to="/career" className="obrviewlnk">{overviewData.subone}</Link></p>
                                         </div>
                                     </li>
                                     <li>
@@ -68,7 +69,17 @@ const HomeOverview = () => {
                                             <span className="icon-tick" />
                                         </div>
                                         <div className="text">
-                                            <p><a href="#" className="obrviewlnk">{overviewData.subTwo}</a></p>
+                                            <p><Link to="/collages/INDIRA-GANDHI-NATIONAL-OPEN-UNIVERSITY-(IGNOU)" className="obrviewlnk">{overviewData.subTwo}</Link></p>
+
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div className="icon">
+                                            <span className="icon-tick" />
+                                        </div>
+                                        <div className="text">
+                                            <p><Link to="/tenders" className="obrviewlnk">{overviewData.subFive}</Link></p>
 
                                         </div>
                                     </li>
@@ -77,52 +88,18 @@ const HomeOverview = () => {
                                             <span className="icon-tick" />
                                         </div>
                                         <div className="text">
-                                            <p><a href="#" className="obrviewlnk">{overviewData.subThree}</a></p>
+
+                                            <p><Link to="/centralToolRoom" className="obrviewlnk">{overviewData.subSix}</Link></p>
 
                                         </div>
                                     </li>
+
                                     <li>
                                         <div className="icon">
                                             <span className="icon-tick" />
                                         </div>
                                         <div className="text">
-                                            <p><a href="#" className="obrviewlnk">{overviewData.subFour}</a></p>
-
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div className="icon">
-                                            <span className="icon-tick" />
-                                        </div>
-                                        <div className="text">
-                                            <p><a href="#" className="obrviewlnk">{overviewData.subFive}</a></p>
-
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div className="icon">
-                                            <span className="icon-tick" />
-                                        </div>
-                                        <div className="text">
-                                            <p><a href="#" className="obrviewlnk">{overviewData.subSix}</a></p>
-
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div className="icon">
-                                            <span className="icon-tick" />
-                                        </div>
-                                        <div className="text">
-                                            <p><a href="#" className="obrviewlnk">{overviewData.subSeven}</a></p>
-
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div className="icon">
-                                            <span className="icon-tick" />
-                                        </div>
-                                        <div className="text">
-                                            <p><a href="#" className="obrviewlnk">{overviewData.subEight}</a></p>
+                                            <p><Link to="/centralToolRoom" className="obrviewlnk">{overviewData.subEight}</Link></p>
 
                                         </div>
                                     </li>

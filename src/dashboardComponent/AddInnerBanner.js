@@ -167,6 +167,7 @@ const AddInnerBanner = () => {
                                                     <option value="Academics">Academics</option>
                                                     <option value="Admission">Admission</option>
                                                     <option value="Contact">Contact</option>
+                                                    <option value="Career">Career</option>
                                                 </select>
                                             </div>
 
