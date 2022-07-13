@@ -211,6 +211,11 @@ const DashboardSidebar = ({ children }) => {
 
 
                             </Link>
+                            <Link class="menu-title btn " type="button" to='/dashboard/details-course'>
+                                <i className="bx bx-atom" />Add Course Detail
+
+
+                            </Link>
 
 
 
@@ -392,6 +397,12 @@ const DashboardSidebar = ({ children }) => {
 
                                 <Link class="menu-title btn " type="button" to='/dashboard/toolRoom'>
                                     <i className="bx bx-atom" />Add Tool Room Section
+
+
+                                </Link>
+
+                                <Link class="menu-title btn " type="button" to='/dashboard/details-course'>
+                                    <i className="bx bx-atom" />Add Course Detail
 
 
                                 </Link>

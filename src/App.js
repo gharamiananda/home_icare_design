@@ -65,6 +65,9 @@ import CentralToolRoom from './components/CentralToolRoom';
 import Resume from './dashboardComponent/Resume';
 import AddTender from './dashboardComponent/AddTender';
 import AddToolRoom from './dashboardComponent/AddToolRoom';
+import CoursePageDetail from './pages/Detailspages/CoursePageDetail';
+import AddCourseDetail from './dashboardComponent/AddCourseDetail';
+import DetailsCourseEdit from './pages/Detailspages/DetailsCourseEdit';
 
 
 
@@ -110,6 +113,8 @@ function App() {
             <Route path="resume" element={<Resume />} />
             <Route path="tender" element={<AddTender />} />
             <Route path="toolRoom" element={<AddToolRoom />} />
+            <Route path="details-course" element={<AddCourseDetail />} />
+            <Route path="details-course/:id" element={<DetailsCourseEdit />} />
 
 
 
@@ -129,6 +134,8 @@ function App() {
           <Route path="/collages" element={<Collagespage />} />
           <Route path="/collages/:id" element={<CollageDetailpage />} />
           <Route path="/courses" element={<Coursepage />} />
+          <Route path="/course-details/:title" element={<CoursePageDetail />} />
+
 
           <Route path="/admission" element={<Admissionpage />} />
           <Route path="/academics" element={<Academicpage />} />

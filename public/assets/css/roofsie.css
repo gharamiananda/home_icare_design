@@ -3955,7 +3955,6 @@ ul {
 .project-one__single {
   position: relative;
   display: block;
-  margin-bottom: 50px;
 }
 
 .project-one__img-box {
@@ -4045,14 +4044,39 @@ ul {
 }
 
 .project-one__img img {
-  width: 370px;
-  height: 350px;
+  width: 100%;
+  border-radius: var(--roofsie-bdr-radius);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  transition: all 500ms ease;
+}
+
+.homepage_course .project-one__img img {
+  width: 100%;
+  height: 360px;
   object-fit: cover;
   border-radius: var(--roofsie-bdr-radius);
   -webkit-transform: scale(1);
   transform: scale(1);
   transition: all 500ms ease;
 }
+
+.course_page .project-one__img img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  border-radius: var(--roofsie-bdr-radius);
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  transition: all 500ms ease;
+
+}
+
+.course_page {
+
+  margin-bottom: 55px;
+}
+
 
 .project-one__single:hover .project-one__img img {
   transform: scale(1.05);
@@ -11236,7 +11260,7 @@ body.boxed-wrapper {
 }
 
 .icareinner_abouttext {
-  font-size: 15px;
+  font-size: 13px;
   text-align: justify;
   line-height: 22px;
   padding: 0px 0px 15px 0px;

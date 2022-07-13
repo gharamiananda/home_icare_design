@@ -93,12 +93,12 @@ const Coursepage = () => {
                     <div className='container'>
                         <div className='row'>
                             {remainings.map(c =>
-                                <div className='col-md-6 col-lg-4'>
+                                <div className='col-md-6 col-lg-4  course_page'>
 
 
                                     <div className="item">
                                         <div className="project-one__single">
-                                            <a href={c?.link}>
+                                            <a href={`course-details/${c?.title}`}>
                                                 <div className="project-one__img-box">
                                                     <div className="project-one__img">
                                                         <img src={`http://localhost:5000/${c.picture}`} className='img-fluid' />

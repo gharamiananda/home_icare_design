@@ -42,7 +42,7 @@ const HomeCourse = () => {
             </div>
 
 
-            <div className="project-one__bottom">
+            <div className="project-one__bottom homepage_course">
 
                 <Swiper
                     className="project-one__carousel owl-carousel owl-theme thm-owl__carousel"
@@ -78,7 +78,7 @@ const HomeCourse = () => {
 
                             <SwiperSlide className="item">
                                 <div className="project-one__single">
-                                    <a href={c?.link}>
+                                    <a href={`course-details/${c?.title.split(" ").join("-")}`}>
                                         <div className="project-one__img-box">
                                             <div className="project-one__img">
 
