@@ -12,10 +12,14 @@ const HomeCourse = () => {
     const [remainings, setRemaining] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/course_home')
+        fetch('http://localhost:5000/detail_course_get')
             .then(res => res.json())
             .then(data => setCourses(data));
     }, []);
+
+
+
+
 
     useEffect(() => {
         const remaining = courses.filter(b => b.status == "1")
@@ -78,7 +82,7 @@ const HomeCourse = () => {
 
                             <SwiperSlide className="item">
                                 <div className="project-one__single">
-                                    <a href={`course-details/${c?.title.split(" ").join("-")}`}>
+                                    <a href={`course-details/${c?.title1.split(" ").join("-")}`}>
                                         <div className="project-one__img-box">
                                             <div className="project-one__img">
 
@@ -89,7 +93,7 @@ const HomeCourse = () => {
 
 
 
-                                                <img src={`http://localhost:5000/${c.picture}`} className='img-fluid' />
+                                                <img src={`http://localhost:5000/${c?.image}`} className='img-fluid' />
 
 
 
@@ -97,7 +101,7 @@ const HomeCourse = () => {
 
                                             </div>
                                             <div className="project-one__content">
-                                                <h4 className="project-one__title">{c.title}
+                                                <h4 className="project-one__title">{c?.title1}
                                                 </h4>
                                             </div>
                                             <div className="project-one__link">

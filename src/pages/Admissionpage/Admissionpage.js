@@ -4,9 +4,19 @@ import Awards from '../../components/Awards';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import Testimonial from '../../components/Testimonial';
-
+import { useForm } from "react-hook-form";
+import fetcher from "../../api";
 const Admissionpage = () => {
+    const { register, formState: { errors }, handleSubmit } = useForm();
 
+    const onSubmit = async (data) => {
+        console.log(data)
+        const res = await fetcher.post(`c_form_post`, data);
+        console.log(res);
+
+
+
+    };
 
     const [toggle, setToggle] = useState(false);
     const [mission, setmission] = useState([]);
@@ -135,8 +145,113 @@ const Admissionpage = () => {
                 </section>
             </div>
 
+
             <Testimonial />
             <Awards />
+
+            <section className="contact-page">
+                <div className="contact-page-shape-1">
+                    <img src="assets/images/shapes/contact-page-shape-1.png" alt />
+                </div>
+                <div className="container">
+                    <div className="section-title text-center">
+                        <div className="section-sub-title-box">
+                            <p className="section-sub-title">Contact with us</p>
+                            <div className="section-title-shape-1">
+                                <img src="assets/images/shapes/section-title-shape-1.png" alt />
+                            </div>
+                        </div>
+                        <h2 className="section-title__title">Feel free to write our <br /> experts</h2>
+                    </div>
+                    <div className="row">
+                        <div className="col-xl-12">
+                            <div className="contact-page__form">
+
+
+
+                                {/* <input {...register("firstName", { required: true })} />
+                                {errors.firstName?.type === 'required' && "First name is required"}
+
+                                <input {...register("lastName", { required: true })} />
+                                {errors.lastName && <p>Last name is required</p>}
+
+                                <input {...register("mail", { required: "Email Address is required" })} />
+                                <p>{errors.mail?.message}</p>
+
+                                <input type="submit" />
+                            </form> */}
+
+
+                                <form className="comment-one__form contact-form-validated" onSubmit={handleSubmit(onSubmit)}>
+                                    <div className="row">
+                                        <div className="col-xl-6">
+                                            <div className="comment-form__input-box">
+                                                <input type="text" placeholder="Name" name="name" {...register("name", { required: true })} />
+                                                {errors.name?.type === 'required' && "First name is required"}
+                                            </div>
+                                        </div>
+                                        <div className="col-xl-6">
+                                            <div className="comment-form__input-box">
+                                                <input type="email" placeholder="Email" name="email"
+                                                    {...register("email", { required: true })}
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-xl-6">
+                                            <div className="comment-form__input-box">
+                                                <input type="text" placeholder="Phone" name="phone"
+                                                    {...register("phone")}
+                                                />
+                                            </div>
+                                        </div>
+                                        <div className="col-xl-6">
+                                            <div className="comment-form__input-box">
+                                                <input type="text" placeholder="Subject" name="subject"
+                                                    {...register("subject", { required: true })}
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col-xl-12">
+                                            <div className="comment-form__input-box text-message-box">
+                                                <textarea name="message"
+                                                    {...register("message", { required: true })}
+                                                    placeholder="Comments" />
+                                            </div>
+                                            <div className="comment-form__btn-box">
+                                                <button type="submit" className="thm-btn comment-form__btn"> <i className="fa fa-arrow-right" /> Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section >
             <Footer />
         </>
     );

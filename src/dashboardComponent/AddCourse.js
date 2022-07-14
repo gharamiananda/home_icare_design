@@ -138,10 +138,34 @@ const AddCourse = () => {
 
                                     <form onSubmit={handleSubmit(onSubmit)} >
 
+                                        <div className="row mb-3">
+                                            <div className="col-lg-9 mx-auto">
+                                                <select class="form-select "
+                                                    {...register("collage", { required: true })}
 
+                                                    aria-label="Default select example">
+                                                    <option selected>Select the Course name </option>
+                                                    <option value="BTech">BTech</option>
+                                                    <option value="B.B.A">B.B.A</option>
+                                                    <option value="B.Sc. in Nautical Science ">	B.Sc. in Nautical Science </option>
+                                                    <option value="LL.B">LL.B</option>
+                                                    <option value="Bachelor in Hospital Management">Bachelor in Hospital Management</option>
+                                                    <option value="Diploma in Engineering">Diploma in Engineering</option>
+                                                    <option value="Nursing">	Nursing </option>
+                                                    <option value="B.Ed">B.Ed </option>
+                                                    <option value="MBBS">MBBS </option>
+                                                    <option value="MCA">	MCA</option>
+                                                    <option value="BCA">BCA</option>
+                                                    <option value="M.Tech">	M.Tech</option>
+                                                    <option value="B.D.S">B.D.S </option>
+
+                                                </select>
+                                            </div>
+
+                                        </div>
 
                                         <div className="row mb-3">
-                                            <label htmlFor="inputEnterYourName" className="col-sm-3 col-form-label">Course Title </label>
+                                            <label htmlFor="inputEnterYourName" className="col-sm-3 col-form-label">Collage Name </label>
                                             <div className="col-sm-9">
                                                 <input type="text" className="form-control" id="inputEnterYourName" placeholder="Enter Course Title"
                                                     {...register("title")}
@@ -161,18 +185,7 @@ const AddCourse = () => {
                                         </div>
 
 
-                                        <div class="row">
-                                            <div class="col-xl-9 mx-auto">
 
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <form>
-                                                            <input id="image-uploadify" type="file" onChange={handleUploadImage} />
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <div className="row">
                                             <label className="col-sm-3 col-form-label" />
                                             <div className="col-sm-9">
@@ -218,7 +231,7 @@ const AddCourse = () => {
                                                 {/* <td>{chooseData.mainTitle}</td> */}
                                                 <td>{c.title} </td>
                                                 <td>
-                                                    <img src={`http://localhost:5000/${c.picture}`} className='img-fluid' />
+                                                    {c?.collage}
 
                                                 </td>
                                                 <td>

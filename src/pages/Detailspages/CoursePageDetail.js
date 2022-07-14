@@ -14,6 +14,11 @@ const CoursePageDetail = () => {
     const [filterteam, setFilterTeam] = useState([])
     const [team, setTeam] = useState([]);
 
+    const [collaneNa1, setCollageNa1] = useState({})
+
+
+
+
 
     const location = useLocation();
     const path = location?.pathname.split("/")[2].toLocaleLowerCase();
@@ -42,8 +47,9 @@ const CoursePageDetail = () => {
 
     useEffect(() => {
 
-        const titlecollage = about.find(t => t?.title1.toLocaleLowerCase() == path);
-        console.log(titlecollage?.title1)
+        const titlecollage = about.find(t => t?.title1.toLocaleLowerCase().split(' ').join('-') == path);
+        about.find(t => console.log(t));
+        console.log(titlecollage, titlecollage?.title1)
         // const { image, descOne
         //     , title1 } = titlecollage;
 
@@ -84,13 +90,42 @@ const CoursePageDetail = () => {
         setcccnamesss(cnamesss)
         setccclinksss(link)
 
+        let colllnam1 = { ...collagenamess }
+
+
+        let objn1 = colllnam1[0]
+        let objl1 = colllnam1[1]
+
+        let objn2 = colllnam1[2]
+        let objl2 = colllnam1[3]
+
+        let objn3 = colllnam1[4]
+        let objl3 = colllnam1[5]
+
+        let objn4 = colllnam1[6]
+        let objl4 = colllnam1[7]
+
+
+        console.log(objn1, objl1, objn4, objl4)
 
     }, [collagenamess])
 
+    useEffect(() => {
 
 
 
-    console.log(cccnamess, ccclinkss)
+
+
+
+    }, [cccnamess, ccclinkss])
+
+
+
+
+
+
+
+
     useEffect(() => {
         const remain = team.filter(t => t.status == '1')
 
@@ -118,6 +153,16 @@ const CoursePageDetail = () => {
     }, []);
 
 
+    const [coursedetailsssss, setcoursedetailsssss] = useState([])
+    const [coursedetailssssff, setcoursedetailsssff] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:5000/course_home')
+            .then(res => res.json())
+            .then(data => setcoursedetailsssss(data))
+    }, []);
+
+
     useEffect(() => {
         const fib = ibd.find(ib => ib.page == 'Career')
 
@@ -125,7 +170,15 @@ const CoursePageDetail = () => {
     }, [
         ibd
     ])
-
+    useEffect(() => {
+        const fib = coursedetailsssss.filter(ib => ib.collage.split(' ').join('-').toLocaleLowerCase() == path)
+        const ttt = coursedetailsssss.filter(ib => console.log(ib.collage.toLocaleLowerCase()))
+        console.log(ttt)
+        setcoursedetailsssff(fib)
+    }, [
+        coursedetailsssss, path
+    ])
+    console.log(about)
 
     return (
         <>
@@ -201,13 +254,13 @@ const CoursePageDetail = () => {
 
 
                                                     {
-                                                        cccnamess.map(c =>
+                                                        coursedetailssssff.map(c =>
                                                             <li>
                                                                 <div className="icon">
                                                                     <i className="fa fa-check" />
                                                                 </div>
                                                                 <div className="text">
-                                                                    <p>{c}</p>
+                                                                    <a href={c?.link} target='blanck' ><p>{c?.title}</p></a>
                                                                 </div>
                                                             </li>
 

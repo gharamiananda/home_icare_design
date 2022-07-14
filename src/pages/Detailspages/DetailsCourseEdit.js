@@ -44,7 +44,7 @@ function DetailsCourseEdit() {
 
         const serviceData = {
             title1,
-            status: "1",
+
             descOne,
             collagename: collageArray,
             image: imageURL,
@@ -56,7 +56,7 @@ function DetailsCourseEdit() {
         //   const { password, ...info } = user._doc;
 
 
-        const res = await fetcher.post(`detail_course_post`, serviceData);
+        const res = await fetcher.put(`detailsss_course_update/${id}`, serviceData);
 
         if (res.data.acknowledged == true) {
             toast.success("Data successfully updated")
@@ -107,8 +107,7 @@ function DetailsCourseEdit() {
 
         setValue('title1', `${aboutFull?.title1}`)
         setValue('descOne', `${aboutFull?.descOne}`)
-        setValue('collagename1', `${aboutFull?.collagename1}`)
-        setValue('collageLink1', `${aboutFull?.collageLink1}`)
+
 
 
 
@@ -127,7 +126,7 @@ function DetailsCourseEdit() {
 
 
 
-    console.log(about)
+    console.log(aboutFull?.collagename)
     return (
         <div className='addbanner'>
 

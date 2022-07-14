@@ -42,7 +42,7 @@ function AddCourseDetail() {
             title1,
             status: "1",
             descOne,
-            collagename: collageArray,
+
             image: imageURL,
         };
 
@@ -223,43 +223,8 @@ function AddCourseDetail() {
 
 
 
-                                    {
-                                        inputList.map((x, i) => {
-                                            return (
-                                                <div className="row mb-3">
 
 
-
-
-                                                    <label htmlFor="inputEnterYourName" className="col-sm-3 col-form-label">Enter Collage Name</label>
-                                                    <div className="col-sm-7 mb-3">
-                                                        <input type="text" className="form-control" id="inputEnterYourName" placeholder="Enter Your Name"
-                                                            {...register(`collagename${i + 1}`)}
-
-                                                        />
-                                                    </div>
-                                                    <label htmlFor="inputEnterYourName" className="col-sm-3 col-form-label">Enter Collage Link</label>
-                                                    <div className="col-sm-7">
-                                                        <input type="text" className="form-control" id="inputEnterYourName" placeholder="Enter Your Name"
-                                                            {...register(`collageLink${i + 1}`)}
-
-                                                        />
-                                                    </div>
-
-
-
-                                                    <div class="form-group col-md-2 ">
-                                                        {
-                                                            inputList.length !== 1 &&
-                                                            <button className="btn btn-danger mx-1" onClick={() => handleremove(i)}>Remove</button>
-                                                        }
-                                                        {inputList.length - 1 === i &&
-                                                            <button className="btn btn-success mt-3" onClick={handleaddclick}>Add More</button>
-                                                        }
-                                                    </div>
-                                                </div>
-                                            );
-                                        })}
                                     <div class="row">
                                         <div class="col-xl-9 mx-auto">
 
