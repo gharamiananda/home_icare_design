@@ -10,7 +10,7 @@ const AddTestimonial = () => {
 
     const [testimonial, setTestimonial] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/testimonial_home')
+        fetch('https://whispering-woodland-88721.herokuapp.com/testimonial_home')
             .then(res => res.json())
             .then(data => setTestimonial(data))
     }, [toggle])
@@ -38,7 +38,7 @@ const AddTestimonial = () => {
         const proced = window.confirm('Are You Sure??');
         if (proced) {
 
-            const url = `http://localhost:5000/testimonial_home_delete/${id}`;
+            const url = `https://whispering-woodland-88721.herokuapp.com/testimonial_home_delete/${id}`;
             fetch(url, {
                 method: 'DELETE'
 

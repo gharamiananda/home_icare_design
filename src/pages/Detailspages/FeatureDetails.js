@@ -18,7 +18,7 @@ const FeatureDetails = () => {
     const [features, setFeatures] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/feature_home/${feature}`)
+        fetch(`https://whispering-woodland-88721.herokuapp.com/feature_home/${feature}`)
             .then(res => res.json())
             .then(data => setFeatures(data));
     }, [feature])

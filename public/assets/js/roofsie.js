@@ -766,7 +766,7 @@
       });
     }
   }
-  SmoothMenuScroll();
+  // SmoothMenuScroll();
 
   function OnePageMenuScroll() {
     var windscroll = $(window).scrollTop();

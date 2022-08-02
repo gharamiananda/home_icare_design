@@ -3,25 +3,25 @@ import { useForm } from "react-hook-form";
 import fetcher from "../../api";
 import axios from "axios";
 import { ToastContainer, toast } from 'react-toastify';
-import { useNavigate, useLocation, Link , useParams } from 'react-router-dom';
+import { useNavigate, useLocation, Link, useParams } from 'react-router-dom';
 
 
 
 const CollageCourseDetail = () => {
 
-const {course}
- = useParams();
+    const { course }
+        = useParams();
 
-const navigate = useNavigate();
+    const navigate = useNavigate();
 
-const [collageCourse, setCollageCourse] = useState([]);
+    const [collageCourse, setCollageCourse] = useState([]);
     const [toggle, setToggle] = useState(false);
 
     const [mission2, setmission2] = useState([]);
 
 
-  useEffect(() => {
-        fetch('http://localhost:5000/collage_course_get')
+    useEffect(() => {
+        fetch('https://whispering-woodland-88721.herokuapp.com/collage_course_get')
             .then(res => res.json())
             .then(data => setCollageCourse(data))
     }, [course, toggle]);
@@ -32,23 +32,23 @@ const [collageCourse, setCollageCourse] = useState([]);
     const [loading, setLoading] = useState(false);
     const [mission, setmission] = useState([]);
     const [missionData, setmissionData] = useState({});
-const [modal, setModal] = useState(false)
+    const [modal, setModal] = useState(false)
     const [myId, setMyId] = useState(' ')
 
 
     useEffect(() => {
-   const find  = collageCourse.find(c=> c._id == course)
+        const find = collageCourse.find(c => c._id == course)
 
-   setmission2(find)
+        setmission2(find)
 
-     setValue('course', `${mission2?.course}`)
+        setValue('course', `${mission2?.course}`)
 
         setValue('collage', `${mission2?.collage}`)
     }, [collageCourse, toggle]);
 
-  console.log(mission2)
+    console.log(mission2)
 
-    const { register, handleSubmit, reset, setValue} = useForm();
+    const { register, handleSubmit, reset, setValue } = useForm();
     // const { register2, handleSubmit2, reset2, setValue } = useForm();
 
     const onSubmit = async (data) => {
@@ -76,13 +76,13 @@ const [modal, setModal] = useState(false)
     };
 
     const handleEdit = (id) => {
-      
+
         const remaining = mission2.find(r => r._id == id)
-     
+
 
         setMyId(id)
 
-console.log(myId)
+        console.log(myId)
 
 
 
@@ -90,7 +90,7 @@ console.log(myId)
 
 
     const statusChange = async (id, stat) => {
-      
+
         let statusData;
 
         if (stat == '1') {
@@ -106,27 +106,27 @@ console.log(myId)
 
         const res = await fetcher.put(`collage_course_status/${id}`, statusData);
         console.log(res)
-       setToggle(!toggle)
+        setToggle(!toggle)
     }
 
 
 
 
 
-   
-    
 
-  
 
-    const onSubmit2 = data =>{
-        
+
+
+
+    const onSubmit2 = data => {
+
         const remaining = mission2.find(r => r._id == myId)
         console.log(remaining)
         setValue('course', `${remaining?.course}`)
 
         setValue('collage', `${remaining?.collage}`)
-        
-        };
+
+    };
 
     return (
         <>
@@ -172,7 +172,7 @@ console.log(myId)
                                                     <option value="Research & Development Centre">	Research & Development Centre</option>
                                                     <option value="Dr B.C. Roy Hospital">Dr B.C. Roy Hospital</option>
                                                     <option value="Haldia Institute of Nursing Science">Haldia Institute of Nursing Science</option>
-                                                       <option value="INDIRA GANDHI NATIONAL OPEN UNIVERSITY">INDIRA GANDHI NATIONAL OPEN UNIVERSITY</option>
+                                                    <option value="INDIRA GANDHI NATIONAL OPEN UNIVERSITY">INDIRA GANDHI NATIONAL OPEN UNIVERSITY</option>
                                                 </select>
                                             </div>
 
@@ -213,7 +213,7 @@ console.log(myId)
 
             </div>
 
-            
+
 
 
 

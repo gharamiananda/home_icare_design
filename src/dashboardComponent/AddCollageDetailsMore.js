@@ -16,7 +16,7 @@ const AddCollageDetailsMore = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/collage_details_about_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/collage_details_about_get')
             .then(res => res.json())
             .then(data => setmission(data))
     }, [toggle]);
@@ -93,7 +93,7 @@ const AddCollageDetailsMore = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/collage_details_more_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/collage_details_more_get')
             .then(res => res.json())
             .then(data => setmission2(data))
     }, [toggle]);

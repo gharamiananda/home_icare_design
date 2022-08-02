@@ -9,7 +9,7 @@ const Tenders = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/tender_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/tender_get')
             .then(res => res.json())
             .then(data => setCeti(data));
     }, [toggle])
@@ -18,7 +18,7 @@ const Tenders = () => {
     const [ibd, setibd] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/inner_banner_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/inner_banner_get')
             .then(res => res.json())
             .then(data => setibd(data))
     }, []);
@@ -36,7 +36,7 @@ const Tenders = () => {
         <div>
             <Header></Header>
             <section className="page-header">
-                <div className="page-header-bg" style={{ backgroundImage: `url(http://localhost:5000/${innerBan?.image})` }}>
+                <div className="page-header-bg" style={{ backgroundImage: `url(https://whispering-woodland-88721.herokuapp.com/${innerBan?.image})` }}>
                 </div>
                 <div className="container">
                     <div className="page-header__inner">
@@ -52,7 +52,7 @@ const Tenders = () => {
             <div className='text-center pt-120 ptb-120'>
                 {
                     certi.map(c =>
-                        c.status == '1' && <div> <img src={`http://localhost:5000/${c.picture}`} className='img-fluid' /></div>)
+                        c.status == '1' && <div> <img src={`https://whispering-woodland-88721.herokuapp.com/${c.picture}`} className='img-fluid' /></div>)
                 }
             </div>
             <Footer />

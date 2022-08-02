@@ -24,7 +24,7 @@
   text-align: center;
   transition: all 500ms ease;
   padding: 23px;
-  right: 60px;
+
 }
 
 .swiper-button-next:after,
@@ -38,7 +38,7 @@
 .swiper-button-prev,
 .swiper-container-rtl .swiper-button-next {
   top: 40% !important;
-  left: 92% !important;
+  left: 95% !important;
 }
 
 .main-slider .swiper-button-prev {}
@@ -74,4 +74,34 @@ td img {
 
   border: 1px solid #ced4da;
   margin-left: 5px;
+}
+
+@media only screen and (min-width: 992px) {
+
+  .swiper-button-prev,
+  .swiper-container-rtl .swiper-button-next {
+
+    left: 88% !important;
+  }
+
+}
+
+@media only screen and (min-width: 776px) {
+
+  .swiper-button-prev,
+  .swiper-container-rtl .swiper-button-next {
+
+    left: 93% !important;
+  }
+
+}
+
+@media only screen and (max-width: 600px) {
+
+  .swiper-button-prev,
+  .swiper-container-rtl .swiper-button-next {
+
+    left: 90% !important;
+  }
+
 }

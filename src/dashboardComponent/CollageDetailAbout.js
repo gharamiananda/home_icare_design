@@ -16,7 +16,7 @@ const CollageDetailAbout = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/collage_details_about_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/collage_details_about_get')
             .then(res => res.json())
             .then(data => setmission(data))
     }, [toggle]);
@@ -95,7 +95,7 @@ const CollageDetailAbout = () => {
 
         axios
             .post(
-                "http://localhost:5000/api/images",
+                "https://whispering-woodland-88721.herokuapp.com/api/images",
                 formData
             )
             .then((res) => {
@@ -117,7 +117,7 @@ const CollageDetailAbout = () => {
 
         axios
             .post(
-                "http://localhost:5000/api/images",
+                "https://whispering-woodland-88721.herokuapp.com/api/images",
                 formData
             )
             .then((res) => {

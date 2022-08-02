@@ -6,7 +6,7 @@ const ContactForm = () => {
     const [formvalue, setformvalue] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/c_form_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/c_form_get')
             .then(res => res.json())
             .then(data => setformvalue(data))
 

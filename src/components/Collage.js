@@ -11,7 +11,7 @@ const Collage = () => {
     const [remaining, setRemaining] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/collage_home')
+        fetch('https://whispering-woodland-88721.herokuapp.com/collage_home')
             .then(res => res.json())
             .then(data => setCollages(data))
     }, []);
@@ -71,7 +71,7 @@ const Collage = () => {
                                 <SwiperSlide className='item'>
                                     <div className="services-one__single">
                                         <div className="services-one__img">
-                                            <img src={`http://localhost:5000/${c?.image}`} alt />
+                                            <img src={`https://whispering-woodland-88721.herokuapp.com/${c?.image}`} alt />
 
                                         </div>
                                         <div className="services-one__content">

@@ -7,7 +7,7 @@ const WhyChoose = () => {
     const [chooseData, setChooseData] = useState({})
 
     useEffect(() => {
-        fetch('http://localhost:5000/choose_home')
+        fetch('https://whispering-woodland-88721.herokuapp.com/choose_home')
             .then(res => res.json())
             .then(data => setChoose(data))
     }, [])
@@ -71,7 +71,7 @@ const WhyChoose = () => {
                                 <div className="why-choose-two__img-box">
                                     <div className="why-choose-two__img-one">
 
-                                        <img src={`http://localhost:5000/${chooseData.image}`} alt />
+                                        <img src={`https://whispering-woodland-88721.herokuapp.com/${chooseData.image}`} alt />
 
                                         {/* <div class="why-choose-two__img-two">
                     <img src="assets/images/resources/why-choose-haldiacollege.jpg" alt="">

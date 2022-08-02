@@ -17,7 +17,7 @@ const AddInnerBanner = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/inner_banner_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/inner_banner_get')
             .then(res => res.json())
             .then(data => setCollages(data))
     }, [toggle, loading]);
@@ -64,7 +64,7 @@ const AddInnerBanner = () => {
 
         axios
             .post(
-                "http://localhost:5000/api/images",
+                "https://whispering-woodland-88721.herokuapp.com/api/images",
                 formData
             )
             .then((res) => {
@@ -233,7 +233,7 @@ const AddInnerBanner = () => {
 
                                                 <td> {c.collageName}</td>
                                                 <td>
-                                                    <img src={`http://localhost:5000/${c?.image}`} className='img-fluid' />
+                                                    <img src={`https://whispering-woodland-88721.herokuapp.com/${c?.image}`} className='img-fluid' />
 
                                                 </td>
 

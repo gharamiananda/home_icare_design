@@ -15,7 +15,7 @@ const UgDetail = () => {
     const [features, setFeatures] = useState({});
     const { ug } = useParams();
     useEffect(() => {
-        fetch(`http://localhost:5000/ug/${ug}`)
+        fetch(`https://whispering-woodland-88721.herokuapp.com/ug/${ug}`)
             .then(res => res.json())
             .then(data => setFeatures(data));
     }, [toggle])

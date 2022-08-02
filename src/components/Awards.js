@@ -8,7 +8,7 @@ const Awards = () => {
     const [certi, setCeti] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/home-certificate')
+        fetch('https://whispering-woodland-88721.herokuapp.com/home-certificate')
             .then(res => res.json())
             .then(data => setCeti(data));
     }, [])
@@ -53,7 +53,7 @@ const Awards = () => {
                         {certi.map(c => <SwiperSlide className="item">
                             <div className="awards__single">
                                 <div className="awards__img">
-                                    <img src={`http://localhost:5000/${c.picture}`} className='img-fluid' />
+                                    <img src={`https://whispering-woodland-88721.herokuapp.com/${c.picture}`} className='img-fluid' />
                                 </div>
                             </div>
                         </SwiperSlide>

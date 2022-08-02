@@ -18,13 +18,13 @@ const Aboutpage = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/team_member_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/team_member_get')
             .then(res => res.json())
             .then(data => setTeam(data))
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:5000/vission_home')
+        fetch('https://whispering-woodland-88721.herokuapp.com/vission_home')
             .then(res => res.json())
             .then(data => setmission(data))
     }, [toggle]);
@@ -51,7 +51,7 @@ const Aboutpage = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/inner_banner_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/inner_banner_get')
             .then(res => res.json())
             .then(data => setibd(data))
     }, []);
@@ -73,7 +73,7 @@ const Aboutpage = () => {
                 <Header />
                 {/*Page Header Start*/}
                 <section className="page-header">
-                    <div className="page-header-bg" style={{ backgroundImage: `url(http://localhost:5000/${innerBan?.image})` }}>
+                    <div className="page-header-bg" style={{ backgroundImage: `url(https://whispering-woodland-88721.herokuapp.com/${innerBan?.image})` }}>
                     </div>
                     <div className="container">
                         <div className="page-header__inner">
@@ -169,7 +169,7 @@ const Aboutpage = () => {
                                         <div className="team-one__single">
                                             <div className="team-one__img-box">
                                                 <div className="team-one__img">
-                                                    <img src={`http://localhost:5000/${t.image}`} alt />
+                                                    <img src={`https://whispering-woodland-88721.herokuapp.com/${t.image}`} alt />
                                                 </div>
                                                 <ul className="list-unstyled team-one__social">
                                                     <li><a href={t.social1} ><i className="fab fa-facebook-square" /></a></li>

@@ -12,7 +12,7 @@ const AddReward = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/home-certificate')
+        fetch('https://whispering-woodland-88721.herokuapp.com/home-certificate')
             .then(res => res.json())
             .then(data => setCeti(data));
     }, [toggle])
@@ -52,7 +52,7 @@ const AddReward = () => {
 
         axios
             .post(
-                "http://localhost:5000/api/images",
+                "https://whispering-woodland-88721.herokuapp.com/api/images",
                 formData
             )
             .then((res) => {
@@ -74,7 +74,7 @@ const AddReward = () => {
         const proced = window.confirm('Are You Sure??');
         if (proced) {
 
-            const url = `http://localhost:5000/award_home_delete/${id}`;
+            const url = `https://whispering-woodland-88721.herokuapp.com/award_home_delete/${id}`;
             fetch(url, {
                 method: 'DELETE'
 
@@ -205,7 +205,7 @@ const AddReward = () => {
                                                 {/* <td>{chooseData.mainTitle}</td> */}
                                                 <td> </td>
                                                 <td>
-                                                    <img src={`http://localhost:5000/${b.picture}`} className='img-fluid' />
+                                                    <img src={`https://whispering-woodland-88721.herokuapp.com/${b.picture}`} className='img-fluid' />
 
                                                 </td>
                                                 <td>Otto</td>

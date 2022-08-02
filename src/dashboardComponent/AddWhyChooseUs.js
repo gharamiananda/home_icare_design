@@ -14,7 +14,7 @@ const AddWhyChooseUs = () => {
     const [chooseData, setChooseData] = useState({})
 
     useEffect(() => {
-        fetch('http://localhost:5000/choose_home')
+        fetch('https://whispering-woodland-88721.herokuapp.com/choose_home')
             .then(res => res.json())
             .then(data => setChoose(data))
     }, [toggle])
@@ -48,7 +48,7 @@ const AddWhyChooseUs = () => {
 
         axios
             .post(
-                "http://localhost:5000/api/images",
+                "https://whispering-woodland-88721.herokuapp.com/api/images",
                 formData
             )
             .then((res) => {
@@ -217,7 +217,7 @@ const AddWhyChooseUs = () => {
                                         <td>{chooseData.mainTitle}</td>
 
                                         <td>
-                                            <img src={`http://localhost:5000/${chooseData.image}`} className='img-fluid' />
+                                            <img src={`https://whispering-woodland-88721.herokuapp.com/${chooseData.image}`} className='img-fluid' />
 
                                         </td>
 

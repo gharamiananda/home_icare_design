@@ -15,7 +15,7 @@ const FinanDetail = () => {
     const [features, setFeatures] = useState({});
     const { finan } = useParams();
     useEffect(() => {
-        fetch(`http://localhost:5000/finan/${finan}`)
+        fetch(`https://whispering-woodland-88721.herokuapp.com/finan/${finan}`)
             .then(res => res.json())
             .then(data => setFeatures(data));
     }, [toggle])

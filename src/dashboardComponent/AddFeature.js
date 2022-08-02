@@ -15,7 +15,7 @@ const AddFeature = () => {
     const [features, setFeatures] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/feature_home')
+        fetch('https://whispering-woodland-88721.herokuapp.com/feature_home')
             .then(res => res.json())
             .then(data => setFeatures(data));
     }, [toggle])
@@ -44,7 +44,7 @@ const AddFeature = () => {
         console.log(id)
         if (proced) {
 
-            const url = `http://localhost:5000/feature_home/${id}`;
+            const url = `https://whispering-woodland-88721.herokuapp.com/feature_home/${id}`;
             fetch(url, {
                 method: 'DELETE'
 

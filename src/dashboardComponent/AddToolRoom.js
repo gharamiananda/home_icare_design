@@ -14,7 +14,7 @@ const AddToolRoom = () => {
     const [aboutFull, setAboutFull] = useState({})
 
     useEffect(() => {
-        fetch('http://localhost:5000/toolroom_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/toolroom_get')
             .then(res => res.json())
             .then(data => setAbout(data));
 
@@ -57,7 +57,7 @@ const AddToolRoom = () => {
 
         axios
             .post(
-                "http://localhost:5000/api/images",
+                "https://whispering-woodland-88721.herokuapp.com/api/images",
                 formData
             )
             .then((res) => {
@@ -228,7 +228,7 @@ const AddToolRoom = () => {
                                         <td>{aboutFull.title1}</td>
 
                                         <td>
-                                            <img src={`http://localhost:5000/${aboutFull.image}`} className='img-fluid' />
+                                            <img src={`https://whispering-woodland-88721.herokuapp.com/${aboutFull.image}`} className='img-fluid' />
 
                                         </td>
 

@@ -68,13 +68,16 @@ import AddToolRoom from './dashboardComponent/AddToolRoom';
 import CoursePageDetail from './pages/Detailspages/CoursePageDetail';
 import AddCourseDetail from './dashboardComponent/AddCourseDetail';
 import DetailsCourseEdit from './pages/Detailspages/DetailsCourseEdit';
-
+import ScrollTopAuto from './components/ScrollTopAuto';
+import ScrollToTop from 'react-scroll-to-top';
 
 
 function App() {
   return (
     <>
       <div className="page-wrapper ">
+        <ScrollTopAuto />
+        <ScrollToTop smooth />
 
         <Routes>
           <Route path="/" element={<Home />} />

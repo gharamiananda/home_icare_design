@@ -12,7 +12,7 @@ const Testimonial = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/testimonial_home')
+        fetch('https://whispering-woodland-88721.herokuapp.com/testimonial_home')
             .then(res => res.json())
             .then(data => setTestimonial(data))
     }, [])

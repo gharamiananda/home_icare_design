@@ -22,7 +22,7 @@ const CourseDetails = () => {
     const [courses, setcourses] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/course-home/${course}`)
+        fetch(`https://whispering-woodland-88721.herokuapp.com/course-home/${course}`)
             .then(res => res.json())
             .then(data => setcourses(data));
     }, [course])
@@ -80,7 +80,7 @@ const CourseDetails = () => {
 
         axios
             .post(
-                "http://localhost:5000/api/images",
+                "https://whispering-woodland-88721.herokuapp.com/api/images",
                 formData
             )
             .then((res) => {

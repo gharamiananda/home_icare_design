@@ -15,7 +15,7 @@ const AddVision = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/vission_home')
+        fetch('https://whispering-woodland-88721.herokuapp.com/vission_home')
             .then(res => res.json())
             .then(data => setmission(data))
     }, [toggle]);
@@ -244,14 +244,14 @@ const AddVision = () => {
                                         <td>
                                             <button
                                                 className={(missionData.status == "1") ? 'btn btn-success' : "btn btn-danger"}
-                                            onClick={() => statusChange(missionData._id, missionData.status)}>{missionData.status == '1' ? "Active" : "Inactive"}</button>
+                                                onClick={() => statusChange(missionData._id, missionData.status)}>{missionData.status == '1' ? "Active" : "Inactive"}</button>
                                         </td>
 
                                         <td>
 
                                             <button
                                                 className="text-primary border-0"
-                                            onClick={handleEdit}>      <i class="fa-solid fa-pen-to-square"></i>
+                                                onClick={handleEdit}>      <i class="fa-solid fa-pen-to-square"></i>
                                             </button>
                                         </td>
                                     </tr>

@@ -34,3 +34,18 @@
   width: 266px;
 
 }
+
+.header__nav__fix .offcanvas-start {
+  top: 0;
+  left: 330px !important;
+  width: 400px;
+  padding-left: 60px;
+  border-right: 1pxsolidrgba(0, 0, 0, .2);
+  transform: translateX(-100%);
+  visibility: visible;
+}
+
+
+.footer-widget__explore-list li a.active {
+  color: #0a58ca;
+}

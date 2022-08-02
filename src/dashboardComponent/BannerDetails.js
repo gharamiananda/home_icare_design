@@ -18,7 +18,7 @@ const BannerDetails = () => {
     const [imageURL, setImageURL] = useState('');
 
     useEffect(() => {
-        fetch(`http://localhost:5000/banner/${banner}`)
+        fetch(`https://whispering-woodland-88721.herokuapp.com/banner/${banner}`)
             .then(res => res.json())
             .then(data => setbanners(data));
 
@@ -93,7 +93,7 @@ const BannerDetails = () => {
 
         axios
             .post(
-                "http://localhost:5000/api/images",
+                "https://whispering-woodland-88721.herokuapp.com/api/images",
                 formData
             )
             .then((res) => {
@@ -182,7 +182,7 @@ const BannerDetails = () => {
                                     <div className="row">
                                         <label className="col-sm-3 col-form-label" />
                                         <div className="col-sm-9">
-                                            <img src={`http://localhost:5000/${banners.picture}`} id='singleImage' />
+                                            <img src={`https://whispering-woodland-88721.herokuapp.com/${banners.picture}`} id='singleImage' />
 
                                             <button type="submit" className="btn btn-info px-5">Submit</button>
                                         </div>

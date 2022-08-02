@@ -8,7 +8,7 @@ const
         const [aboutFull, setAboutFull] = useState({})
 
         useEffect(() => {
-            fetch('http://localhost:5000/about_home')
+            fetch('https://whispering-woodland-88721.herokuapp.com/about_home')
                 .then(res => res.json())
                 .then(data => setAbout(data));
 
@@ -29,7 +29,7 @@ const
                                     <div className="about-one__left">
                                         <div className="about-one__img-box wow slideInLeft" data-wow-delay="100ms" data-wow-duration="2500ms">
                                             <div className="about-one__img">
-                                                <img src={`http://localhost:5000/${aboutFull.image}`} alt />
+                                                <img src={`https://whispering-woodland-88721.herokuapp.com/${aboutFull.image}`} alt />
 
                                             </div>
                                             <div className="about-one__line">

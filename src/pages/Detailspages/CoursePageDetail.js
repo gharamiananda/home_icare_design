@@ -29,7 +29,7 @@ const CoursePageDetail = () => {
     const [aboutFull, setAboutFull] = useState({})
 
     useEffect(() => {
-        fetch('http://localhost:5000/detail_course_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/detail_course_get')
             .then(res => res.json())
             .then(data => setAbout(data));
 
@@ -147,7 +147,7 @@ const CoursePageDetail = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/inner_banner_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/inner_banner_get')
             .then(res => res.json())
             .then(data => setibd(data))
     }, []);
@@ -157,7 +157,7 @@ const CoursePageDetail = () => {
     const [coursedetailssssff, setcoursedetailsssff] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/course_home')
+        fetch('https://whispering-woodland-88721.herokuapp.com/course_home')
             .then(res => res.json())
             .then(data => setcoursedetailsssss(data))
     }, []);
@@ -187,7 +187,7 @@ const CoursePageDetail = () => {
                 <Header />
                 {/*Page Header Start*/}
                 <section className="page-header" id='toolroom'>
-                    <div className="page-header-bg" style={{ backgroundImage: `url(http://localhost:5000/${innerBan?.image})` }}>
+                    <div className="page-header-bg" style={{ backgroundImage: `url(https://whispering-woodland-88721.herokuapp.com/${innerBan?.image})` }}>
                     </div>
                     <div className="container">
                         <div className="page-header__inner">
@@ -215,7 +215,7 @@ const CoursePageDetail = () => {
                                             <div className="about-one__left">
                                                 <div className="about-one__img-box wow slideInLeft" data-wow-delay="100ms" data-wow-duration="2500ms">
                                                     <div className="about-one__img">
-                                                        <img src={`http://localhost:5000/${courseDetail?.image}`} alt />
+                                                        <img src={`https://whispering-woodland-88721.herokuapp.com/${courseDetail?.image}`} alt />
 
                                                     </div>
                                                     <div className="about-one__line">

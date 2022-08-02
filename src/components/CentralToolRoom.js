@@ -23,7 +23,7 @@ const CentralToolRoom = () => {
     const [aboutFull, setAboutFull] = useState({})
 
     useEffect(() => {
-        fetch('http://localhost:5000/toolroom_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/toolroom_get')
             .then(res => res.json())
             .then(data => setAbout(data));
 
@@ -37,13 +37,13 @@ const CentralToolRoom = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/team_member_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/team_member_get')
             .then(res => res.json())
             .then(data => setTeam(data))
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:5000/vission_home')
+        fetch('https://whispering-woodland-88721.herokuapp.com/vission_home')
             .then(res => res.json())
             .then(data => setmission(data))
     }, [toggle]);
@@ -70,7 +70,7 @@ const CentralToolRoom = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/inner_banner_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/inner_banner_get')
             .then(res => res.json())
             .then(data => setibd(data))
     }, []);
@@ -92,7 +92,7 @@ const CentralToolRoom = () => {
                 <Header />
                 {/*Page Header Start*/}
                 <section className="page-header" id='toolroom'>
-                    <div className="page-header-bg" style={{ backgroundImage: `url(http://localhost:5000/${innerBan?.image})` }}>
+                    <div className="page-header-bg" style={{ backgroundImage: `url(https://whispering-woodland-88721.herokuapp.com/${innerBan?.image})` }}>
                     </div>
                     <div className="container">
                         <div className="page-header__inner">
@@ -120,7 +120,7 @@ const CentralToolRoom = () => {
                                                 <div className="about-one__left">
                                                     <div className="about-one__img-box wow slideInLeft" data-wow-delay="100ms" data-wow-duration="2500ms">
                                                         <div className="about-one__img">
-                                                            <img src={`http://localhost:5000/${aboutFull?.image}`} alt />
+                                                            <img src={`https://whispering-woodland-88721.herokuapp.com/${aboutFull?.image}`} alt />
 
                                                         </div>
                                                         <div className="about-one__line">

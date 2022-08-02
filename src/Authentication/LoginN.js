@@ -46,7 +46,7 @@ const LoginN = () => {
 
 
         if (user) {
-            const url = 'http://localhost:5000/login_check';
+            const url = 'https://whispering-woodland-88721.herokuapp.com/login_check';
 
 
             fetch(url, {

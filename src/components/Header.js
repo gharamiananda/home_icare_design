@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../images/resources/icare.png'
 import { useForm } from "react-hook-form";
 import fetcher from "../api";
+import { useRef } from 'react';
 
 const Header = () => {
 
-
-
+    const [navModel, setNavModel] = useState(false)
+    useEffect(() => {
+        console.log(navModel)
+    }, [navModel])
 
     const { register, formState: { errors }, handleSubmit } = useForm();
 
@@ -25,7 +28,7 @@ const Header = () => {
         color: "#0a58ca"
     };
 
-    let activeClassName = "underline";
+    const activeNav = useRef();
     return (
         <>
             <header className="main-header-two clearfix">
@@ -67,7 +70,7 @@ const Header = () => {
                                         </div>
                                         <div className="content">
                                             <p>Call Anytime</p>
-                                            <h5><a href="tel:91(03224) 255275">+91(03224) 255275</a></h5>
+                                            <h5><a target="_blank" href="tel:91(03224) 255275">+91(03224) 255275</a></h5>
                                         </div>
                                     </li>
                                     <li>
@@ -76,7 +79,7 @@ const Header = () => {
                                         </div>
                                         <div className="content">
                                             <p>Send Email</p>
-                                            <h5><a href="mailto:icare_haldia@rediffmail.com">icare_haldia@rediffmail.com</a></h5>
+                                            <h5><a target="_blank" href="mailto:icare_haldia@rediffmail.com">icare_haldia@rediffmail.com</a></h5>
                                         </div>
                                     </li>
                                     <li>
@@ -85,7 +88,8 @@ const Header = () => {
                                         </div>
                                         <div className="content">
                                             <p>Address</p>
-                                            <h5>ICARE Complex, HIT Campus, Haldia</h5>
+                                            <a target="_blank" href="https://g.page/haldia-institute-of-technology?share">  <h5>ICARE Complex, HIT Campus, Haldia</h5>
+                                            </a>
                                         </div>
                                     </li>
                                 </ul>
@@ -101,7 +105,7 @@ const Header = () => {
                                 <div className="main-menu-two__left">
                                     <div className="main-menu-two__main-menu-box">
 
-                                        <a href="#" className="mobile-nav__toggler" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample"><i className="fa fa-bars" /></a>
+                                        <a onClick={() => setNavModel(!navModel)} className="mobile-nav__toggler" ><i className="fa fa-bars" /></a>
 
                                         <ul className="main-menu__list">
                                             <li >
@@ -166,80 +170,90 @@ const Header = () => {
 
 
 
-                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+                {navModel &&
 
-                    <div class="offcanvas-header">
-                        <div class="logo-box">
-                            <a href="index.html" aria-label="logo image"><img src="assets/images/resources/icare-white.png" width="143" alt="" /></a>
-                        </div>
-
-                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <div class="offcanvas-body">
+                    <div className='header__nav__fix'>
 
 
-                        <div class="mobile-nav__container"><ul class="main-menu__list">
-                            <li >
-                                <NavLink style={({ isActive }) =>
-                                    isActive ? activeStyle : undefined
-                                } to="/">Home </NavLink>
-                            </li>
-                            <li>
-                                <NavLink style={({ isActive }) =>
-                                    isActive ? activeStyle : undefined
-                                } to="/about">About </NavLink>
-                            </li>
-                            <li>
-                                <NavLink style={({ isActive }) =>
-                                    isActive ? activeStyle : undefined
-                                } to="/collages">Colleges</NavLink>
-                            </li>
-                            <li>
-                                <NavLink style={({ isActive }) =>
-                                    isActive ? activeStyle : undefined
-                                } to="/courses">Courses</NavLink>
-                            </li>
-                            <li>
-                                <NavLink style={({ isActive }) =>
-                                    isActive ? activeStyle : undefined
-                                } to="/academics">Academics</NavLink>
-                            </li>
-                            <li>
-                                <NavLink style={({ isActive }) =>
-                                    isActive ? activeStyle : undefined
-                                } to="/admission">Admission</NavLink>
-                            </li>
-                            <li>
-                                <NavLink style={({ isActive }) =>
-                                    isActive ? activeStyle : undefined
-                                } to="/contact">Contact</NavLink>
-                            </li>
-                        </ul>
-                        </div>
+                        <div class="offcanvas offcanvas-start " tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
 
-                        <ul class="mobile-nav__contact list-unstyled">
-                            <li>
-                                <i class="fa fa-envelope"></i>
-                                <a href="mailto:needhelp@packageName__.com">needhelp@roofsie.com</a>
-                            </li>
-                            <li>
-                                <i class="fa fa-phone-alt"></i>
-                                <a href="tel:666-888-0000">666 888 0000</a>
-                            </li>
-                        </ul>
+                            <div class="offcanvas-header">
+                                <div class="logo-box">
+                                    <a href="index.html" aria-label="logo image"><img src="assets/images/resources/icare-white.png" width="143" alt="" /></a>
+                                </div>
 
-                        <div class="mobile-nav__top">
-                            <div class="mobile-nav__social">
-                                <a href="#" class="fab fa-twitter"></a>
-                                <a href="#" class="fab fa-facebook-square"></a>
-                                <a href="#" class="fab fa-pinterest-p"></a>
-                                <a href="#" class="fab fa-instagram"></a>
+                                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" onClick={() => setNavModel(!navModel)}></button>
                             </div>
+                            <div class="offcanvas-body">
+
+
+                                <div class="mobile-nav__container"><ul class="main-menu__list">
+                                    <li >
+                                        <NavLink style={({ isActive }) =>
+                                            isActive ? activeStyle : undefined
+                                        } to="/">Home </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink style={({ isActive }) =>
+                                            isActive ? activeStyle : undefined
+                                        } to="/about">About </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink style={({ isActive }) =>
+                                            isActive ? activeStyle : undefined
+                                        } to="/collages">Colleges</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink style={({ isActive }) =>
+                                            isActive ? activeStyle : undefined
+                                        } to="/courses">Courses</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink style={({ isActive }) =>
+                                            isActive ? activeStyle : undefined
+                                        } to="/academics">Academics</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink style={({ isActive }) =>
+                                            isActive ? activeStyle : undefined
+                                        } to="/admission">Admission</NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink style={({ isActive }) =>
+                                            isActive ? activeStyle : undefined
+                                        } to="/contact">Contact</NavLink>
+                                    </li>
+                                </ul>
+                                </div>
+
+                                <ul class="mobile-nav__contact list-unstyled">
+                                    <li>
+                                        <i class="fa fa-envelope"></i>
+                                        <a href="mailto:needhelp@packageName__.com">
+                                            contactus@icare-haldia.org
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-phone-alt"></i>
+                                        <a href="tel:666-888-0000">+91(03224) 255275, 255662,
+                                            255843, 255895</a>
+                                    </li>
+                                </ul>
+
+                                <div class="mobile-nav__top">
+                                    <div class="mobile-nav__social">
+                                        <a href="#" class="fab fa-twitter"></a>
+                                        <a href="#" class="fab fa-facebook-square"></a>
+                                        <a href="#" class="fab fa-pinterest-p"></a>
+                                        <a href="#" class="fab fa-instagram"></a>
+                                    </div>
+                                </div>
+
+                            </div>
+
                         </div>
 
-                    </div>
-
-                </div>
+                    </div>}
 
 
             </header>

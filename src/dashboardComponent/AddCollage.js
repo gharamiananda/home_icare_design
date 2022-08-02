@@ -16,7 +16,7 @@ const AddCollage = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/collage_home')
+        fetch('https://whispering-woodland-88721.herokuapp.com/collage_home')
             .then(res => res.json())
             .then(data => setCollages(data))
     }, [toggle, loading]);
@@ -61,7 +61,7 @@ const AddCollage = () => {
 
         axios
             .post(
-                "http://localhost:5000/api/images",
+                "https://whispering-woodland-88721.herokuapp.com/api/images",
                 formData
             )
             .then((res) => {
@@ -81,7 +81,7 @@ const AddCollage = () => {
         const proced = window.confirm('Are You Sure??');
         if (proced) {
 
-            const url = `http://localhost:5000/collage_home_delete/${id}`;
+            const url = `https://whispering-woodland-88721.herokuapp.com/collage_home_delete/${id}`;
             fetch(url, {
                 method: 'DELETE'
 
@@ -236,7 +236,7 @@ const AddCollage = () => {
 
                                                 <td> {c.collageName}</td>
                                                 <td>
-                                                    <img src={`http://localhost:5000/${c.image}`} className='img-fluid' />
+                                                    <img src={`https://whispering-woodland-88721.herokuapp.com/${c.image}`} className='img-fluid' />
 
                                                 </td>
 

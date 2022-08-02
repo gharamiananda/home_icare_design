@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 
 import { Navigation, Autoplay, Pagination, Scrollbar, A11y } from 'swiper';
 import './OurCollage.css';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Link } from 'react-router-dom';
 
 
 const HomeCourse = () => {
@@ -12,7 +12,7 @@ const HomeCourse = () => {
     const [remainings, setRemaining] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/detail_course_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/detail_course_get')
             .then(res => res.json())
             .then(data => setCourses(data));
     }, []);
@@ -82,7 +82,7 @@ const HomeCourse = () => {
 
                             <SwiperSlide className="item">
                                 <div className="project-one__single">
-                                    <a href={`course-details/${c?.title1.split(" ").join("-")}`}>
+                                    <Link to={`course-details/${c?.title1.split(" ").join("-")}`}>
                                         <div className="project-one__img-box">
                                             <div className="project-one__img">
 
@@ -93,7 +93,7 @@ const HomeCourse = () => {
 
 
 
-                                                <img src={`http://localhost:5000/${c?.image}`} className='img-fluid' />
+                                                <img src={`https://whispering-woodland-88721.herokuapp.com/${c?.image}`} className='img-fluid' />
 
 
 
@@ -105,10 +105,10 @@ const HomeCourse = () => {
                                                 </h4>
                                             </div>
                                             <div className="project-one__link">
-                                                <a className="img-popup" data-fancybox="gallery2" href={`http://localhost:5000/${c.picture}`} ><i className="fa fa-link" /></a>
+                                                <a className="img-popup" data-fancybox="gallery2" href={`https://whispering-woodland-88721.herokuapp.com/${c?.image}`} ><i className="fa fa-link" /></a>
                                             </div>
                                         </div>
-                                    </a>
+                                    </Link>
                                 </div>
 
 

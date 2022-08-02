@@ -17,7 +17,7 @@ const TestimonialDetail = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/testimonial_home_detail/${testimonial}`)
+        fetch(`https://whispering-woodland-88721.herokuapp.com/testimonial_home_detail/${testimonial}`)
             .then(res => res.json())
             .then(data => setTestimonials(data))
     }, [toggle]);

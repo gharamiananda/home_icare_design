@@ -6,7 +6,7 @@ const NewsLetter = () => {
     const [formvalue, setformvalue] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/news_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/news_get')
             .then(res => res.json())
             .then(data => setformvalue(data))
 

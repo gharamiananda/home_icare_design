@@ -7,7 +7,7 @@ const FeatureTop = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/feature_home')
+        fetch('https://whispering-woodland-88721.herokuapp.com/feature_home')
             .then(res => res.json())
             .then(data => setFeatures(data));
     }, [])

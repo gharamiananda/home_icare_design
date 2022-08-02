@@ -19,7 +19,7 @@ const Coursepage = () => {
     const [remainings, setRemaining] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/detail_course_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/detail_course_get')
             .then(res => res.json())
             .then(data => setCourses(data));
     }, []);
@@ -39,7 +39,7 @@ const Coursepage = () => {
     const [ibd, setibd] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/inner_banner_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/inner_banner_get')
             .then(res => res.json())
             .then(data => setibd(data))
     }, []);
@@ -59,7 +59,7 @@ const Coursepage = () => {
 
             {/*Page Header Start*/}
             <section className="page-header">
-                <div className="page-header-bg" style={{ backgroundImage: `url(http://localhost:5000/${innerBan?.image})` }}>
+                <div className="page-header-bg" style={{ backgroundImage: `url(https://whispering-woodland-88721.herokuapp.com/${innerBan?.image})` }}>
                 </div>
                 <div className="container">
                     <div className="page-header__inner">
@@ -101,7 +101,7 @@ const Coursepage = () => {
                                             <a href={`course-details/${c?.title1.split(' ').join('-')}`}>
                                                 <div className="project-one__img-box">
                                                     <div className="project-one__img">
-                                                        <img src={`http://localhost:5000/${c?.image}`} className='img-fluid' />
+                                                        <img src={`https://whispering-woodland-88721.herokuapp.com/${c?.image}`} className='img-fluid' />
 
                                                     </div>
                                                     <div className="project-one__content">
@@ -109,7 +109,7 @@ const Coursepage = () => {
                                                         </h4>
                                                     </div>
                                                     <div className="project-one__link">
-                                                        <a className="img-popup" data-fancybox="gallery2" href={`http://localhost:5000/${c.picture}`} ><i className="fa fa-link" /></a>
+                                                        <a className="img-popup" data-fancybox="gallery2" href={`https://whispering-woodland-88721.herokuapp.com/${c.picture}`} ><i className="fa fa-link" /></a>
                                                     </div>
                                                 </div>
                                             </a>

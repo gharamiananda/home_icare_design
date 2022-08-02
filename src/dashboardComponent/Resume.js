@@ -6,7 +6,7 @@ const Resume = () => {
     const [formvalue, setformvalue] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/resume_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/resume_get')
             .then(res => res.json())
             .then(data => setformvalue(data))
 
@@ -43,7 +43,7 @@ const Resume = () => {
 
                                         <td>{f.subject} </td>
                                         <td>
-                                            <a href={`http://localhost:5000/${f?.image} `} >{f?.image} </a>
+                                            <a href={`https://whispering-woodland-88721.herokuapp.com/${f?.image} `} >{f?.image} </a>
                                         </td>
 
 

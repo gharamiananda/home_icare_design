@@ -9,7 +9,7 @@ const HomeOverview = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/overview_home')
+        fetch('https://whispering-woodland-88721.herokuapp.com/overview_home')
             .then(res => res.json())
             .then(data => setOverview(data))
     }, []);
@@ -31,7 +31,7 @@ const HomeOverview = () => {
                 <div className="trust-company-shape-2" />
                 <div className="trust-company-shape-3" />
                 <div className="trust-company-shape-4" />
-                <div className="trust-company-bg jarallax" data-jarallax data-speed="0.2" data-imgposition="50% 0%" style={{ backgroundImage: `url(http://localhost:5000/${overviewData.image})` }} />
+                <div className="trust-company-bg jarallax" data-jarallax data-speed="0.2" data-imgposition="50% 0%" style={{ backgroundImage: `url(https://whispering-woodland-88721.herokuapp.com/${overviewData.image})` }} />
                 <div className="container">
                     <div className="row">
                         <div className="col-lg-5">

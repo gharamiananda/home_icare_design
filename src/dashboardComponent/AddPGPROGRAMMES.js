@@ -15,7 +15,7 @@ const AddPGPROGRAMMES = () => {
     const [features, setFeatures] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/pg')
+        fetch('https://whispering-woodland-88721.herokuapp.com/pg')
             .then(res => res.json())
             .then(data => setFeatures(data));
     }, [toggle])
@@ -46,7 +46,7 @@ const AddPGPROGRAMMES = () => {
         console.log(id)
         if (proced) {
 
-            const url = `http://localhost:5000/pg_delete/${id}`;
+            const url = `https://whispering-woodland-88721.herokuapp.com/pg_delete/${id}`;
             fetch(url, {
                 method: 'DELETE'
 
@@ -181,11 +181,11 @@ const AddPGPROGRAMMES = () => {
 
                                                 <td><button
                                                     className={(b.status == "1") ? 'btn btn-success' : "btn btn-danger"}
-                                                     onClick={() => statusChange(b._id, b.status)}>{b.status == '1' ? "Active" : "Inactive"}</button></td>
+                                                    onClick={() => statusChange(b._id, b.status)}>{b.status == '1' ? "Active" : "Inactive"}</button></td>
                                                 <td>
-                                                    <button 
+                                                    <button
                                                         className="text-danger border-0"
-                                                    onClick={() => deleteFeature(b._id)} > <i class="fa-solid fa-trash-can"></i></button>
+                                                        onClick={() => deleteFeature(b._id)} > <i class="fa-solid fa-trash-can"></i></button>
                                                     <Link
                                                         className="text-primary border-0"
                                                         to={`${b._id}`}

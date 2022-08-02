@@ -15,7 +15,7 @@ const AddFINANCIALAIDS = () => {
     const [features, setFeatures] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/finan')
+        fetch('https://whispering-woodland-88721.herokuapp.com/finan')
             .then(res => res.json())
             .then(data => setFeatures(data));
     }, [toggle])
@@ -44,7 +44,7 @@ const AddFINANCIALAIDS = () => {
         console.log(id)
         if (proced) {
 
-            const url = `http://localhost:5000/finan_delete/${id}`;
+            const url = `https://whispering-woodland-88721.herokuapp.com/finan_delete/${id}`;
             fetch(url, {
                 method: 'DELETE'
 

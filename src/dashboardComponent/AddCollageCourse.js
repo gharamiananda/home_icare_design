@@ -12,13 +12,13 @@ const AddCollageCourse = () => {
 
 
 
-const [collageCourse, setCollageCourse] = useState([]);
+    const [collageCourse, setCollageCourse] = useState([]);
     const [toggle, setToggle] = useState(false);
 
 
 
-  useEffect(() => {
-        fetch('http://localhost:5000/collage_course_get')
+    useEffect(() => {
+        fetch('https://whispering-woodland-88721.herokuapp.com/collage_course_get')
             .then(res => res.json())
             .then(data => setCollageCourse(data))
     }, [toggle]);
@@ -29,12 +29,12 @@ const [collageCourse, setCollageCourse] = useState([]);
     const [loading, setLoading] = useState(false);
     const [mission, setmission] = useState([]);
     const [missionData, setmissionData] = useState({});
-const [modal, setModal] = useState(false)
+    const [modal, setModal] = useState(false)
     const [myId, setMyId] = useState(' ')
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/collage_details_about_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/collage_details_about_get')
             .then(res => res.json())
             .then(data => setmission(data))
     }, [toggle]);
@@ -43,7 +43,7 @@ const [modal, setModal] = useState(false)
         mission.map(a => setmissionData(a))
     }, [mission]);
 
-    const { register, handleSubmit, reset, setValue} = useForm();
+    const { register, handleSubmit, reset, setValue } = useForm();
     // const { register2, handleSubmit2, reset2, setValue } = useForm();
 
     const onSubmit = async (data) => {
@@ -68,13 +68,13 @@ const [modal, setModal] = useState(false)
     };
 
     const handleEdit = (id) => {
-      
+
         const remaining = mission2.find(r => r._id == id)
-     
+
 
         setMyId(id)
 
-console.log(myId)
+        console.log(myId)
 
 
 
@@ -82,7 +82,7 @@ console.log(myId)
 
 
     const statusChange = async (id, stat) => {
-      
+
         let statusData;
 
         if (stat == '1') {
@@ -98,7 +98,7 @@ console.log(myId)
 
         const res = await fetcher.put(`collage_course_status/${id}`, statusData);
         console.log(res)
-       setToggle(!toggle)
+        setToggle(!toggle)
     }
 
     const [mission2, setmission2] = useState([]);
@@ -107,19 +107,19 @@ console.log(myId)
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/collage_details_more_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/collage_details_more_get')
             .then(res => res.json())
             .then(data => setmission2(data))
     }, [toggle]);
 
 
-    
+
 
     const deleteBanner = (id) => {
         const proced = window.confirm('Are You Sure??');
         if (proced) {
 
-            const url = `http://localhost:5000/collage_course_delete/${id}`;
+            const url = `https://whispering-woodland-88721.herokuapp.com/collage_course_delete/${id}`;
             fetch(url, {
                 method: 'DELETE'
 
@@ -139,15 +139,15 @@ console.log(myId)
 
     }
 
-    const onSubmit2 = data =>{
-        
+    const onSubmit2 = data => {
+
         const remaining = mission2.find(r => r._id == myId)
         console.log(data, remaining)
         setValue('course', `${remaining?.course}`)
 
         setValue('collage', `${remaining?.collage}`)
-        
-        };
+
+    };
 
     return (
         <>
@@ -193,7 +193,7 @@ console.log(myId)
                                                     <option value="Research & Development Centre">	Research & Development Centre</option>
                                                     <option value="Dr B.C. Roy Hospital">Dr B.C. Roy Hospital</option>
                                                     <option value="Haldia Institute of Nursing Science">Haldia Institute of Nursing Science</option>
-                                                       <option value="INDIRA GANDHI NATIONAL OPEN UNIVERSITY (IGNOU)">INDIRA GANDHI NATIONAL OPEN UNIVERSITY</option>
+                                                    <option value="INDIRA GANDHI NATIONAL OPEN UNIVERSITY (IGNOU)">INDIRA GANDHI NATIONAL OPEN UNIVERSITY</option>
                                                 </select>
                                             </div>
 
@@ -255,7 +255,7 @@ console.log(myId)
                                 <tbody>
 
                                     {
-                                     collageCourse.map((m, i) =>
+                                        collageCourse.map((m, i) =>
                                             <tr>
                                                 <th scope="row">{i + 1}</th>
                                                 <td>{m?.collage}</td>
@@ -271,13 +271,13 @@ console.log(myId)
 
                                                 <td className='d-flex'>
 
-                                                   
-                                                 <button className="text-danger btn border-0" onClick={() => deleteBanner(m._id)} > <i class="fa-solid fa-trash-can"></i></button>
+
+                                                    <button className="text-danger btn border-0" onClick={() => deleteBanner(m._id)} > <i class="fa-solid fa-trash-can"></i></button>
                                                     <Link className="text-primary "
                                                         to={`${m._id}`}
                                                     > <i class="fa-solid fa-pen-to-square"></i></Link>
-                                                   
-                                                 
+
+
                                                 </td>
                                             </tr>
 

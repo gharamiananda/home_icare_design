@@ -16,7 +16,7 @@ const AddTeam = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/collage_home')
+        fetch('https://whispering-woodland-88721.herokuapp.com/collage_home')
             .then(res => res.json())
             .then(data => setCollages(data))
     }, [toggle, loading]);
@@ -28,7 +28,7 @@ const AddTeam = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/team_member_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/team_member_get')
             .then(res => res.json())
             .then(data => setTeam(data))
     }, [toggle]);
@@ -74,7 +74,7 @@ const AddTeam = () => {
 
         axios
             .post(
-                "http://localhost:5000/api/images",
+                "https://whispering-woodland-88721.herokuapp.com/api/images",
                 formData
             )
             .then((res) => {
@@ -94,7 +94,7 @@ const AddTeam = () => {
         const proced = window.confirm('Are You Sure??');
         if (proced) {
 
-            const url = `http://localhost:5000/team_member_delete/${id}`;
+            const url = `https://whispering-woodland-88721.herokuapp.com/team_member_delete/${id}`;
             fetch(url, {
                 method: 'DELETE'
 
@@ -290,7 +290,7 @@ const AddTeam = () => {
                                                 <td> {c.membername}</td>
                                                 <td> {c.designation}</td>
                                                 <td>
-                                                    <img src={`http://localhost:5000/${c.image}`} className='img-fluid' />
+                                                    <img src={`https://whispering-woodland-88721.herokuapp.com/${c.image}`} className='img-fluid' />
 
                                                 </td>
 

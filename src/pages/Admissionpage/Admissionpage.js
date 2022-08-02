@@ -24,7 +24,7 @@ const Admissionpage = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/mission_page')
+        fetch('https://whispering-woodland-88721.herokuapp.com/mission_page')
             .then(res => res.json())
             .then(data => setmission(data))
     }, [toggle]);
@@ -42,7 +42,7 @@ const Admissionpage = () => {
     const [ibd, setibd] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/inner_banner_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/inner_banner_get')
             .then(res => res.json())
             .then(data => setibd(data))
     }, []);
@@ -64,7 +64,7 @@ const Admissionpage = () => {
             <div>
                 {/*Page Header Start*/}
                 <section className="page-header">
-                    <div className="page-header-bg" style={{ backgroundImage: `url(http://localhost:5000/${innerBan?.image})` }}>
+                    <div className="page-header-bg" style={{ backgroundImage: `url(https://whispering-woodland-88721.herokuapp.com/${innerBan?.image})` }}>
                     </div>
                     <div className="container">
                         <div className="page-header__inner">

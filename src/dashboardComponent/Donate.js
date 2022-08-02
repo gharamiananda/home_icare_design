@@ -6,7 +6,7 @@ const Donate = () => {
     const [formvalue, setformvalue] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/donate_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/donate_get')
             .then(res => res.json())
             .then(data => setformvalue(data))
 

@@ -14,7 +14,7 @@ const AddOverView = () => {
     const [toggle, setToggle] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:5000/overview_home')
+        fetch('https://whispering-woodland-88721.herokuapp.com/overview_home')
             .then(res => res.json())
             .then(data => setOverview(data))
     }, [toggle]);
@@ -51,7 +51,7 @@ const AddOverView = () => {
 
         axios
             .post(
-                "http://localhost:5000/api/images",
+                "https://whispering-woodland-88721.herokuapp.com/api/images",
                 formData
             )
             .then((res) => {
@@ -273,7 +273,7 @@ const AddOverView = () => {
 
 
                                         <td>
-                                            <img src={`http://localhost:5000/${overviewData.image}`} className='img-fluid' />
+                                            <img src={`https://whispering-woodland-88721.herokuapp.com/${overviewData.image}`} className='img-fluid' />
 
                                         </td>
                                         <td>

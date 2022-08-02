@@ -16,7 +16,7 @@ function AddCourseDetail() {
     const [aboutFull, setAboutFull] = useState({})
 
     useEffect(() => {
-        fetch('http://localhost:5000/detail_course_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/detail_course_get')
             .then(res => res.json())
             .then(data => setAbout(data));
 
@@ -77,7 +77,7 @@ function AddCourseDetail() {
 
         axios
             .post(
-                "http://localhost:5000/api/images",
+                "https://whispering-woodland-88721.herokuapp.com/api/images",
                 formData
             )
             .then((res) => {
@@ -155,7 +155,7 @@ function AddCourseDetail() {
         const proced = window.confirm('Are You Sure??');
         if (proced) {
 
-            const url = `http://localhost:5000/course_details_delete/${id}`;
+            const url = `https://whispering-woodland-88721.herokuapp.com/course_details_delete/${id}`;
             fetch(url, {
                 method: 'DELETE'
 
@@ -282,7 +282,7 @@ function AddCourseDetail() {
                                             <tr>
                                                 <th scope="row">{i + 1}</th>
                                                 <td>{m?.title1}</td>
-                                                <td><img src={`http://localhost:5000//${m?.image}`} /></td>
+                                                <td><img src={`https://whispering-woodland-88721.herokuapp.com//${m?.image}`} /></td>
 
 
 

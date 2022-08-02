@@ -21,7 +21,7 @@ const Academicpage = () => {
     const [remug, setremug] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/pg')
+        fetch('https://whispering-woodland-88721.herokuapp.com/pg')
             .then(res => res.json())
             .then(data => setpg(data));
 
@@ -36,7 +36,7 @@ const Academicpage = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/ug')
+        fetch('https://whispering-woodland-88721.herokuapp.com/ug')
             .then(res => res.json())
             .then(data => setug(data));
 
@@ -52,7 +52,7 @@ const Academicpage = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/finan')
+        fetch('https://whispering-woodland-88721.herokuapp.com/finan')
             .then(res => res.json())
             .then(data => setfinan(data));
 
@@ -68,7 +68,7 @@ const Academicpage = () => {
     const [ibd, setibd] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/inner_banner_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/inner_banner_get')
             .then(res => res.json())
             .then(data => setibd(data))
     }, []);
@@ -93,7 +93,7 @@ const Academicpage = () => {
             </div>{/* /.stricky-header */}
             {/*Page Header Start*/}
             <section className="page-header">
-                <div className="page-header-bg" style={{ backgroundImage: `url(http://localhost:5000/${innerBan?.image})` }}>
+                <div className="page-header-bg" style={{ backgroundImage: `url(https://whispering-woodland-88721.herokuapp.com/${innerBan?.image})` }}>
                 </div>
                 <div className="container">
                     <div className="page-header__inner">

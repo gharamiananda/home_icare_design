@@ -20,7 +20,7 @@ const AddBanner = () => {
     const [toggle, setToggle] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:5000/banner')
+        fetch('https://whispering-woodland-88721.herokuapp.com/banner')
             .then(res => res.json())
             .then(data => setbanners(data));
     }, [toggle])
@@ -32,7 +32,7 @@ const AddBanner = () => {
         const proced = window.confirm('Are You Sure??');
         if (proced) {
 
-            const url = `http://localhost:5000/add-banner/${id}`;
+            const url = `https://whispering-woodland-88721.herokuapp.com/add-banner/${id}`;
             fetch(url, {
                 method: 'DELETE'
 
@@ -110,7 +110,7 @@ const AddBanner = () => {
 
         axios
             .post(
-                "http://localhost:5000/api/images",
+                "https://whispering-woodland-88721.herokuapp.com/api/images",
                 formData
             )
             .then((res) => {
@@ -239,7 +239,7 @@ const AddBanner = () => {
                                                 <td>{b.title}</td>
                                                 <td>{b.subtitle}</td>
                                                 <td>
-                                                    <img id='singleImage' src={`http://localhost:5000/${b.picture}`} className='img-fluid' />
+                                                    <img id='singleImage' src={`https://whispering-woodland-88721.herokuapp.com/${b.picture}`} className='img-fluid' />
 
                                                 </td>
                                                 <td><button className={(b.status == "1") ? 'btn btn-success' : "btn btn-danger"} onClick={() => statusChange(b._id, b.status)}>{b.status == '1' ? "Active" : "Inactive"}</button></td>

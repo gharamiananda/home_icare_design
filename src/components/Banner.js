@@ -20,7 +20,7 @@ const Banner = () => {
     const [remainings, setRemaining] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/banner')
+        fetch('https://whispering-woodland-88721.herokuapp.com/banner')
             .then(res => res.json())
             .then(data => setbanners(data));
 
@@ -64,7 +64,7 @@ const Banner = () => {
                     {
                         remainings.map(b =>
                             <SwiperSlide className="swiper-slide">
-                                <div className="image-layer" style={{ backgroundImage: `url(http://localhost:5000/${b.picture})` }} />
+                                <div className="image-layer" style={{ backgroundImage: `url(https://whispering-woodland-88721.herokuapp.com/${b.picture})` }} />
                                 {/* /.image-layer */}
                                 <div className="container">
                                     <div className="row">
@@ -74,7 +74,7 @@ const Banner = () => {
                                                 <h2 className="main-slider__title">{b.title}</h2>
                                                 <p className="main-slider__text">{b.desc}</p>
                                                 <div className="main-slider__btn-box">
-                                                    <a href={b.link} className="thm-btn main-slider__btn"> <i className="fa fa-arrow-right" /> Discover more</a>
+                                                    <Link to="/collages" className="thm-btn main-slider__btn"> <i className="fa fa-arrow-right" /> Discover more</Link>
                                                 </div>
                                             </div>
                                         </div>

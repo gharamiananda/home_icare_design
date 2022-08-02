@@ -15,7 +15,7 @@ const PgDetail = () => {
     const [features, setFeatures] = useState({});
     const { pg } = useParams();
     useEffect(() => {
-        fetch(`http://localhost:5000/pg/${pg}`)
+        fetch(`https://whispering-woodland-88721.herokuapp.com/pg/${pg}`)
             .then(res => res.json())
             .then(data => setFeatures(data));
     }, [toggle])

@@ -19,7 +19,7 @@ const Collagespage = () => {
     const [remaining, setRemaining] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/collage_home')
+        fetch('https://whispering-woodland-88721.herokuapp.com/collage_home')
             .then(res => res.json())
             .then(data => setCollages(data))
     }, []);
@@ -35,7 +35,7 @@ const Collagespage = () => {
     const [ibd, setibd] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/inner_banner_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/inner_banner_get')
             .then(res => res.json())
             .then(data => setibd(data))
     }, []);
@@ -56,7 +56,7 @@ const Collagespage = () => {
 
             {/*Page Header Start*/}
             <section className="page-header">
-                <div className="page-header-bg" style={{ backgroundImage: `url(http://localhost:5000/${innerBan?.image})` }}>
+                <div className="page-header-bg" style={{ backgroundImage: `url(https://whispering-woodland-88721.herokuapp.com/${innerBan?.image})` }}>
                 </div>
                 <div className="container">
                     <div className="page-header__inner">
@@ -80,7 +80,7 @@ const Collagespage = () => {
                                 <div className='col-lg-4' >
                                     <div className="services-one__single">
                                         <div className="services-one__img">
-                                            <img src={`http://localhost:5000/${c?.image}`} alt />
+                                            <img src={`https://whispering-woodland-88721.herokuapp.com/${c?.image}`} alt />
 
                                         </div>
                                         <div className="services-one__content">

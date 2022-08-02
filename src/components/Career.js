@@ -48,13 +48,13 @@ const Career = () => {
     };
 
     useEffect(() => {
-        fetch('http://localhost:5000/team_member_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/team_member_get')
             .then(res => res.json())
             .then(data => setTeam(data))
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:5000/vission_home')
+        fetch('https://whispering-woodland-88721.herokuapp.com/vission_home')
             .then(res => res.json())
             .then(data => setmission(data))
     }, [toggle]);
@@ -81,7 +81,7 @@ const Career = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/inner_banner_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/inner_banner_get')
             .then(res => res.json())
             .then(data => setibd(data))
     }, []);
@@ -104,7 +104,7 @@ const Career = () => {
 
         axios
             .post(
-                "http://localhost:5000/api/images",
+                "https://whispering-woodland-88721.herokuapp.com/api/images",
                 formData
             )
             .then((res) => {
@@ -125,10 +125,10 @@ const Career = () => {
         <>
             <div>
 
-                <Header />
+                <Header id="header" />
                 {/*Page Header Start*/}
                 <section className="page-header" id='about-top'>
-                    <div className="page-header-bg" style={{ backgroundImage: `url(http://localhost:5000/${innerBan?.image})` }}>
+                    <div className="page-header-bg" style={{ backgroundImage: `url(https://whispering-woodland-88721.herokuapp.com/${innerBan?.image})` }}>
                     </div>
                     <div className="container">
                         <div className="page-header__inner">

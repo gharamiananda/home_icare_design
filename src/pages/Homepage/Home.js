@@ -10,11 +10,13 @@ import Testimonial from '../../components/Testimonial';
 import Awards from '../../components/Awards';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
-
+import { Scrollbars } from 'react-custom-scrollbars';
 
 const Home = () => {
     return (
         <>
+
+
 
             <Header></Header>
 
@@ -38,6 +40,8 @@ const Home = () => {
 
             <Awards />
             <Footer />
+
+
         </>
     );
 };

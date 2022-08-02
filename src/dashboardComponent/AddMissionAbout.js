@@ -16,7 +16,7 @@ const AddMissionAbout = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/mission_page')
+        fetch('https://whispering-woodland-88721.herokuapp.com/mission_page')
             .then(res => res.json())
             .then(data => setmission(data))
     }, [toggle]);
@@ -90,7 +90,7 @@ const AddMissionAbout = () => {
 
         axios
             .post(
-                "http://localhost:5000/api/images",
+                "https://whispering-woodland-88721.herokuapp.com/api/images",
                 formData
             )
             .then((res) => {
@@ -112,7 +112,7 @@ const AddMissionAbout = () => {
 
         axios
             .post(
-                "http://localhost:5000/api/images",
+                "https://whispering-woodland-88721.herokuapp.com/api/images",
                 formData
             )
             .then((res) => {

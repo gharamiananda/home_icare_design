@@ -18,7 +18,7 @@ function DetailsCourseEdit() {
 
     const { id } = useParams()
     useEffect(() => {
-        fetch('http://localhost:5000/detail_course_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/detail_course_get')
             .then(res => res.json())
             .then(data => setAbout(data));
 
@@ -81,7 +81,7 @@ function DetailsCourseEdit() {
 
         axios
             .post(
-                "http://localhost:5000/api/images",
+                "https://whispering-woodland-88721.herokuapp.com/api/images",
                 formData
             )
             .then((res) => {

@@ -15,7 +15,7 @@ const AddUGPROGRAMMES = () => {
     const [features, setFeatures] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/ug')
+        fetch('https://whispering-woodland-88721.herokuapp.com/ug')
             .then(res => res.json())
             .then(data => setFeatures(data));
     }, [toggle])
@@ -44,7 +44,7 @@ const AddUGPROGRAMMES = () => {
         console.log(id)
         if (proced) {
 
-            const url = `http://localhost:5000/ug_delete/${id}`;
+            const url = `https://whispering-woodland-88721.herokuapp.com/ug_delete/${id}`;
             fetch(url, {
                 method: 'DELETE'
 

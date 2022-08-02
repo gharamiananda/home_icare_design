@@ -22,7 +22,7 @@ const CollageDetailpage = () => {
     const [ibd, setibd] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/inner_banner_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/inner_banner_get')
             .then(res => res.json())
             .then(data => setibd(data))
     }, []);
@@ -37,7 +37,7 @@ const CollageDetailpage = () => {
     ])
 
     useEffect(() => {
-        fetch('http://localhost:5000/collage_details_about_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/collage_details_about_get')
             .then(res => res.json())
             .then(data => setmission(data))
     }, []);
@@ -56,7 +56,7 @@ const CollageDetailpage = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/collage_details_more_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/collage_details_more_get')
             .then(res => res.json())
             .then(data => setmission2(data))
     }, []);
@@ -74,7 +74,7 @@ const CollageDetailpage = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/collage_course_get')
+        fetch('https://whispering-woodland-88721.herokuapp.com/collage_course_get')
             .then(res => res.json())
             .then(data => setCollageCourse(data))
     }, []);
@@ -99,7 +99,7 @@ const CollageDetailpage = () => {
             <Header />
 
             <section className="page-header">
-                <div className="page-header-bg" style={{ backgroundImage: `url(http://localhost:5000/${innerBan?.image})` }}>
+                <div className="page-header-bg" style={{ backgroundImage: `url(https://whispering-woodland-88721.herokuapp.com/${innerBan?.image})` }}>
                 </div>
                 <div className="container">
                     <div className="page-header__inner">
@@ -121,10 +121,10 @@ const CollageDetailpage = () => {
                             <div className="about-three__left">
                                 <div className="about-three__img-box wow slideInLeft" data-wow-delay="100ms" data-wow-duration="2500ms">
                                     <div className="about-three__img">
-                                        <img src={`http://localhost:5000/${missionData?.imageOne}`} alt />
+                                        <img src={`https://whispering-woodland-88721.herokuapp.com/${missionData?.imageOne}`} alt />
                                     </div>
                                     <div className="about-three__img-two">
-                                        <img src={`http://localhost:5000/${missionData?.imageTwo}`} alt />
+                                        <img src={`https://whispering-woodland-88721.herokuapp.com/${missionData?.imageTwo}`} alt />
 
                                     </div>
                                     <div className="about-three__border" />
